@@ -10,7 +10,10 @@
 ## Depois (só depois da Etapa 1 fechada)
 - [ ] Etapa 2 — auditoria: fotos/vídeos do carrinho FPV, material do cliente,
       autorização de uso de imagem
-- [ ] Etapa 3 — tokens de design (cor, tipografia, espaçamento)
+- [ ] Etapa 3 — tokens de design (cor, tipografia, espaçamento).
+      Usar a técnica do @matheusgomes: referência curada do Behance
+      (filtro UI/UX) como base, não gerar do zero. Ver
+      `professor/estudo/matheus-gomes-design-system/`.
 - [ ] (opcional, decisão do Diogo) comentar "TASTE" no post do
       @viniestrategista pra receber a DM com as 5 configurações — hoje é só
       promessa, sem conteúdo público verificável (ver
