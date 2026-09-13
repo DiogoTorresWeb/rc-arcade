@@ -86,3 +86,46 @@ opções, recomendação e raciocínio. Cliente paga por opinião, não por menu
 
 **Arquivos:** `cliente/RC-ARCADE-alineacion.pdf` (o que vai pro cliente) e
 `cliente/alineacion-01.html` (fonte, pra editar e regerar).
+
+## [2026-09-13] Autorização de material e premissa de trabalho
+
+**Autorização:** o Diogo confirmou que todo o material enviado está liberado
+para uso — as pessoas que aparecem nas fotos são da equipe do cliente, e o
+dossiê foi montado justamente para ser utilizado. Isso encerra a pendência de
+direito de imagem que eu tinha levantado. (Continua valendo o bom senso: usar
+o que serve, não tudo indiscriminadamente.)
+
+**Premissa de trabalho:** o Diogo relatou que a preferência do cliente é
+praticamente 100% alinhada com as recomendações do documento de alinhamento —
+instalação fixa como via principal, evento temporal como segunda porta,
+competição como apoio; B2B como percurso principal com seção pública curta.
+Ainda **não confirmado por escrito** (cliente viajando).
+
+**Decisão:** seguir com essa premissa em vez de parar. Registrado como
+premissa, não como fato — se o cliente voltar e corrigir, muda a seção de
+vias e a pública; o resto da estrutura se sustenta.
+
+## [2026-09-13] Direção de design: o movimento é o produto
+
+**Contexto:** o Diogo trouxe como referência sites de narrativa contínua em
+scroll (ex.: barbearia com câmera indo da rua até dentro da loja) — como
+possibilidade de pensamento, não como regra, e já apontando que esse tipo de
+site costuma converter mal.
+
+**Decisão:** não copiar esse padrão. Esses sites inventam movimento porque o
+produto deles é parado. O RC Arcade não precisa: o produto dele já é uma
+câmera em movimento, e o vídeo FPV real é mais forte que qualquer transição
+animada.
+
+**Regra adotada:** o movimento do site é o movimento do produto; nada de
+movimento decorativo sobre conteúdo parado. Sequestro de scroll está proibido
+no caminho B2B — o operador não pode perder controle da página.
+
+**Camada visual:** usar a linguagem de HUD que já existe no produto
+(telemetria do vídeo: voltagem, Mbps, latência; cronômetro e deltas do dossiê)
+como vocabulário gráfico. O site deve parecer a tela do cockpit, não um
+template escuro genérico de tecnologia.
+
+**Tokens de marca extraídos do dossiê por análise de pixel** (não chutados):
+vermelho **#E31B23** (idêntico no logo e nos acentos), preto #0A0B0D,
+superfície #191A1E, prata #B1B0AB. Detalhe em `DESIGN-DIRECTION.md`.
