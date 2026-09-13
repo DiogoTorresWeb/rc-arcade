@@ -11,9 +11,10 @@
 - [ ] Etapa 2 — auditoria: fotos/vídeos do carrinho FPV, material do cliente,
       autorização de uso de imagem
 - [ ] Etapa 3 — tokens de design (cor, tipografia, espaçamento)
-- [ ] Testar as 5 configurações do Claude pra deixar site bonito
-      (@viniestrategista, ver `estudo/viniestrategista-design.md`) — aqui é o
-      lugar combinado pra testar, antes de tocar no site do Paulo
+- [ ] (opcional, decisão do Diogo) comentar "TASTE" no post do
+      @viniestrategista pra receber a DM com as 5 configurações — hoje é só
+      promessa, sem conteúdo público verificável (ver
+      `estudo/viniestrategista-design.md`). Não é bloqueante pro projeto.
 - [ ] Etapa 4 — blocos com critério objetivo
 - [ ] Etapa 6 — validar canal de captação (Google Ads/WhatsApp é do Paulo;
       B2B provavelmente é outro caminho — talvez LinkedIn ou contato direto
