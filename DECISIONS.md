@@ -67,3 +67,22 @@ referência do Behance vira padrão de layout e estrutura, não fonte visual.
 **Ponto de atenção (regra de honestidade):** as fotos das pastas mostram
 pessoas identificáveis. Antes de qualquer foto ir pro site, confirmar
 autorização de uso de imagem com o cliente.
+
+## [2026-09-13] Documento de alinhamento como formato padrão
+
+**Problema:** as perguntas da Etapa 1 (qual das 3 vias, B2B ou B2C) são
+grandes demais pra WhatsApp, e o cliente mandou um dossiê muito bem feito —
+responder com mensagem solta seria responder abaixo do nível dele.
+
+**Decisão:** criar um documento de alinhamento em PDF, em espanhol, com
+estrutura de 6 partes: o que entendi → o que já está resolvido → decisões com
+recomendação → o que preciso receber → como seguimos.
+
+**Princípio que guia o formato:** não perguntar aberto, oferecer decisão com
+opções, recomendação e raciocínio. Cliente paga por opinião, não por menu.
+
+**Virou reutilizável:** `professor/skills/documento-de-alinhamento/SKILL.md`
+— serve pra próximo cliente e pra conversa de sociedade com o Paulo.
+
+**Arquivos:** `cliente/RC-ARCADE-alineacion.pdf` (o que vai pro cliente) e
+`cliente/alineacion-01.html` (fonte, pra editar e regerar).

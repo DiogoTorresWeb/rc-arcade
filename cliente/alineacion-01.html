@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>RC ARCADE — Documento de alineación</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 16mm 16mm; }
+  @page :first { margin: 0; }
+
+  :root{
+    --ink:#16181d;
+    --ink-soft:#4a4f58;
+    --ink-faint:#878d97;
+    --rule:#e2e5ea;
+    --red:#d0121b;
+    --bg-soft:#f6f7f9;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:"Carlito","Liberation Sans","DejaVu Sans",sans-serif;
+    color:var(--ink);
+    font-size:10.4pt;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- PORTADA ---------- */
+  .cover{
+    height:297mm;
+    background:#101216;
+    color:#fff;
+    padding:22mm;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    page-break-after:always;
+  }
+  .cover .mid{ margin-top:auto; margin-bottom:42mm; }
+  .cover .eyebrow{
+    font-size:8.5pt; letter-spacing:.22em; text-transform:uppercase;
+    color:#9aa1ac; margin-bottom:10mm;
+  }
+  .cover h1{
+    font-size:40pt; line-height:1.04; font-weight:700; margin:0 0 7mm 0;
+    letter-spacing:-.015em;
+  }
+  .cover .redbar{ width:26mm; height:3.4pt; background:var(--red); margin:0 0 7mm 0; }
+  .cover .sub{ font-size:13pt; color:#c9ced6; font-weight:400; max-width:120mm; line-height:1.45; }
+  .cover .foot{ font-size:9pt; color:#7e858f; letter-spacing:.06em; }
+  .cover .foot strong{ color:#dfe3e8; font-weight:600; }
+
+  /* ---------- ESTRUCTURA ---------- */
+  section{ page-break-inside:auto; }
+  .sec-head{ margin:0 0 5mm 0; page-break-after:avoid; page-break-inside:avoid; }
+  .sec-num{
+    font-size:8.5pt; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--red); font-weight:700; display:block; margin-bottom:2.5mm;
+  }
+  h2{
+    font-size:18pt; font-weight:700; margin:0 0 3mm 0;
+    letter-spacing:-.012em; line-height:1.2;
+  }
+  .lede{ color:var(--ink-soft); font-size:10.8pt; margin:0 0 6mm 0; max-width:150mm; }
+  h3{
+    font-size:11.5pt; font-weight:700; margin:7mm 0 2.5mm 0;
+    page-break-after:avoid;
+  }
+  p{ margin:0 0 3.4mm 0; }
+  strong{ font-weight:700; }
+
+  .block{ page-break-inside:avoid; }
+  .divider{ border:0; border-top:1px solid var(--rule); margin:9mm 0; }
+
+  /* listas */
+  ul{ margin:0 0 4mm 0; padding:0; list-style:none; }
+  ul li{
+    position:relative; padding-left:6.5mm; margin-bottom:2.6mm;
+  }
+  ul li::before{
+    content:""; position:absolute; left:0; top:2.05mm;
+    width:2.1mm; height:2.1mm; background:var(--red); border-radius:50%;
+  }
+  ol{ margin:0 0 4mm 0; padding-left:5.5mm; }
+  ol li{ margin-bottom:2.6mm; padding-left:1.5mm; }
+
+  /* tabla */
+  table{ width:100%; border-collapse:collapse; margin:2mm 0 5mm 0; font-size:9.6pt; }
+  th{
+    text-align:left; font-size:8pt; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--ink-faint); font-weight:700; padding:0 4mm 2.2mm 0;
+    border-bottom:1.6pt solid var(--ink);
+  }
+  td{ padding:3.2mm 4mm 3.2mm 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+  td:first-child{ font-weight:700; width:32%; }
+  th:last-child, td:last-child{ padding-right:0; }
+
+  /* caja de recomendación */
+  .rec{
+    background:var(--bg-soft); border-left:3.4pt solid var(--red);
+    padding:5mm 6mm; margin:5mm 0; page-break-inside:avoid;
+  }
+  .rec .tag{
+    font-size:8pt; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--red); font-weight:700; display:block; margin-bottom:2.5mm;
+  }
+  .rec p:last-child{ margin-bottom:0; }
+
+  /* cita */
+  .quote{
+    font-size:15pt; font-weight:700; line-height:1.3; letter-spacing:-.01em;
+    margin:5mm 0; padding-left:6mm; border-left:3.4pt solid var(--red);
+    page-break-inside:avoid;
+  }
+  .quote span{ display:block; font-size:8.5pt; font-weight:400; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-faint); margin-top:2.5mm; }
+
+  /* etapas */
+  .steps{ margin:3mm 0 0 0; }
+  .step{
+    display:flex; gap:5mm; padding:3mm 0; border-bottom:1px solid var(--rule);
+    page-break-inside:avoid;
+  }
+  .step:last-child{ border-bottom:0; }
+  .step .n{
+    font-size:13pt; font-weight:700; color:var(--ink-faint); min-width:8mm;
+    line-height:1.25;
+  }
+  .step.now .n{ color:var(--red); }
+  .step .t{ font-weight:700; min-width:44mm; }
+  .step.now .t{ color:var(--red); }
+  .step .d{ color:var(--ink-soft); flex:1; }
+
+  .closing{
+    margin-top:8mm; padding:5mm 6mm; background:#101216; color:#fff;
+    page-break-inside:avoid;
+  }
+  .closing p{ margin:0; font-size:11pt; font-weight:700; line-height:1.4; }
+  .closing p.small{ font-weight:400; font-size:9.6pt; color:#b9bfc8; margin-top:2.5mm; }
+
+  .signoff{
+    margin-top:10mm; padding-top:4mm; border-top:1px solid var(--rule);
+    font-size:8.8pt; color:var(--ink-faint); letter-spacing:.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="mid">
+    <div class="eyebrow">Proyecto web · Documento de alineación</div>
+    <h1>RC ARCADE</h1>
+    <div class="redbar"></div>
+    <div class="sub">Lo que he entendido, lo que ya está resuelto,<br>y las dos decisiones que necesito de vosotros<br>para empezar a construir.</div>
+  </div>
+  <div class="foot">Septiembre 2026 · Preparado por <strong>Diogo Torres</strong></div>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01 — Punto de partida</span>
+    <h2>Lo que he entendido</h2>
+    <p class="lede">Antes de preguntaros nada, esto es lo que he sacado del dossier, del vídeo y de las carpetas que me pasasteis. Si algo de aquí está mal, corregidme: cuesta mucho menos arreglarlo ahora que después.</p>
+  </div>
+
+  <ul>
+    <li>RC ARCADE convierte un coche de radiocontrol real en una experiencia de conducción en primera persona: cámara FPV, cockpit con volante y pedales, y un circuito físico de verdad.</li>
+    <li>La mecánica es de cuatro pasos —elige, siéntate, conduce, compite— y está pensada para entenderse en el primer minuto.</li>
+    <li>Hasta seis simuladores simultáneos sobre un circuito compartido, con vueltas y tiempos medidos. Eso es lo que convierte una sesión en un evento.</li>
+    <li>Al operador le vendéis cuatro cosas concretas: diferenciación, escalabilidad, rotación y contenido.</li>
+    <li>La identidad visual ya existe y está definida: rojo (energía y competición), negro (tecnología y profundidad), plata (precisión y carácter mecánico), con un sistema de logo completo.</li>
+  </ul>
+
+  <div class="quote">«No miras la carrera. Estás dentro de ella.»
+    <span>Vuestra frase — y el eje sobre el que se va a construir la web</span></div>
+
+  <p><strong>Conclusión:</strong> no partimos de cero. Partís de un producto que ya funciona, con una marca ya construida y un discurso comercial ya afinado. Eso cambia el trabajo: la web no tiene que inventar nada, tiene que traducir bien lo que ya existe.</p>
+</section>
+
+<hr class="divider">
+
+<section class="block">
+  <div class="sec-head">
+    <span class="sec-num">02 — Cerrado</span>
+    <h2>Lo que no hace falta discutir</h2>
+    <p class="lede">Para que sepáis dónde no vamos a gastar vuestro tiempo.</p>
+  </div>
+
+  <table>
+    <tr>
+      <td>Identidad visual</td>
+      <td>Ya la tenéis y está bien resuelta. La web la respetará; no la voy a reinventar.</td>
+    </tr>
+    <tr>
+      <td>Mensaje y posicionamiento</td>
+      <td>El dossier ya lo resuelve mejor de lo que lo haría yo desde fuera. Se reutiliza.</td>
+    </tr>
+    <tr>
+      <td>Material gráfico</td>
+      <td>He recibido las tres carpetas. Hay fotografía profesional suficiente para la web.</td>
+    </tr>
+    <tr>
+      <td>Prueba de que funciona</td>
+      <td>El vídeo de una sesión real, con la telemetría en pantalla, convence más que cualquier texto. Va a tener sitio propio.</td>
+    </tr>
+  </table>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03 — Decisión principal</span>
+    <h2>¿Cuál de las tres vías manda?</h2>
+    <p class="lede">Esta es la decisión que bloquea todo lo demás, y es vuestra, no mía.</p>
+  </div>
+
+  <p>El dossier presenta tres vías de negocio con el mismo peso:</p>
+
+  <table>
+    <thead>
+      <tr><th>Vía</th><th>A quién le vendéis</th><th>Qué tipo de venta es</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Instalación fija</td>
+        <td>Centro de ocio, local especializado, espacio comercial</td>
+        <td>Importe alto, ciclo largo, decisión de inversión</td>
+      </tr>
+      <tr>
+        <td>Evento temporal</td>
+        <td>Feria, festival, empresa que activa una acción</td>
+        <td>Importe medio, ciclo corto, decisión de presupuesto</td>
+      </tr>
+      <tr>
+        <td>Formato competición</td>
+        <td>Público que ya conoce el producto</td>
+        <td>No es venta directa: es retención y comunidad</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Un dossier puede tratarlas como iguales, porque quien lo lee ya está hablando con vosotros. <strong>Una web no puede.</strong> Quien entra decide en segundos si esto es para él, y una página que intenta convencer a los tres a la vez no convence a ninguno.</p>
+
+  <p>Las otras dos no desaparecen: quedan como caminos secundarios, más abajo y con menos peso visual.</p>
+
+  <div class="rec">
+    <span class="tag">Mi recomendación</span>
+    <p><strong>Instalación fija como vía principal</strong>, <strong>evento temporal</strong> como segunda puerta bien visible, y <strong>competición</strong> presente como prueba social —no como vía de venta— hasta que haya instalaciones suficientes para sostener una liga.</p>
+    <p>El razonamiento, para que podáis discutirlo: todo el argumento fuerte del dossier ya está construido para el operador que instala. Es donde más valor hay por operación, y es la vía que hace posibles las otras dos —cada instalación genera después eventos y da base a la competición. El evento temporal merece estar visible porque tiene el ciclo de decisión más corto: es lo que entra mientras se cierra una instalación.</p>
+    <p>Si vuestra realidad comercial es otra —por ejemplo, si hoy la mayor parte de la facturación viene de eventos— decídmelo y cambiamos la prioridad sin problema. Eso lo sabéis vosotros, no yo.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04 — Segunda decisión</span>
+    <h2>¿A quién le habla la web?</h2>
+    <p class="lede">Relacionada con la anterior, pero distinta.</p>
+  </div>
+
+  <p>El dossier habla al <strong>operador que compra</strong>. Pero las fotos preparadas para Instagram y la carpeta «Jornada de puertas abiertas» apuntan a que ya hay operación abierta al público final. Son dos conversaciones diferentes:</p>
+
+  <ul>
+    <li><strong>Solo B2B</strong> — la web es una herramienta comercial para cerrar operadores.</li>
+    <li><strong>Solo B2C</strong> — la web es para que el público venga a pilotar.</li>
+    <li><strong>Las dos, con caminos separados</strong> — una entrada clara para cada uno desde el inicio.</li>
+  </ul>
+
+  <div class="rec">
+    <span class="tag">Mi recomendación</span>
+    <p>Las dos, pero con jerarquía: <strong>B2B como recorrido principal</strong> y una sección pública corta y clara (qué es, dónde probarlo, cómo reservar).</p>
+    <p>Lo que no funciona es mezclarlas en la misma página sin separación. El operador quiere capacidad, rotación y retorno; el público quiere emoción, precio y dónde ir. Puestos juntos sin orden, cada uno estorba al otro.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="block">
+  <div class="sec-head">
+    <span class="sec-num">05 — Material</span>
+    <h2>Lo que necesito recibir</h2>
+    <p class="lede">Por experiencia, lo que retrasa un proyecto casi nunca es el desarrollo: es el material. Cuanto antes llegue esto, antes se entrega.</p>
+  </div>
+
+  <ul>
+    <li>Los <strong>archivos originales de la marca</strong> —vi la carpeta «logos rcarcade» en Dropbox; necesito los originales, en vectorial si existen.</li>
+    <li><strong>Confirmación de autorización de uso de imagen</strong> de las personas que aparecen en las fotografías.</li>
+    <li><strong>Datos de contacto comercial</strong> que van en la web: teléfono, email, y si preferís formulario o WhatsApp directo.</li>
+    <li><strong>Dónde estáis</strong> y si hay ya alguna instalación abierta al público que se pueda citar.</li>
+    <li>Si hay <strong>precios o rangos publicables</strong>, o si preferís que todo pase por contacto.</li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06 — Proceso</span>
+    <h2>Cómo seguimos</h2>
+    <p class="lede">El método que sigo tiene seis etapas. Estamos en la primera, y vuestras respuestas a este documento la cierran.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step now">
+      <div class="n">01</div><div class="t">Entender</div>
+      <div class="d">Estamos aquí. Se cierra con las dos decisiones de este documento.</div>
+    </div>
+    <div class="step">
+      <div class="n">02</div><div class="t">Auditoría del material</div>
+      <div class="d">Elegir qué fotos y vídeos entran y cuáles no, y por qué.</div>
+    </div>
+    <div class="step">
+      <div class="n">03</div><div class="t">Sistema de diseño</div>
+      <div class="d">Traducir vuestra identidad —rojo, negro, plata— a un sistema web coherente y reutilizable.</div>
+    </div>
+    <div class="step">
+      <div class="n">04</div><div class="t">Bloques con criterio</div>
+      <div class="d">Cada sección entra por un motivo declarado. Sección sin motivo, no entra.</div>
+    </div>
+    <div class="step">
+      <div class="n">05</div><div class="t">Documentación</div>
+      <div class="d">Todo lo decidido queda escrito, para que nada dependa de la memoria de nadie.</div>
+    </div>
+    <div class="step">
+      <div class="n">06</div><div class="t">Entrega y captación</div>
+      <div class="d">Cómo se lleva tráfico real a la web una vez publicada.</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>Todavía no hay ni una línea de la web escrita, y es a propósito.</p>
+    <p class="small">Escribir antes de tener estas respuestas sería trabajo que habría que rehacer. Prefiero preguntar primero.</p>
+  </div>
+
+  <div class="signoff">RC ARCADE · Documento de alineación · Septiembre 2026 · Diogo Torres</div>
+</section>
+
+</body>
+</html>
