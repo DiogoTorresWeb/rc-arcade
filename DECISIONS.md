@@ -17,10 +17,22 @@ vez de disciplina manual. Ver `estudo/vibe-coding-toolkit.md` pra origem e
 resto das ferramentas do mesmo kit (a maioria não se aplica ainda — projeto
 não tem código nenhum pra revisar, orquestrar ou linkar em grafo).
 
+**Atualizado 13/09:** o playbook completo do toolkit foi lido de verdade (não só
+a bio) e virou skill central em `professor/skills/vibe-coding-toolkit-setup/SKILL.md`
+— vale pra todo projeto novo, não só este. Além do Superpowers, também adotamos
+**Ponytail** (evita over-engineering) e **Caveman** (corta resposta enrolada e
+mostra token economizado — o RTK do kit não é instalável, esses dois são).
+
 **Não instalado ainda:** o Diogo precisa rodar, dentro do Claude Code, na
 pasta deste projeto:
 ```
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install superpowers@claude-plugins-official
+
+/plugin marketplace add DietrichGebert/ponytail
+/plugin install ponytail@ponytail
+
+/plugin marketplace add JuliusBrussee/caveman
+/plugin install caveman@caveman
 ```
-Isso não dá pra fazer por aqui (é um comando de dentro da sessão local dele).
+Isso não dá pra fazer por aqui (é comando de dentro da sessão local dele).

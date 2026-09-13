@@ -5,7 +5,8 @@
       evento pontual? contrato recorrente com a liga?)
 - [ ] Levantar 2-3 concorrentes/referências da região (ou do nicho FPV/RC)
 - [ ] Fechar a frase única: "se o site fizer só uma coisa certa, que coisa é essa"
-- [ ] Instalar o plugin Superpowers no Claude Code deste projeto (ver `DECISIONS.md`)
+- [ ] Instalar os 3 plugins (Superpowers, Ponytail, Caveman) no Claude Code
+      deste projeto — comandos em `DECISIONS.md`
 
 ## Depois (só depois da Etapa 1 fechada)
 - [ ] Etapa 2 — auditoria: fotos/vídeos do carrinho FPV, material do cliente,
