@@ -14,9 +14,11 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       atração (B2B, que é o tom do dossiê) ou com o público final que vai
       pilotar (B2C, que é o que as fotos de Instagram e a "jornada de puertas
       abiertas" sugerem)? Se forem os dois, precisam de caminhos separados.
-- [ ] Levantar 2-3 concorrentes/referências do nicho (FPV, RC, simuladores,
-      atrações de centro de lazer) — pode ser feito em paralelo, não depende
-      do cliente
+- [x] Levantar 2-3 concorrentes/referências do nicho (FPV, RC, simuladores,
+      atrações de centro de lazer) — feito em 23/09/2026, ver `CONCORRENTES.md`.
+      Racetech Systems (concorrente direto, sem prova em vídeo — oportunidade),
+      AXSIM (referência de como separar B2B/B2C na mesma página), F1 Arcade
+      (só tom, não estrutura).
 - [ ] Confirmar dados operacionais: onde fica, unidade aberta ao público?,
       contato comercial que vai no site
 - [x] Instalar os 3 plugins (Superpowers, Ponytail, Caveman) no Claude Code
