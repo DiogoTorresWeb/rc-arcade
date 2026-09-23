@@ -38,6 +38,10 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       `cliente/fotos-pista/canvas-sequence-test.html`), não serve como
       entrega final — baixa resolução, câmera de mão, lançamento reto (não
       drift lateral).
+- [x] **Formalizar o hero visual** — fechado em 23/09/2026:
+      `hero-duotone-preto-prata.jpg` é a direção confirmada pra Etapa 3
+      enquanto o clipe de vídeo dedicado não chega (ver `DESIGN-DIRECTION.md`
+      seção "Direção do hero — confirmada").
 
 ## Depois (só depois da Etapa 1 fechada)
 - [ ] Etapa 2 — auditoria: o material já chegou (dossiê, vídeo de 42s, 3

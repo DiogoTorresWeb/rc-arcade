@@ -181,6 +181,17 @@ Dropbox do cliente (pasta `action5`) é câmera fixa do galpão (montagem da
 pista + público do open-house), não FPV/onboard em ação. Ainda não descartar
 a técnica de vídeo — só não foi possível testar ainda por falta de material.
 
+**Direção do hero — confirmada (23/09/2026):** `hero-duotone-preto-prata.jpg`
+é o hero visual pra Etapa 3 (Claude Design) **enquanto o clipe de vídeo
+dedicado não chega** (pendência registrada em `TASKS.md`). Não é um
+place­holder qualquer — é foto DSLR profissional real do cliente, já tratada
+dentro das regras de marca (duotone preto/prata, vermelho só acento, blur
+radial de velocidade). Quando o clipe novo chegar, a arquitetura já prevista
+acima continua valendo: vídeo ambiente em loop no hero geral (padrão
+Porsche/McLaren, sem scroll), e o "canvas image sequence" reservado só pra
+seção "como se sente" — o still não é substituído pelo vídeo-loop até que o
+material FPV real exista; até lá, still tratado é a direção de produção.
+
 ## Ferramentas confirmadas pra implementação do movimento (Etapa 4/5)
 
 Verificado em 23/09/2026 (reel de @kevin.snippet, conteúdo real, sem exagero,
