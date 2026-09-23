@@ -120,14 +120,35 @@ através deles (scrollbar vira acelerador, não navegação). Serve bem porque:
   Porsche `racing.porsche.com`, McLaren `mclaren.com` — nenhum dos dois
   sequestra scroll).
 
-**Tratamento de imagem pra stills (sem gerar por IA):** duotone (mapear a
-foto pras cores da marca — preto `#0A0B0D` + vermelho `#E31B23`, ou preto +
-prata), grain/textura de película, e motion blur direcional (esticar o blur
-na direção do movimento, tipo filtro de blur direcional do Photoshop/After
-Effects) — todos são tratamento de cor/textura em cima de pixel real, não
-geração de conteúdo novo. Não achei referência de site específico fazendo
-isso num carro (marcar como técnica a testar, não como cópia de exemplo
-visto).
+**Tratamento de imagem pra stills:** duotone (mapear a foto pras cores da
+marca — preto `#0A0B0D` + vermelho `#E31B23`, ou preto + prata `#B1B0AB`),
+grain/textura de película, e motion blur direcional/radial (esticar o blur
+na direção do movimento a partir do carro em foco, tipo filtro de blur
+direcional do Photoshop/After Effects) — tratamento de cor/textura em cima de
+pixel real. A regra "sem IA" do projeto é sobre não fabricar cena/pessoa/
+depoimento falso, não sobre proibir ferramenta de IA — **ampliar/tratar uma
+foto real do cliente com IA (upscale, extensão de enquadramento, etc.) é
+permitido**, igual foi feito no hero da La Norma (confirmado pelo Diogo em
+23/09/2026); o que não entra é gerar cena nova do zero. Não achei referência
+de site específico fazendo esse tratamento num carro (marcar como técnica a
+testar, não como cópia de exemplo visto).
+
+**Primeiro protótipo (23/09/2026):** testado com foto real do cliente
+(`DSC09861.jpg`, pasta "RCA publicacion insta" do Dropbox, 23 fotos DSLR
+profissionais da pista — a melhor fonte de imagem que temos hoje). Script em
+`cliente/fotos-pista/treat_hero.py` (Python/PIL): crop 16:9, duotone,
+grain, blur radial mantendo o carro em primeiro plano nítido e borrando o
+fundo/pista pra sensação de velocidade. Duas variantes geradas:
+`hero-duotone-preto-prata.jpg` (bate com a regra de token — vermelho só
+acento) e `hero-duotone-preto-vermelho.jpg` (**descartada**: vermelho
+cobrindo a imagem inteira viola a própria regra deste documento de "acento,
+nunca fundo de área grande"). Mockup de contexto em
+`cliente/fotos-pista/preview-hero.html`. Isso é o hero como still tratado —
+**ainda não é o "canvas image sequence"** confirmado acima, porque essa
+técnica precisa de vídeo real de drift/corrida, e o que existe hoje no
+Dropbox do cliente (pasta `action5`) é câmera fixa do galpão (montagem da
+pista + público do open-house), não FPV/onboard em ação. Ainda não descartar
+a técnica de vídeo — só não foi possível testar ainda por falta de material.
 
 ## Ferramentas confirmadas pra implementação do movimento (Etapa 4/5)
 

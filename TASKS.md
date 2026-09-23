@@ -21,9 +21,12 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       contato comercial que vai no site
 - [x] Instalar os 3 plugins (Superpowers, Ponytail, Caveman) no Claude Code
       — feito em 13/09/2026, scope user (vale pra todo projeto)
-- [ ] Baixar a pasta `logos rcarcade` do Dropbox e guardar em
-      `cliente/assets/` — são os arquivos originais de marca, vão ser
-      necessários na Etapa 3
+- [x] Baixar a pasta `logos rcarcade` do Dropbox — feito em 23/09/2026, 7 dos
+      8 arquivos (faltou só `marca video.png`, sem link direto capturado) em
+      `cliente/logos/`. Logo principal confirma a paleta já travada
+      (preto/vermelho/prata) e mostra o conceito real: simulador com volante +
+      tela mostrando o buggy numa pista externa de terra + HUD de telemetria —
+      bate com a seção de linguagem HUD do `DESIGN-DIRECTION.md`.
 
 ## Depois (só depois da Etapa 1 fechada)
 - [ ] Etapa 2 — auditoria: o material já chegou (dossiê, vídeo de 42s, 3

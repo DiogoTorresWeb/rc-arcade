@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>RC Arcade — preview hero (protótipo)</title>
+<style>
+  :root {
+    --rc-red: #E31B23;
+    --rc-black: #0A0B0D;
+    --rc-surface: #191A1E;
+    --rc-silver: #B1B0AB;
+    --rc-silver-dim: #8B8D8C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--rc-black);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+  }
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    background-image: linear-gradient(180deg, rgba(10,11,13,0.15) 0%, rgba(10,11,13,0.55) 65%, rgba(10,11,13,0.92) 100%), url('hero-duotone-preto-prata.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px 64px;
+  }
+  .hud-top {
+    position: absolute;
+    top: 32px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--rc-silver);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(177,176,171,0.3);
+    padding-top: 10px;
+  }
+  .hud-top span.live { color: var(--rc-red); }
+  h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    margin: 0 0 12px;
+    max-width: 780px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  p.sub {
+    font-size: 18px;
+    color: var(--rc-silver);
+    max-width: 560px;
+    margin: 0 0 28px;
+  }
+  .cta {
+    display: inline-flex;
+    gap: 16px;
+  }
+  .btn {
+    padding: 14px 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .btn.primary { background: var(--rc-red); color: #fff; border: none; }
+  .btn.ghost { background: transparent; color: #fff; border: 1px solid var(--rc-silver-dim); }
+  .timer {
+    position: absolute;
+    bottom: 48px;
+    right: 64px;
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    color: var(--rc-silver);
+    font-size: 13px;
+  }
+  .timer .big { font-size: 32px; color: #fff; letter-spacing: 0.02em; }
+  .note {
+    max-width: 900px;
+    margin: 40px auto;
+    color: var(--rc-silver-dim);
+    font-family: monospace;
+    font-size: 13px;
+    padding: 0 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hud-top">
+      <span>RC ARCADE // <span class="live">● AO VIVO</span></span>
+      <span>12.3V &nbsp; 25MBPS &nbsp; 8MS &nbsp; ▂▄▆█</span>
+    </div>
+    <h1>Velocidade real.<br>Escala 1:10.</h1>
+    <p class="sub">Simuladores de corrida com carros de verdade, numa pista que cabe na sua feira. Instalação fixa, pronta pra rodar.</p>
+    <div class="cta">
+      <button class="btn primary">Agendar demonstração</button>
+      <button class="btn ghost">Ver capacidade</button>
+    </div>
+    <div class="timer">
+      MELHOR VOLTA
+      <div class="big">00:42.381</div>
+    </div>
+  </div>
+  <p class="note">
+    Protótipo de tratamento — foto real do cliente (DSC09861.jpg, pista RC Arcade), duotone preto/prata
+    + grain + motion blur radial em cima de pixel real (sem gerar nada por IA). Ainda não é a técnica
+    "canvas image sequence" confirmada em DESIGN-DIRECTION.md (essa precisa de vídeo real, não achado
+    ainda no material do cliente) — isso aqui é o hero como still tratado, pra reagir e ajustar.
+  </p>
+</body>
+</html>
