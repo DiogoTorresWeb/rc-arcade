@@ -102,6 +102,51 @@ Num lugar só: a seção de "como se sente" — a passagem do lado de fora do
 circuito pra dentro da visão FPV. É a única parte da página onde a emoção vale
 mais que a informação. Curta, e com o resto da página sem isso.
 
+**Técnica confirmada (23/09/2026, referências reais verificadas ao vivo):**
+"canvas image sequence" — mesma técnica de página de produto da Apple. Extrai
+frames reais do vídeo FPV do carro derrapando na pista e o scroll "dirige"
+através deles (scrollbar vira acelerador, não navegação). Serve bem porque:
+- Usa foto/frame **real** do cliente, sem gerar nada por IA.
+- É curto e sincronizado 1:1 com o progresso do scroll — diferente do
+  "sequestro" proibido acima porque não é uma cutscene forçada, é o único
+  trecho da página onde pinar a seção é intencional e breve.
+- **Cuidado explícito:** não repetir o padrão do Ford M-Sport Raptor
+  (`msport-raptor.com`) — o próprio Awwwards rotula aquilo como "scroll
+  hijack" porque prende o scroll numa câmera 3D renderizada (CGI, não foto
+  real) por tempo longo demais. Usar só nessa seção, curto, e nunca no resto
+  da página.
+- Fora dessa seção, o padrão do hero continua sendo vídeo ambiente em loop
+  sem interação de scroll (confirmado como padrão real de marca pesada:
+  Porsche `racing.porsche.com`, McLaren `mclaren.com` — nenhum dos dois
+  sequestra scroll).
+
+**Tratamento de imagem pra stills (sem gerar por IA):** duotone (mapear a
+foto pras cores da marca — preto `#0A0B0D` + vermelho `#E31B23`, ou preto +
+prata), grain/textura de película, e motion blur direcional (esticar o blur
+na direção do movimento, tipo filtro de blur direcional do Photoshop/After
+Effects) — todos são tratamento de cor/textura em cima de pixel real, não
+geração de conteúdo novo. Não achei referência de site específico fazendo
+isso num carro (marcar como técnica a testar, não como cópia de exemplo
+visto).
+
+## Ferramentas confirmadas pra implementação do movimento (Etapa 4/5)
+
+Verificado em 23/09/2026 (reel de @kevin.snippet, conteúdo real, sem exagero,
+biblioteca conhecida e checada): duas bibliotecas de JS puro, sem depender de
+React — compatíveis com o export HTML/CSS/JS do Claude Design.
+
+- **GSAP** — pra tudo que já está definido acima como "entra": cronômetro
+  contando, contador de número de capacidade, micro-interação de HUD,
+  transição de seção ≤250ms. É o motor certo pro "movimento que É o produto",
+  não movimento decorativo.
+- **Lenis** — scroll suave (inércia), não sequestro de scroll. Compatível com
+  a regra "nunca sequestro" porque só deixa o scroll nativo mais fluido, não
+  assume controle da página. Tem opção de respeitar `prefers-reduced-motion`
+  — configurar isso explicitamente na implementação.
+- **React Bits** — não serve. É biblioteca de componente React; o export
+  atual é HTML puro. Descartado pra este projeto, a menos que o site vire um
+  projeto React no futuro.
+
 ## Referência do Behance (pra Etapa 3)
 
 Critério de busca pro passo do Claude Design, coerente com tudo acima:
