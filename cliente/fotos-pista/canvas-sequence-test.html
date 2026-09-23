@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>RC Arcade — teste canvas image sequence (vídeo real do cliente)</title>
+<style>
+  :root {
+    --rc-red: #E31B23;
+    --rc-black: #0A0B0D;
+    --rc-silver: #B1B0AB;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--rc-black); font-family: Arial, sans-serif; color: #fff; }
+  .spacer { height: 60vh; display: flex; align-items: center; justify-content: center; color: var(--rc-silver); font-family: monospace; }
+  .pin-section { height: 400vh; position: relative; }
+  .pin-inner { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--rc-black); }
+  canvas { width: 100%; max-width: 1024px; height: auto; display: block; }
+  .hud { position: absolute; top: 24px; left: 50%; transform: translateX(-50%); font-family: monospace; font-size: 12px; color: var(--rc-silver); letter-spacing: 0.08em; text-transform: uppercase; }
+  .hud .live { color: var(--rc-red); }
+  .progress { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-family: monospace; font-size: 12px; color: var(--rc-silver-dim, #8B8D8C); }
+  .note { max-width: 900px; margin: 40px auto; color: #8B8D8C; font-family: monospace; font-size: 13px; padding: 0 24px; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="spacer">↓ role pra baixo pra "acelerar" o carro ↓</div>
+
+  <section class="pin-section">
+    <div class="pin-inner">
+      <div class="hud">RC ARCADE // <span class="live">● SEQUÊNCIA REAL</span></div>
+      <canvas id="seq" width="1024" height="380"></canvas>
+      <div class="progress" id="progress">frame 1 / 25</div>
+    </div>
+  </section>
+
+  <div class="spacer">↓ fim da seção pinada ↓</div>
+
+  <p class="note">
+    Teste técnico com vídeo real do cliente (VID-20260909-WA00791.mp4, WhatsApp, pista
+    "DriftStation"). Janela de ~39.5-42.5s: um carro parado acelera e passa raspando por uma
+    câmera fixa baixa — foi a única sequência de vários frames consecutivos com movimento real
+    encontrada no material recebido até agora (o resto ou é câmera parada de longe, ou tela do
+    simulador). 25 frames, crop tirando a faixa de cima (onde ficava o letreiro grande da
+    "DriftStation"), leve nitidez/contraste pra compensar a compressão do WhatsApp. Fonte:
+    1024x576 nativa do vídeo — nesse tamanho de tela already fica granulada; pra usar de
+    verdade no site precisa ou de um clipe em resolução maior, ou tratar essas fotos com
+    upscale de IA (permitido, como já foi feito na La Norma). O scroll aqui pina a seção,
+    "acelera" o carro conforme rola, e libera o scroll no final — sem ficar preso além disso.
+  </p>
+
+  <script>
+    const frameCount = 25;
+    const images = [];
+    let loaded = 0;
+    const canvas = document.getElementById('seq');
+    const ctx = canvas.getContext('2d');
+    const progressEl = document.getElementById('progress');
+
+    function pad(n) { return String(n).padStart(3, '0'); }
+
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      img.src = `sequence-launch/frame_${pad(i)}.jpg`;
+      img.onload = () => {
+        loaded++;
+        if (i === 1) drawFrame(0);
+      };
+      images.push(img);
+    }
+
+    function drawFrame(index) {
+      const img = images[Math.min(index, images.length - 1)];
+      if (!img || !img.complete) return;
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      ctx.drawImage(img, 0, 0);
+      progressEl.textContent = `frame ${index + 1} / ${frameCount}`;
+    }
+
+    const section = document.querySelector('.pin-section');
+
+    function onScroll() {
+      const rect = section.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      const progress = total > 0 ? scrolled / total : 0;
+      const frameIndex = Math.floor(progress * (frameCount - 1));
+      drawFrame(frameIndex);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>

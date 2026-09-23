@@ -133,7 +133,38 @@ permitido**, igual foi feito no hero da La Norma (confirmado pelo Diogo em
 de site específico fazendo esse tratamento num carro (marcar como técnica a
 testar, não como cópia de exemplo visto).
 
-**Primeiro protótipo (23/09/2026):** testado com foto real do cliente
+**Vídeo real analisado (23/09/2026):** o cliente mandou `VID-20260909-WA00791.mp4`
+(WhatsApp, 1024x576, 42.5s, salvo em `cliente/videos/drift-driftstation-20260909.mp4`).
+Análise frame a frame (ffmpeg, não só resumo do vídeo):
+- **Qualidade:** 1024x576 é resolução de WhatsApp (o original do cliente era maior,
+  isso já é a versão comprimida). Tem artefato de bloco visível em área de detalhe
+  (mural, tela do simulador) e a câmera é de mão, sem estabilização.
+- **Conteúdo:** é um vídeo tipo "tour do espaço", não uma gravação dedicada de
+  drift — a maior parte mostra o simulador (volante + tela curva com HUD de
+  telemetria, confirmando ao vivo os números 12.3V/25Mbps/ms/barra de sinal já
+  descritos acima) e planos gerais da pista com carros pequenos e devagar.
+- **Achado bom:** em ~39.5-42.5s tem a única sequência de vários frames
+  consecutivos com movimento real do vídeo inteiro — um carro parado acelera e
+  passa raspando por uma câmera fixa baixa, gerando motion blur de verdade.
+  Extraído (25 frames nativos, ffmpeg) e testado como canvas image sequence de
+  verdade em `cliente/fotos-pista/canvas-sequence-test.html` (frames tratados em
+  `build_sequence.py` → `sequence-launch/`) — **a técnica funciona**, o scroll
+  pina a seção e "acelera" o carro. Mas: é lançada em linha reta, não é
+  literalmente um drift lateral, e na resolução de origem fica granulada em
+  tela grande — ok como prova de conceito, não como entrega final.
+- **Atenção — nome da marca:** o ambiente físico do vídeo tem letreiro grande
+  "DriftStation" (banner, mural de grafite, adesivo na parede) — diferente de
+  "RC Arcade", que aparece só na tela de splash do simulador (visto no logo
+  baixado, `cliente/logos/principal.png`). Não sei se "DriftStation" é o nome
+  do espaço onde o cliente testa/grava (parceiro, pista alugada) ou outra
+  relação — **perguntar ao Diogo/cliente antes de usar esse vídeo no site**,
+  porque tem letreiro de terceiro aparecendo em quase todo frame.
+- **Recomendação:** pedir ao cliente um clipe novo, dedicado, câmera fixa (não
+  de mão), 5-10s, resolução maior que WhatsApp (enviar por Dropbox/cabo, não
+  por WhatsApp) — o ganho de qualidade pra essa técnica é grande e o pedido é
+  barato pro cliente atender.
+
+**Primeiro protótipo com foto (23/09/2026):** testado com foto real do cliente
 (`DSC09861.jpg`, pasta "RCA publicacion insta" do Dropbox, 23 fotos DSLR
 profissionais da pista — a melhor fonte de imagem que temos hoje). Script em
 `cliente/fotos-pista/treat_hero.py` (Python/PIL): crop 16:9, duotone,
