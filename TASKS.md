@@ -61,7 +61,13 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       @viniestrategista pra receber a DM com as 5 configurações — hoje é só
       promessa, sem conteúdo público verificável (ver
       `estudo/viniestrategista-design.md`). Não é bloqueante pro projeto.
-- [ ] Etapa 4 — blocos com critério objetivo
+- [x] Etapa 4 (primeira versão) — `index.html` criado em 24/09/2026 com os
+      blocos 1-4 e 6 de `ESTRUTURA-DO-SITE.md` construídos por completo
+      (Topo, Qué es, La prueba, Para el operador, Tres vías), tokens de
+      marca aplicados, tipografia ainda provisória (Etapa 3 não rodou).
+      Bloco 5 parcial (faltam medidas reais de espaço). Blocos 7 e 8
+      deixados como placeholder — sem dado operacional do cliente, não
+      preenchidos com suposição.
 - [ ] Etapa 6 — validar canal de captação (Google Ads/WhatsApp é do Paulo;
       B2B provavelmente é outro caminho — talvez LinkedIn ou contato direto
       com operadores)
