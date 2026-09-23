@@ -27,6 +27,17 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       (preto/vermelho/prata) e mostra o conceito real: simulador com volante +
       tela mostrando o buggy numa pista externa de terra + HUD de telemetria —
       bate com a seção de linguagem HUD do `DESIGN-DIRECTION.md`.
+- [x] Analisar vídeo real do cliente (WhatsApp, 42.5s) pra técnica canvas
+      image sequence — feito em 23/09/2026, ver `DESIGN-DIRECTION.md` seção
+      "Vídeo real analisado". Dúvida de marca "DriftStation vs RC Arcade"
+      resolvida pelo Diogo: é só o nome do espaço físico, sem implicação de
+      marca/parceria.
+- [ ] **Pedir ao cliente um clipe novo dedicado** pra hero em vídeo: câmera
+      fixa (não de mão), 5-10s, resolução maior que WhatsApp, enviado por
+      Dropbox/cabo. O vídeo atual só prova a técnica (ver protótipo em
+      `cliente/fotos-pista/canvas-sequence-test.html`), não serve como
+      entrega final — baixa resolução, câmera de mão, lançamento reto (não
+      drift lateral).
 
 ## Depois (só depois da Etapa 1 fechada)
 - [ ] Etapa 2 — auditoria: o material já chegou (dossiê, vídeo de 42s, 3

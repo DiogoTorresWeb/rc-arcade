@@ -152,13 +152,13 @@ Análise frame a frame (ffmpeg, não só resumo do vídeo):
   pina a seção e "acelera" o carro. Mas: é lançada em linha reta, não é
   literalmente um drift lateral, e na resolução de origem fica granulada em
   tela grande — ok como prova de conceito, não como entrega final.
-- **Atenção — nome da marca:** o ambiente físico do vídeo tem letreiro grande
-  "DriftStation" (banner, mural de grafite, adesivo na parede) — diferente de
-  "RC Arcade", que aparece só na tela de splash do simulador (visto no logo
-  baixado, `cliente/logos/principal.png`). Não sei se "DriftStation" é o nome
-  do espaço onde o cliente testa/grava (parceiro, pista alugada) ou outra
-  relação — **perguntar ao Diogo/cliente antes de usar esse vídeo no site**,
-  porque tem letreiro de terceiro aparecendo em quase todo frame.
+- **Nome da marca — resolvido (23/09/2026):** o ambiente físico do vídeo tem
+  letreiro grande "DriftStation" (banner, mural de grafite, adesivo na
+  parede) — diferente de "RC Arcade", que aparece só na tela de splash do
+  simulador (visto no logo baixado, `cliente/logos/principal.png`). Diogo
+  confirmou: é só o nome do espaço físico, sem relação de marca/parceria que
+  precise de acordo pra usar o vídeo. Não bloqueia mais o uso do footage por
+  esse motivo — só falta resolver a questão de qualidade abaixo.
 - **Recomendação:** pedir ao cliente um clipe novo, dedicado, câmera fixa (não
   de mão), 5-10s, resolução maior que WhatsApp (enviar por Dropbox/cabo, não
   por WhatsApp) — o ganho de qualidade pra essa técnica é grande e o pedido é
