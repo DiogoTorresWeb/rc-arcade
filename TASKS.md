@@ -61,6 +61,24 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       @viniestrategista pra receber a DM com as 5 configurações — hoje é só
       promessa, sem conteúdo público verificável (ver
       `estudo/viniestrategista-design.md`). Não é bloqueante pro projeto.
+- [x] **Refino com a skill `impeccable` + linguagem Porsche** — 24/09/2026.
+      Tipografia decidida (Archivo + JetBrains Mono auto-hospedadas, registro
+      Porsche: peso 400, frase capitalizada — ver `DESIGN-DIRECTION.md`), intro
+      de racing 1x por sessão com o wordmark subindo pro centro do cabeçalho,
+      logo oficial extraído na variação "solo nombre" com fundo removido, hero
+      reenquadrado com o carro centralizado. Detector da skill roda com 2
+      achados restantes, ambos justificados (ver seção abaixo).
+- [ ] **Pendências do refino** (não bloqueiam, mas ficam registradas):
+      - `21st.dev` continua incompatível (React/Tailwind/shadcn; o site é HTML
+        puro) — confirmado ao vivo em 24/09. O código de referência veio do
+        próprio `racing.porsche.com`, medido no browser. Se quiser usar
+        21st.dev de verdade, a decisão é migrar o site pra React.
+      - GSAP e Lenis seguem aprovados mas **não foram usados**: a intro e os
+        contadores saíram em JS puro, o que garante a regra de "fail open" sem
+        depender de CDN. Reavaliar se a Etapa 5 pedir sequências mais complexas.
+      - Detector: `cramped-padding` é falso positivo (o padding real medido é
+        97px contra borda de 0.67px); `all-caps-body` são os rótulos curtos de
+        HUD, que o próprio brief exige.
 - [x] Etapa 4 (primeira versão) — `index.html` criado em 24/09/2026 com os
       blocos 1-4 e 6 de `ESTRUTURA-DO-SITE.md` construídos por completo
       (Topo, Qué es, La prueba, Para el operador, Tres vías), tokens de

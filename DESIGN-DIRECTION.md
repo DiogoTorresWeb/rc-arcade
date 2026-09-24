@@ -18,8 +18,35 @@ de verdade.
 | `--rc-silver-dim` | **#8B8D8C** | Texto terciário, legendas. |
 | branco | #FFFFFF | Texto principal. |
 
-Escala e tipografia ficam pra Etapa 3 (Claude Design). O que está travado aqui
-é a paleta, porque ela veio do cliente e não é negociável.
+A paleta está travada porque veio do cliente e não é negociável.
+
+**Tipografia — decidida em 24/09/2026 (não era do cliente).** Verificado nos
+arquivos: o cliente **nunca escolheu fonte**, só as cores. O que o dossiê tem é
+estética de slide ("sans pesada em caixa alta", `cliente/MATERIAL-RECEBIDO.md`
+linha 62), não especificação de web. Diogo liberou decidir. Escolhido o
+**registro Porsche**, medido ao vivo em `racing.porsche.com`:
+
+| | Porsche (medido) | RC Arcade (aplicado) |
+|---|---|---|
+| Display | Porsche Next, **80px / peso 400 / tracking +0.8px**, frase capitalizada | Archivo, clamp(2.5–5rem) / 400 / +.005em, frase capitalizada |
+| Corpo | 16px / 400 | Archivo 16px / 400, entrelinha 1.6 |
+| Botão e nav | **sem caixa alta**, tracking normal | igual — frase capitalizada |
+| Fundo | rgb(1,2,5), quase preto puro | `--rc-black` #0A0B0D (token do cliente) |
+
+O ponto que faz a diferença: **peso 400, não bold; frase capitalizada, não caixa
+alta**. É o oposto do registro do dossiê, e é o que separa "marca cara" de "site
+de atração genérico". Caixa alta fica só nos rótulos técnicos curtos de HUD.
+
+Fontes **auto-hospedadas** em `assets/fonts/` (variáveis, subset latin, ~32KB
+cada): **Archivo** (texto) e **JetBrains Mono** (números/telemetria). Sem
+Google Fonts em runtime — mesma prática já adotada na La Norma.
+
+Regra de contraste descoberta na prática: **`--rc-red` em texto pequeno dá 4.1:1
+sobre o preto, reprova no AA (precisa 4.5:1)**. Então o vermelho virou *sinal
+gráfico* — filete de 2px antes do rótulo, que só precisa de 3:1 — e o texto do
+rótulo ficou prata. O vermelho continua como texto só em tamanho grande (≥24px,
+onde o critério cai pra 3:1). Isso preserva "vermelho = sinal" sem quebrar
+acessibilidade.
 
 ## A pergunta do "futurismo" — e a resposta
 
@@ -76,8 +103,19 @@ vem do produto.
   não pode perder o controle da página.
 - Animação de entrada que esconde os números do operador até ele rolar
 - Parallax por cima de texto
-- Animação de abertura da página (intro) — custa os primeiros 3 segundos, que
-  são os que decidem
+- ~~Animação de abertura da página (intro)~~ — **revisto em 24/09/2026 pelo
+  Diogo.** A regra existia porque uma intro custa os 3 primeiros segundos, que
+  são os que decidem pro operador. Continua valendo pra intro *bloqueante*. O
+  que foi liberado é a versão condicionada, que não paga esse preço:
+  - **1x por sessão** (`sessionStorage`) — quem volta ao site não espera de novo;
+  - **~2s**, pulável por clique, Esc ou botão "Saltar";
+  - **montada 100% por JS**: se o script falhar, nada cobre a página (fail open);
+  - `prefers-reduced-motion` → versão estática de 0,6s;
+  - failsafe por timeout: em qualquer erro a cortina sai sozinha.
+  Mesmo mecanismo validado na La Norma, com uma diferença pedida pelo Diogo: lá
+  o wordmark desliza pro **canto**; aqui ele sobe pro **centro do cabeçalho**.
+  A posição de destino é medida em runtime com `getBoundingClientRect`, então
+  não quebra se o cabeçalho mudar de tamanho.
 
 **Com cuidado:**
 - Transição entre seções: leve e rápida (≤250ms), nunca bloqueante
@@ -191,6 +229,44 @@ acima continua valendo: vídeo ambiente em loop no hero geral (padrão
 Porsche/McLaren, sem scroll), e o "canvas image sequence" reservado só pra
 seção "como se sente" — o still não é substituído pelo vídeo-loop até que o
 material FPV real exista; até lá, still tratado é a direção de produção.
+
+## Logo no site — qual variação usar (24/09/2026)
+
+O Diogo pediu o logo oficial "sem perder nenhum detalhe, mas minimalista e
+clean". Parecia contraditório, mas **o próprio cliente já resolveu isso**: o
+sistema de marca tem 9 variações (`cliente/logos/todos.png`), e uma delas é
+**"Solo nombre (horizontal)"** — o wordmark sem o emblema, sem a foto dentro,
+sem o escudo. É o logo dele, sem alteração nenhuma, e já é limpo por desenho.
+
+- Fonte usada: `cliente/logos/lateralfull.png` (2064×512, a versão em maior
+  resolução do wordmark).
+- Único tratamento aplicado: **remoção do fundo preto**, por flood fill a partir
+  das bordas — só o preto *conectado à borda* sai, então os pretos internos das
+  letras ficam intactos. Nada foi redesenhado.
+- Resultado em `assets/logo-rcarcade.png` (960×227, 26KB, alfa). Cromado,
+  textura de carbono no "RC" e gradientes preservados.
+- **Não usar `principal.png` no site**: é o emblema completo, com foto dentro do
+  escudo — não funciona em cabeçalho e briga com o registro tipográfico.
+
+## Enquadramento do hero (24/09/2026)
+
+O primeiro hero (`hero-duotone-preto-prata.jpg`, de `DSC09861`) tinha dois
+carros e nenhum centralizado — o Diogo apontou. Refeito em
+`cliente/fotos-pista/treat_hero_v2.py`, a partir de **`DSC09864`**, que é a única
+foto com um carro claramente isolado em primeiro plano (o #22).
+
+- Corte 16:9 de 3000px centrado no eixo do carro (é a largura máxima possível
+  mantendo ele no meio sem sair da foto).
+- Três correções sobre a v1: zona nítida **elíptica** (carro é largo, não
+  redondo); motion blur amostrado de 1 em 1 pixel (antes as cópias apareciam
+  como listras fantasma); borda replicada em vez de `np.roll`, que trazia o lado
+  direito de volta na esquerda.
+- **Vinheta** centrada no carro: é o que faz o segundo veículo, no canto
+  superior direito, afundar no fundo e virar rastro em vez de competir como
+  sujeito. O blur sozinho não resolvia porque os dois se sobrepõem no eixo X.
+- Saídas: `hero-1280/1920/2560.jpg` (16:9) + `hero-mobile.jpg` (3:4, recorte
+  retrato dedicado — em tela alta o corte 16:9 fecha demais no carro) + um LQIP
+  de 664 bytes. Primeiro paint em desktop 1440px: **379 KB**.
 
 ## Ferramentas confirmadas pra implementação do movimento (Etapa 4/5)
 

@@ -4,401 +4,853 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RC ARCADE — No miras la carrera. Estás dentro de ella.</title>
+<meta name="description" content="Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico. Hasta seis simuladores simultáneos.">
+<meta name="theme-color" content="#0A0B0D">
+
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/hero-mobile.jpg" media="(max-aspect-ratio: 3/4)">
+<link rel="preload" as="image" media="(min-aspect-ratio: 3/4)"
+      href="assets/hero-1920.jpg"
+      imagesrcset="assets/hero-1280.jpg 1280w, assets/hero-1920.jpg 1920w, assets/hero-2560.jpg 2560w"
+      imagesizes="100vw">
+
 <style>
-  :root {
-    --rc-red: #E31B23;
-    --rc-black: #0A0B0D;
-    --rc-surface: #191A1E;
-    --rc-silver: #B1B0AB;
-    --rc-silver-dim: #8B8D8C;
-    --font-body: -apple-system, "Segoe UI", Arial, sans-serif;
-    --font-mono: "Courier New", ui-monospace, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--rc-black);
-    color: #fff;
-    font-family: var(--font-body);
-  }
-  img { max-width: 100%; display: block; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--rc-silver);
-  }
-  .eyebrow .dot { color: var(--rc-red); }
+/* ───────────────────────────────────────────────────────────
+   Tipografia auto-hospedada. Archivo e JetBrains Mono, ambas
+   variáveis, subset latin — cobre todos os acentos do espanhol.
+   ─────────────────────────────────────────────────────────── */
+@font-face{
+  font-family:'Archivo';
+  src:url('assets/fonts/archivo-latin.woff2') format('woff2');
+  font-weight:400 600; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212;
+}
+@font-face{
+  font-family:'JetBrains Mono';
+  src:url('assets/fonts/jetbrainsmono-latin.woff2') format('woff2');
+  font-weight:400 500; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212;
+}
 
-  /* ===== 1. HERO — vídeo ambiente é a direção final (Porsche/McLaren: sem
-     scroll interativo); enquanto o clipe dedicado não chega, still tratado
-     do cliente faz esse papel (ver DESIGN-DIRECTION.md). ===== */
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 640px;
-    background-image:
-      linear-gradient(180deg, rgba(10,11,13,0.20) 0%, rgba(10,11,13,0.55) 65%, rgba(10,11,13,0.94) 100%),
-      url('cliente/fotos-pista/hero-duotone-preto-prata.jpg');
-    background-size: cover;
-    background-position: center 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 32px 24px 56px;
-  }
-  .hud-top {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    right: 24px;
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--rc-silver);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-top: 1px solid rgba(177,176,171,0.3);
-    padding-top: 10px;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .hud-top .live { color: var(--rc-red); }
-  .hero h1 {
-    font-size: clamp(34px, 6vw, 64px);
-    line-height: 1.05;
-    margin: 0 0 14px;
-    max-width: 780px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-  }
-  .hero p.sub {
-    font-size: 18px;
-    color: var(--rc-silver);
-    max-width: 560px;
-    margin: 0 0 28px;
-  }
-  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn {
-    padding: 14px 28px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .btn.primary { background: var(--rc-red); color: #fff; border: 1px solid var(--rc-red); }
-  .btn.ghost { background: transparent; color: #fff; border: 1px solid var(--rc-silver-dim); }
-  .hero-timer {
-    position: absolute;
-    bottom: 32px;
-    right: 24px;
-    font-family: var(--font-mono);
-    text-align: right;
-    color: var(--rc-silver);
-    font-size: 12px;
-  }
-  .hero-timer .big { font-size: 30px; color: #fff; letter-spacing: 0.02em; }
+/* ─── Tokens ─── */
+:root{
+  --black:#0A0B0D;
+  --surface:#191A1E;
+  --silver:#B1B0AB;
+  --silver-dim:#8B8D8C;
+  --red:#E31B23;
 
-  /* ===== seções gerais ===== */
-  section { padding: 88px 0; border-bottom: 1px solid rgba(177,176,171,0.12); }
-  h2 {
-    font-size: clamp(26px, 4vw, 38px);
-    margin: 8px 0 8px;
-    letter-spacing: -0.01em;
-  }
-  .section-intro { max-width: 640px; color: var(--rc-silver); margin: 0 0 48px; font-size: 16px; }
+  --rule:rgba(177,176,171,.14);
+  --rule-mid:rgba(177,176,171,.26);
 
-  /* ===== 2. Qué es — 4 pasos ===== */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(177,176,171,0.15);
-  }
-  .step {
-    background: var(--rc-surface);
-    padding: 28px 20px;
-  }
-  .step .num {
-    font-family: var(--font-mono);
-    color: var(--rc-red);
-    font-size: 13px;
-    display: block;
-    margin-bottom: 14px;
-  }
-  .step h3 { margin: 0 0 8px; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; }
-  .step p { margin: 0; color: var(--rc-silver); font-size: 14px; line-height: 1.5; }
+  --sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
 
-  /* ===== 3. La prueba ===== */
-  .prueba-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 32px;
-    align-items: center;
-  }
-  .prueba-media {
-    position: relative;
-    border: 1px solid rgba(177,176,171,0.25);
-  }
-  .prueba-hud {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--rc-silver);
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(10,11,13,0.35) 0%, transparent 25%, transparent 70%, rgba(10,11,13,0.55) 100%);
-  }
-  .prueba-hud .top-row { display: flex; justify-content: space-between; }
-  .prueba-hud .top-row .live { color: var(--rc-red); }
-  .prueba-hud .timer-block { align-self: flex-end; text-align: right; }
-  .prueba-hud .timer-block .lap { font-size: 26px; color: #fff; }
-  .prueba-hud .timer-block .delta { color: var(--rc-red); }
-  .prueba-stats { display: grid; gap: 20px; }
-  .stat .label { font-family: var(--font-mono); font-size: 12px; color: var(--rc-silver-dim); text-transform: uppercase; }
-  .stat .value { font-size: 15px; color: #fff; }
+  --gutter:clamp(20px,5vw,64px);
+  --maxw:1260px;
+  --section:clamp(88px,12vh,152px);
 
-  /* ===== 4. Para el operador ===== */
-  .args-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 56px;
-  }
-  .arg-card {
-    background: var(--rc-surface);
-    padding: 24px 20px;
-    border-top: 2px solid var(--rc-red);
-  }
-  .arg-card h3 { font-size: 15px; text-transform: uppercase; margin: 0 0 10px; letter-spacing: 0.03em; }
-  .arg-card p { margin: 0; color: var(--rc-silver); font-size: 14px; line-height: 1.5; }
-  .numbers-row { display: flex; gap: 48px; flex-wrap: wrap; border-top: 1px solid rgba(177,176,171,0.2); padding-top: 32px; }
-  .number-block .num { font-family: var(--font-mono); font-size: 42px; color: #fff; line-height: 1; }
-  .number-block .num .unit { font-size: 18px; color: var(--rc-silver); }
-  .number-block .label { font-family: var(--font-mono); font-size: 12px; color: var(--rc-silver-dim); text-transform: uppercase; margin-top: 6px; }
+  /* saída exponencial — a curva que a Porsche usa pra parecer inércia, não mola */
+  --ease:cubic-bezier(.16,1,.3,1);
+}
 
-  /* ===== 5. Las escalas (parcial — medidas reais pendentes) ===== */
-  .escalas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .escala-card { background: var(--rc-surface); padding: 28px; border: 1px solid rgba(177,176,171,0.15); }
-  .escala-card h3 { margin: 0 0 6px; text-transform: uppercase; font-size: 16px; }
-  .escala-card .tag { font-family: var(--font-mono); font-size: 11px; color: var(--rc-silver-dim); text-transform: uppercase; }
-  .escala-card ul { color: var(--rc-silver); font-size: 14px; padding-left: 18px; line-height: 1.7; }
-  .pending-note {
-    margin-top: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--rc-silver-dim);
-    border-left: 2px solid var(--rc-red);
-    padding-left: 10px;
-  }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--black);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:1rem;
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
 
-  /* ===== 6. Las tres vías ===== */
-  .vias-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
-  .via-card { background: var(--rc-surface); padding: 28px 24px; border: 1px solid rgba(177,176,171,0.15); display: flex; flex-direction: column; }
-  .via-card.principal { border-color: var(--rc-red); }
-  .via-card .tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--rc-silver-dim); margin-bottom: 10px; }
-  .via-card.principal .tag { color: var(--rc-red); }
-  .via-card h3 { margin: 0 0 10px; font-size: 18px; text-transform: uppercase; }
-  .via-card p { color: var(--rc-silver); font-size: 14px; line-height: 1.5; flex-grow: 1; }
-  .via-card a.btn { margin-top: 16px; align-self: flex-start; }
+/* ─── Superfícies do navegador: o que não desenhamos também é design ─── */
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:1px}
+html{scrollbar-color:var(--silver-dim) var(--black);scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:#2A2C31;border:2px solid var(--black)}
+::-webkit-scrollbar-thumb:hover{background:#3A3D43}
 
-  /* ===== 7 e 8 — dados operacionais ainda não confirmados pelo cliente:
-     estrutura pronta, conteúdo não preenchido com suposição (regra de
-     honestidade do CLAUDE.md). ===== */
-  .todo-section { padding: 56px 0; }
-  .todo-box {
-    border: 1px dashed rgba(177,176,171,0.3);
-    padding: 24px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--rc-silver-dim);
-    line-height: 1.7;
-  }
-  .todo-box strong { color: var(--rc-silver); }
+/* ─── Tipografia ─── */
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
+h1{
+  font-size:clamp(2.5rem,6.4vw,5rem);
+  line-height:1.04;
+  letter-spacing:.005em;
+}
+h2{
+  font-size:clamp(1.875rem,3.6vw,2.875rem);
+  line-height:1.14;
+  letter-spacing:-.005em;
+}
+h3{font-size:1.25rem;line-height:1.3}
+p{margin:0}
+a{color:inherit}
 
-  footer { padding: 32px 0; text-align: center; color: var(--rc-silver-dim); font-family: var(--font-mono); font-size: 12px; }
+.lead{color:var(--silver);font-size:clamp(1rem,1.35vw,1.1875rem);max-width:56ch;line-height:1.6}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.measure{max-width:68ch}
 
-  @media (max-width: 900px) {
-    .steps { grid-template-columns: repeat(2, 1fr); }
-    .prueba-grid { grid-template-columns: 1fr; }
-    .args-grid { grid-template-columns: repeat(2, 1fr); }
-    .escalas-grid { grid-template-columns: 1fr; }
-    .vias-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 520px) {
-    .steps { grid-template-columns: 1fr; }
-    .args-grid { grid-template-columns: 1fr; }
-    .numbers-row { gap: 28px; }
-  }
+.shell{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+section{padding-block:var(--section)}
+.rule-top{border-top:1px solid var(--rule)}
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
+/* ─── Cabeçalho: logo no CENTRO ─── */
+.site-header{
+  position:fixed;inset:0 0 auto;z-index:60;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+  padding:14px var(--gutter);
+  transition:background-color .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{
+  background:rgba(10,11,13,.78);
+  backdrop-filter:blur(14px) saturate(1.2);
+  border-bottom-color:var(--rule);
+}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{
+  font-size:.9375rem;letter-spacing:0;
+  color:var(--silver);text-decoration:none;
+  padding-block:6px;position:relative;
+  transition:color .25s var(--ease);
+}
+.nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.nav a:hover{color:#fff}
+.nav a:hover::after{transform:scaleX(1)}
+
+.brand{justify-self:center;display:block;line-height:0}
+.brand img{height:clamp(20px,2.4vw,27px);width:auto}
+.brand.is-hidden{opacity:0}
+
+.header-right{justify-self:end;display:flex;align-items:center;gap:12px}
+
+/* ─── Botões ─── */
+.btn{
+  --btn-fg:#fff;
+  display:inline-flex;align-items:center;gap:10px;
+  /* a Porsche não usa caixa alta em botão nem em nav — só no rótulo técnico.
+     Manter frase capitalizada é o que separa o registro caro do genérico. */
+  font:500 .9375rem/1 var(--sans);
+  letter-spacing:0;
+  padding:14px 24px;text-decoration:none;cursor:pointer;
+  border:1px solid transparent;background:none;color:var(--btn-fg);
+  transition:background-color .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease);
+}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--red);border-color:var(--red)}
+.btn--primary:hover{background:#c4161d;border-color:#c4161d}
+.btn--ghost{border-color:var(--rule-mid);color:#fff}
+.btn--ghost:hover{border-color:var(--silver);background:rgba(177,176,171,.07)}
+.btn--quiet{padding:10px 0;color:var(--silver)}
+.btn--quiet:hover{color:#fff}
+.btn[disabled],.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+
+/* ─── Menu mobile ─── */
+.menu-btn{display:none;background:none;border:0;padding:10px;cursor:pointer;color:#fff}
+.menu-btn svg{display:block}
+.mobile-panel{
+  position:fixed;inset:0;z-index:55;
+  background:rgba(10,11,13,.97);backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;justify-content:center;gap:4px;
+  padding:0 var(--gutter);
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+}
+.mobile-panel.is-open{opacity:1;visibility:visible}
+.mobile-panel a{
+  font-size:1.75rem;text-decoration:none;color:#fff;
+  padding:18px 0;border-bottom:1px solid var(--rule);
+}
+.mobile-panel .btn{margin-top:28px;align-self:flex-start}
+
+/* ─── Hero ─── */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 var(--gutter) clamp(40px,7vh,76px);
+  overflow:hidden;
+  background:var(--black) url('assets/hero-lqip.jpg') center/cover no-repeat;
+}
+.hero__media{position:absolute;inset:0;overflow:hidden}
+.hero__media picture{display:block;width:100%;height:100%}
+.hero__media img{
+  width:100%;height:100%;object-fit:cover;object-position:center 46%;
+  transform:scale(1.001);
+  transition:transform 1.5s var(--ease),filter 1.3s var(--ease);
+  will-change:transform,filter;
+}
+.hero.is-arriving .hero__media img{transform:scale(1.14);filter:blur(16px)}
+.hero__media::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(10,11,13,.72) 0%,rgba(10,11,13,.12) 26%,rgba(10,11,13,.20) 52%,rgba(10,11,13,.86) 88%,var(--black) 100%);
+}
+.hero__inner{position:relative;width:100%;max-width:var(--maxw);margin-inline:auto}
+.hero h1{max-width:16ch}
+.hero .lead{margin-top:22px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+
+.hero__line{
+  width:64px;height:2px;background:var(--red);margin-bottom:30px;
+  transform-origin:left;
+}
+
+/* leitura de telemetria: mono é medida real aqui, não fantasia de “técnico” */
+.readout{
+  position:absolute;right:var(--gutter);bottom:clamp(40px,7vh,76px);
+  text-align:right;font-family:var(--mono);color:var(--silver);
+  font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+}
+.readout__time{
+  display:block;font-size:clamp(1.5rem,3vw,2.125rem);
+  letter-spacing:.01em;color:#fff;margin-top:6px;text-transform:none;
+}
+.hero__status{
+  position:absolute;top:calc(56px + 2vh);left:var(--gutter);
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--silver);
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
+.hero__status svg{color:var(--silver-dim)}
+
+.scroll-cue{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  color:var(--silver-dim);
+}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(5px);opacity:1}}
+.scroll-cue svg{animation:cue 2.6s var(--ease) infinite}
+
+/* entrada do conteúdo do hero, depois da intro */
+.hero__inner>*,.readout,.hero__status{opacity:1}
+.hero.is-holding .hero__inner>*,
+.hero.is-holding .readout,
+.hero.is-holding .hero__status,
+.hero.is-holding .scroll-cue{opacity:0;transform:translateY(14px)}
+.hero__inner>*,.readout,.hero__status,.scroll-cue{
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
+.hero__inner>:nth-child(2){transition-delay:.06s}
+.hero__inner>:nth-child(3){transition-delay:.12s}
+.hero__inner>:nth-child(4){transition-delay:.18s}
+
+/* ─── Passos ─── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--rule)}
+.step{padding:30px 28px 0 0;border-right:1px solid var(--rule)}
+.step:last-child{border-right:0;padding-right:0}
+/* O vermelho da marca em texto pequeno dá 4.1:1 sobre o preto — reprova no AA.
+   Então o vermelho vira SINAL GRÁFICO (filete, que só precisa de 3:1) e o texto
+   fica em prata. É o mesmo gesto que a Porsche usa: régua vermelha como marcador. */
+.tag{
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--silver);
+  display:flex;align-items:center;gap:10px;
+}
+.tag::before{content:'';width:18px;height:2px;background:var(--red);flex:none}
+.tag--quiet{color:var(--silver-dim)}
+.tag--quiet::before{background:var(--silver-dim);height:1px}
+
+.step__n{
+  font-family:var(--mono);font-size:.75rem;color:var(--silver-dim);
+  letter-spacing:.1em;display:block;margin-bottom:18px;font-variant-numeric:tabular-nums;
+}
+.step h3{margin-bottom:8px}
+.step p{color:var(--silver);font-size:.9375rem}
+
+/* ─── La prueba ─── */
+.proof{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,5vw,72px);align-items:end;margin-top:56px}
+.proof__frame{position:relative;overflow:hidden;background:var(--surface)}
+.proof__frame img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.proof__hud{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  padding:18px;font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--silver);pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,11,13,.62) 0%,transparent 22%,transparent 62%,rgba(10,11,13,.78) 100%);
+}
+.proof__hud-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.proof__hud-top span{display:flex;align-items:center;gap:8px}
+.proof__lap{text-align:right;font-variant-numeric:tabular-nums}
+.proof__lap b{display:block;font-weight:400;font-size:clamp(1.375rem,2.6vw,1.875rem);color:#fff;text-transform:none;letter-spacing:.01em}
+/* o delta em 11px no vermelho de marca dá 4.0:1 — abaixo do AA. O sinal
+   fica no filete vermelho; o número fica legível. */
+.proof__lap i{
+  font-style:normal;color:#fff;display:inline-flex;align-items:center;gap:7px;
+}
+.proof__lap i::before{content:'';width:12px;height:2px;background:var(--red)}
+
+.specs{display:grid;gap:0;border-top:1px solid var(--rule)}
+.spec{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:15px 0;border-bottom:1px solid var(--rule)}
+.spec dt{color:var(--silver);font-size:.9375rem}
+.spec dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1rem;color:#fff}
+
+/* ─── Operador ─── */
+.args{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(32px,6vw,88px);margin-top:56px}
+.arg{padding:32px 0;border-top:1px solid var(--rule)}
+.arg h3{margin-bottom:10px}
+.arg p{color:var(--silver);font-size:.9375rem;max-width:44ch}
+
+.statement{
+  margin-top:clamp(56px,8vh,96px);
+  font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.3;letter-spacing:-.005em;
+  max-width:20ch;
+}
+.statement .n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--red)}
+
+/* ─── Escalas ─── */
+.scales{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);margin-top:56px}
+.scale{border-top:1px solid var(--rule);padding-top:28px}
+.scale .tag{margin-bottom:14px}
+.scale h3{margin-bottom:16px}
+.scale ul{list-style:none;margin:0;padding:0;color:var(--silver);font-size:.9375rem}
+.scale li{padding:9px 0;border-bottom:1px solid var(--rule)}
+
+/* ─── Vías ─── */
+.ways{margin-top:56px}
+.way{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) auto;
+  gap:clamp(20px,4vw,56px);align-items:start;
+  padding:36px 0;border-top:1px solid var(--rule);
+}
+.way:last-child{border-bottom:1px solid var(--rule)}
+.way .tag{padding-top:8px}
+.way h3{font-size:1.375rem;margin-bottom:10px}
+.way--main h3{font-size:clamp(1.625rem,2.6vw,2.125rem)}
+.way p{color:var(--silver);font-size:.9375rem;max-width:46ch}
+.way .btn{white-space:nowrap}
+
+/* ─── Pendências (dados que o cliente ainda não deu) ─── */
+.pending{border-top:1px solid var(--rule);padding-top:26px;margin-top:26px}
+.pending .tag{margin-bottom:12px}
+.pending p{color:var(--silver-dim);font-size:.875rem;max-width:64ch}
+.pending strong{color:var(--silver);font-weight:400}
+
+footer{
+  border-top:1px solid var(--rule);padding:36px 0 44px;
+  color:var(--silver-dim);font-family:var(--mono);font-size:.75rem;
+  letter-spacing:.04em;
+}
+footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ─── Intro (montada por JS; se o JS falhar, nada disso existe e a página abre normal) ─── */
+.intro{
+  position:fixed;inset:0;z-index:100;background:var(--black);
+  display:grid;place-items:center;
+  transition:opacity .75s var(--ease);
+}
+.intro__logo{
+  width:min(46vw,380px);height:auto;
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path .78s var(--ease),transform .82s var(--ease);
+  will-change:clip-path,transform;
+}
+.intro__rule{
+  position:absolute;height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .5s var(--ease),opacity .4s var(--ease);
+}
+.intro__skip{
+  position:absolute;right:var(--gutter);bottom:32px;
+  background:none;border:0;cursor:pointer;
+  font:400 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--silver-dim);padding:10px;
+  transition:color .25s var(--ease),opacity .4s var(--ease);
+}
+.intro__skip:hover{color:#fff}
+.intro.is-leaving{opacity:0;pointer-events:none}
+
+/* ─── Responsivo ─── */
+@media (max-width:1000px){
+  .steps{grid-template-columns:1fr 1fr}
+  .step{padding-right:24px;padding-bottom:26px;border-bottom:1px solid var(--rule)}
+  .step:nth-child(2n){border-right:0;padding-right:0}
+  .step:nth-child(n+3){padding-bottom:0}
+  .proof{grid-template-columns:1fr;align-items:stretch}
+  .way{grid-template-columns:1fr;gap:14px}
+  .way .btn{justify-self:start;margin-top:6px}
+  .way__tag{padding-top:0}
+}
+@media (max-width:760px){
+  .nav{display:none}
+  .menu-btn{display:block}
+  .site-header{grid-template-columns:1fr auto 1fr;padding:10px var(--gutter)}
+  .header-right .btn--primary{display:none}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;padding-right:0}
+  .args{grid-template-columns:1fr}
+  .scales{grid-template-columns:1fr}
+  .readout{position:static;text-align:left;margin-top:34px}
+  .hero__cta{margin-top:30px}
+  .hero__cta .btn{flex:1 1 auto;justify-content:center}
+  .scroll-cue{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
   }
+  .hero.is-arriving .hero__media img{transform:none;filter:none}
+}
 </style>
 </head>
 <body>
 
-  <!-- 1. TOPO — la experiencia en 3 segundos -->
-  <header class="hero">
-    <div class="hud-top">
-      <span>RC ARCADE // <span class="live">● EN VIVO</span></span>
-      <span>12.3V&nbsp; 25MBPS&nbsp; 8MS&nbsp; ▂▄▆█</span>
-    </div>
-    <h1>No miras la carrera.<br>Estás dentro de ella.</h1>
-    <p class="sub">Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#contacto">Solicitar demostración</a>
-      <a class="btn ghost" href="#operador">Ver capacidad</a>
-    </div>
-    <div class="hero-timer">
-      MEJOR VUELTA
-      <div class="big">00:42.381</div>
-    </div>
-  </header>
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Secciones">
+    <a href="#que-es">Qué es</a>
+    <a href="#prueba">La prueba</a>
+    <a href="#operador">Operador</a>
+  </nav>
 
-  <main class="wrap">
+  <a class="brand" href="#top" id="brandLogo" aria-label="RC Arcade — inicio">
+    <img src="assets/logo-rcarcade.png" width="960" height="227" alt="RC Arcade">
+  </a>
 
-    <!-- 2. QUÉ ES — los 4 pasos -->
-    <section id="que-es">
-      <p class="eyebrow"><span class="dot">●</span> QUÉ ES</p>
-      <h2>Cuatro pasos. Cero curva de aprendizaje.</h2>
-      <p class="section-intro">La misma secuencia que ya funciona en la operación real del cliente.</p>
-      <div class="steps">
-        <div class="step"><span class="num">01</span><h3>Elige</h3><p>Selecciona tu coche y tu circuito.</p></div>
-        <div class="step"><span class="num">02</span><h3>Siéntate</h3><p>Cockpit con volante, pedales y pantalla FPV.</p></div>
-        <div class="step"><span class="num">03</span><h3>Conduce</h3><p>Cámara en primera persona, sensación real de pilotaje.</p></div>
-        <div class="step"><span class="num">04</span><h3>Compite</h3><p>Tiempos de vuelta y posición medidos en directo.</p></div>
+  <div class="header-right">
+    <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobilePanel" aria-label="Abrir menú">
+      <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+        <path d="M0 1h22M0 7h22M0 13h22" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel" hidden>
+  <a href="#que-es">Qué es</a>
+  <a href="#prueba">La prueba</a>
+  <a href="#operador">Operador</a>
+  <a href="#escalas">Escalas</a>
+  <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
+</div>
+
+<main id="top">
+
+  <!-- ── 1. Topo — vídeo ambiente é a direção final (padrão Porsche/McLaren,
+       sem scroll interativo). Enquanto o clipe dedicado não chega, o still
+       tratado do cliente faz esse papel. Ver DESIGN-DIRECTION.md. ── -->
+  <section class="hero is-holding" id="hero">
+    <div class="hero__media">
+      <picture>
+        <!-- em tela alta e estreita o corte 16:9 fecha demais no carro:
+             recorte retrato dedicado, mesmo carro centralizado -->
+        <source media="(max-aspect-ratio: 3/4)" srcset="assets/hero-mobile.jpg" width="1080" height="1440">
+        <img src="assets/hero-1920.jpg"
+             srcset="assets/hero-1280.jpg 1280w, assets/hero-1920.jpg 1920w, assets/hero-2560.jpg 2560w"
+             sizes="100vw" width="2560" height="1440"
+             alt="Coche RC de competición en pista, captado en movimiento durante una sesión real"
+             fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+
+    <p class="hero__status">
+      <span class="dot" aria-hidden="true"></span>
+      Telemetría en cabina
+      <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true">
+        <rect x="0" y="8" width="3" height="3" fill="currentColor"/>
+        <rect x="5" y="5.5" width="3" height="5.5" fill="currentColor"/>
+        <rect x="10" y="3" width="3" height="8" fill="currentColor"/>
+        <rect x="15" y="0" width="3" height="11" fill="currentColor"/>
+      </svg>
+    </p>
+
+    <div class="hero__inner">
+      <div class="hero__line" aria-hidden="true"></div>
+      <h1>No miras la carrera. Estás dentro de ella.</h1>
+      <p class="lead">Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
+        <a class="btn btn--ghost" href="#operador">Ver capacidad</a>
       </div>
-    </section>
+    </div>
 
-    <!-- 3. LA PRUEBA — que esto ya funciona -->
-    <section id="prueba">
-      <p class="eyebrow"><span class="dot">●</span> LA PRUEBA</p>
+    <p class="readout">
+      Mejor vuelta
+      <span class="readout__time" id="heroLap">00:42.381</span>
+    </p>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+        <path d="M8 2v18M2 14l6 6 6-6" stroke="currentColor" stroke-width="1.25"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── 2. Qué es — los 4 pasos. A sequência numerada fica porque a ordem
+       é a informação: é a mecânica do produto, não decoração. ── -->
+  <section id="que-es">
+    <div class="shell">
+      <h2>Cuatro pasos. Cero curva de aprendizaje.</h2>
+      <p class="lead" style="margin-top:20px">La misma secuencia que ya funciona en la operación real.</p>
+
+      <div class="steps">
+        <article class="step">
+          <span class="step__n">01</span>
+          <h3>Elige</h3>
+          <p>Selecciona tu coche y tu circuito.</p>
+        </article>
+        <article class="step">
+          <span class="step__n">02</span>
+          <h3>Siéntate</h3>
+          <p>Cockpit con volante, pedales y pantalla FPV.</p>
+        </article>
+        <article class="step">
+          <span class="step__n">03</span>
+          <h3>Conduce</h3>
+          <p>Cámara en primera persona, sensación real de pilotaje.</p>
+        </article>
+        <article class="step">
+          <span class="step__n">04</span>
+          <h3>Compite</h3>
+          <p>Tiempos de vuelta y posición medidos en directo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. La prueba — foto real SEM tratamento: o argumento é “esto ya
+       funciona”, então a imagem tem que ser crua. ── -->
+  <section id="prueba" class="rule-top">
+    <div class="shell">
       <h2>No es una promesa. Ya está rodando.</h2>
-      <p class="section-intro">Sesión real, con telemetría en pantalla — no es un concepto.</p>
-      <div class="prueba-grid">
-        <div class="prueba-media">
-          <img src="cliente/fotos-pista/DSC09861.jpg" alt="Sesión real de pilotaje RC Arcade, coche en pista con cámara FPV">
-          <div class="prueba-hud">
-            <div class="top-row">
-              <span><span class="live">●</span> SEÑAL EN VIVO</span>
-              <span>25MBPS&nbsp; 8MS</span>
+      <p class="lead" style="margin-top:20px">Sesión real, con telemetría en pantalla durante la carrera.</p>
+
+      <div class="proof">
+        <figure class="proof__frame" style="margin:0">
+          <img src="assets/prueba-1600.jpg" width="1600" height="1066" loading="lazy" decoding="async"
+               alt="Circuito físico de RC Arcade con coches en pista durante una sesión">
+          <div class="proof__hud" aria-hidden="true">
+            <div class="proof__hud-top">
+              <span><span class="dot"></span> Señal</span>
+              <span>25 Mbps · 8 ms</span>
             </div>
-            <div class="timer-block">
-              <div>VUELTA 4/6 — P1</div>
-              <div class="lap">00:42.381</div>
-              <div class="delta">+0.814</div>
+            <div class="proof__lap">
+              Vuelta 4/6 — P1
+              <b>00:42.381</b>
+              <i>+0.814</i>
             </div>
           </div>
-        </div>
-        <div class="prueba-stats">
-          <div class="stat"><div class="label">Voltaje del sistema</div><div class="value">12.3V</div></div>
-          <div class="stat"><div class="label">Transmisión de vídeo</div><div class="value">25 Mbps</div></div>
-          <div class="stat"><div class="label">Latencia</div><div class="value">8 ms</div></div>
-          <div class="stat"><div class="label">Mejor vuelta registrada</div><div class="value">00:42.381</div></div>
-        </div>
-      </div>
-    </section>
+        </figure>
 
-    <!-- 4. PARA EL OPERADOR — el núcleo comercial -->
-    <section id="operador">
-      <p class="eyebrow"><span class="dot">●</span> PARA EL OPERADOR</p>
+        <dl class="specs">
+          <div class="spec"><dt>Voltaje del sistema</dt><dd>12.3 V</dd></div>
+          <div class="spec"><dt>Transmisión de vídeo</dt><dd>25 Mbps</dd></div>
+          <div class="spec"><dt>Latencia</dt><dd>8 ms</dd></div>
+          <div class="spec"><dt>Mejor vuelta</dt><dd>00:42.381</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. Para el operador — núcleo comercial. Sem cards: linhas
+       editoriais separadas por filetes. Os números ficam visíveis de cara,
+       como manda o DESIGN-DIRECTION.md. ── -->
+  <section id="operador" class="rule-top">
+    <div class="shell">
       <h2>Una atracción difícil de confundir con otra.</h2>
-      <div class="args-grid">
-        <div class="arg-card"><h3>Diferenciación</h3><p>Ninguna otra atracción combina coche real, cámara FPV y cockpit físico en un mismo circuito.</p></div>
-        <div class="arg-card"><h3>Escalabilidad</h3><p>El sistema se adapta al espacio disponible, desde una instalación compacta hasta el circuito completo.</p></div>
-        <div class="arg-card"><h3>Rotación</h3><p>Sesiones y competiciones programables — el flujo de clientes no depende de horarios fijos.</p></div>
-        <div class="arg-card"><h3>Contenido</h3><p>Cada sesión genera material visual y conversación — la telemetría y el cronómetro son parte del espectáculo.</p></div>
-      </div>
-      <div class="numbers-row">
-        <div class="number-block"><div class="num">6<span class="unit"> simuladores</span></div><div class="label">Simultáneos</div></div>
-        <div class="number-block"><div class="num">1<span class="unit"> circuito</span></div><div class="label">Compartido</div></div>
-      </div>
-    </section>
 
-    <!-- 5. LAS ESCALAS — parcial, medidas reales pendientes -->
-    <section id="escalas">
-      <p class="eyebrow"><span class="dot">●</span> LAS ESCALAS</p>
+      <div class="args">
+        <article class="arg">
+          <h3>Diferenciación</h3>
+          <p>Ninguna otra atracción combina coche real, cámara FPV y cockpit físico sobre un mismo circuito.</p>
+        </article>
+        <article class="arg">
+          <h3>Escalabilidad</h3>
+          <p>El sistema se adapta al espacio disponible, desde una instalación compacta hasta el circuito completo.</p>
+        </article>
+        <article class="arg">
+          <h3>Rotación</h3>
+          <p>Sesiones y competiciones programables: el flujo de clientes no depende de horarios fijos.</p>
+        </article>
+        <article class="arg">
+          <h3>Contenido</h3>
+          <p>Cada sesión genera material visual y conversación. La telemetría y el cronómetro son parte del espectáculo.</p>
+        </article>
+      </div>
+
+      <p class="statement">Hasta <span class="n">seis</span> simuladores simultáneos sobre <span class="n">un</span> circuito compartido.</p>
+    </div>
+  </section>
+
+  <!-- ── 5. Las escalas — parcial: medidas reais pendentes do cliente ── -->
+  <section id="escalas" class="rule-top">
+    <div class="shell">
       <h2>¿Cabe en tu espacio?</h2>
-      <div class="escalas-grid">
-        <div class="escala-card">
+
+      <div class="scales">
+        <article class="scale">
           <span class="tag">Compacto</span>
           <h3>Operación ágil</h3>
-          <ul><li>Menos puestos de pilotaje</li><li>Circuito reducido</li><li>Rotación rápida de clientes</li></ul>
-        </div>
-        <div class="escala-card">
+          <ul>
+            <li>Menos puestos de pilotaje</li>
+            <li>Circuito reducido</li>
+            <li>Rotación rápida de clientes</li>
+          </ul>
+        </article>
+        <article class="scale">
           <span class="tag">Completo</span>
           <h3>Hasta seis simuladores</h3>
-          <ul><li>Circuito compartido completo</li><li>Competición con posición en vivo</li><li>Capacidad máxima de la atracción</li></ul>
-        </div>
+          <ul>
+            <li>Circuito compartido completo</li>
+            <li>Competición con posición en vivo</li>
+            <li>Capacidad máxima de la atracción</li>
+          </ul>
+        </article>
       </div>
-      <p class="pending-note">Medidas reales de espacio (m²) pendientes de confirmar con el cliente — ver TASKS.md. No se completan aquí con suposición.</p>
-    </section>
 
-    <!-- 6. LAS TRES VÍAS — rotear al visitante -->
-    <section id="vias">
-      <p class="eyebrow"><span class="dot">●</span> CÓMO TRABAJAR CON NOSOTROS</p>
+      <div class="pending">
+        <span class="tag">Pendiente</span>
+        <p><strong>Medidas reales de espacio (m²).</strong> Pendientes de confirmar con el cliente — ver <code>TASKS.md</code>. No se rellenan aquí con suposición.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. Las tres vías. Premissa de trabalho registrada em
+       ESTRUTURA-DO-SITE.md: instalação fixa como via principal. ── -->
+  <section id="vias" class="rule-top">
+    <div class="shell">
       <h2>Tres formas de entrar en pista.</h2>
-      <div class="vias-grid">
-        <div class="via-card principal">
+
+      <div class="ways">
+        <article class="way way--main">
           <span class="tag">Vía principal</span>
-          <h3>Instalación fija</h3>
-          <p>El operador incorpora la atracción de forma permanente en su centro de ocio.</p>
-          <a class="btn primary" href="#contacto">Solicitar información</a>
-        </div>
-        <div class="via-card">
-          <span class="tag">Segunda puerta</span>
-          <h3>Evento temporal</h3>
-          <p>Contratación para ferias, activaciones de marca o eventos puntuales.</p>
-          <a class="btn ghost" href="#contacto">Consultar disponibilidad</a>
-        </div>
-        <div class="via-card">
-          <span class="tag">Apoyo — prueba social</span>
-          <h3>Formato competición</h3>
-          <p>Liga o ranking entre pilotos — refuerza la propuesta, no es la puerta de entrada.</p>
-          <a class="btn ghost" href="#contacto">Saber más</a>
-        </div>
+          <div>
+            <h3>Instalación fija</h3>
+            <p>El operador incorpora la atracción de forma permanente en su centro de ocio.</p>
+          </div>
+          <a class="btn btn--primary" href="#contacto">Solicitar información</a>
+        </article>
+
+        <article class="way">
+          <span class="tag tag--quiet">Segunda puerta</span>
+          <div>
+            <h3>Evento temporal</h3>
+            <p>Contratación para ferias, activaciones de marca o eventos puntuales.</p>
+          </div>
+          <a class="btn btn--ghost" href="#contacto">Consultar disponibilidad</a>
+        </article>
+
+        <article class="way">
+          <span class="tag tag--quiet">Apoyo</span>
+          <div>
+            <h3>Formato competición</h3>
+            <p>Liga o ranking entre pilotos. Refuerza la propuesta; no es la puerta de entrada.</p>
+          </div>
+          <a class="btn btn--ghost" href="#contacto">Saber más</a>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 7. PÚBLICO — bloqueado por falta de datos operacionales -->
-    <section id="publico" class="todo-section">
-      <p class="eyebrow"><span class="dot">●</span> PÚBLICO — PENDIENTE</p>
-      <div class="todo-box">
-        <strong>Bloque "Dónde probarlo" — no construido todavía.</strong><br>
-        Falta confirmar con el cliente: ubicación de la unidad abierta al público,
-        si ya opera de forma regular, y cómo se reserva. Ver ESTRUTURA-DO-SITE.md
-        bloco 7 — no se rellena con suposición.
+  <!-- ── 7 e 8 — dados operacionais que o cliente ainda não forneceu.
+       Estrutura presente, conteúdo NÃO preenchido com suposição. ── -->
+  <section id="contacto" class="rule-top">
+    <div class="shell">
+      <h2>Lo que todavía falta del cliente.</h2>
+
+      <div class="pending">
+        <span class="tag">Público — dónde probarlo</span>
+        <p><strong>Bloque no construido.</strong> Falta confirmar ubicación de la unidad abierta al público, si opera de forma regular y cómo se reserva. Ver <code>ESTRUTURA-DO-SITE.md</code>, bloque 7.</p>
       </div>
-    </section>
 
-    <!-- 8. CONTACTO — bloqueado por falta de datos operacionales -->
-    <section id="contacto" class="todo-section">
-      <p class="eyebrow"><span class="dot">●</span> CONTACTO — PENDIENTE</p>
-      <div class="todo-box">
-        <strong>Formulario / WhatsApp — no construido todavía.</strong><br>
-        Falta: teléfono, email o WhatsApp comercial, y si el cliente prefiere
-        formulario o contacto directo. Ver ESTRUTURA-DO-SITE.md bloco 8.
+      <div class="pending">
+        <span class="tag">Contacto</span>
+        <p><strong>Formulario o WhatsApp — no construido.</strong> Falta teléfono, email o WhatsApp comercial, y si el cliente prefiere formulario o contacto directo. Ver <code>ESTRUTURA-DO-SITE.md</code>, bloque 8.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
 
-  <footer>RC ARCADE — borrador de estructura, 23/09/2026 · tokens de marca aplicados, tipografía provisional (Etapa 3 pendiente)</footer>
+<footer>
+  <div class="shell">
+    <span>RC Arcade</span>
+    <span>Borrador · 24.09.2026</span>
+  </div>
+</footer>
 
+<script>
+(function () {
+  'use strict';
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var $ = function (s) { return document.querySelector(s); };
+
+  /* ── Cabeçalho: estado ao rolar ── */
+  var header = $('#siteHeader');
+  var onScroll = function () {
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Menu mobile ── */
+  var menuBtn = $('#menuBtn'), panel = $('#mobilePanel');
+  if (menuBtn && panel) {
+    panel.hidden = false;
+    var setMenu = function (open) {
+      panel.classList.toggle('is-open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    menuBtn.addEventListener('click', function () {
+      setMenu(menuBtn.getAttribute('aria-expanded') !== 'true');
+    });
+    panel.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') setMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') setMenu(false);
+    });
+  }
+
+  /* ── Cronômetro da seção "La prueba": conta até o tempo real quando entra
+       na tela. Sancionado pelo DESIGN-DIRECTION.md ("cronômetro contando /
+       contadores ao entrar na tela"), e só uma vez. ── */
+  var lapEl = $('#heroLap');
+  if (lapEl && !reduced.matches && 'IntersectionObserver' in window) {
+    var target = 42.381, fmt = function (s) {
+      var m = Math.floor(s / 60), r = s - m * 60;
+      return String(m).padStart(2, '0') + ':' + r.toFixed(3).padStart(6, '0');
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.disconnect();
+        var t0 = performance.now(), dur = 1100;
+        var tick = function (now) {
+          var p = Math.min(1, (now - t0) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          lapEl.textContent = fmt(target * eased);
+          if (p < 1) requestAnimationFrame(tick); else lapEl.textContent = fmt(target);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: .5 });
+    io.observe(lapEl);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     INTRO
+     Regras duras (herdadas da La Norma e do DESIGN-DIRECTION.md):
+     - montada 100% por JS: se o script falhar, nada cobre a página;
+     - 1x por sessão (o operador que volta não espera de novo);
+     - pulável por clique, Esc ou botão;
+     - respeita prefers-reduced-motion;
+     - failsafe por timeout: em qualquer erro, a cortina sai.
+     ───────────────────────────────────────────────────────────── */
+  var hero = $('#hero'), brand = $('#brandLogo');
+  if (!hero || !brand) return;
+
+  var seen = false;
+  try { seen = sessionStorage.getItem('rca_intro_v1') === '1'; } catch (e) {}
+
+  var reveal = function () {
+    hero.classList.remove('is-holding', 'is-arriving');
+    brand.classList.remove('is-hidden');
+    document.documentElement.style.overflow = '';
+  };
+
+  if (seen) { reveal(); return; }
+  try { sessionStorage.setItem('rca_intro_v1', '1'); } catch (e) {}
+
+  var overlay = document.createElement('div');
+  overlay.className = 'intro';
+  overlay.setAttribute('role', 'presentation');
+  overlay.innerHTML =
+    '<img class="intro__logo" src="assets/logo-rcarcade.png" alt="" aria-hidden="true">' +
+    '<span class="intro__rule" aria-hidden="true"></span>' +
+    '<button class="intro__skip" type="button">Saltar</button>';
+
+  var timers = [], done = false;
+  var at = function (ms, fn) { timers.push(setTimeout(fn, ms)); };
+
+  var finish = function () {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    reveal();
+  };
+
+  try {
+    /* a intro pressupõe o topo: se o browser restaurou a rolagem, volta */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
+    document.documentElement.style.overflow = 'hidden';
+    hero.classList.add('is-arriving');
+    brand.classList.add('is-hidden');
+    document.body.appendChild(overlay);
+
+    var logo = overlay.querySelector('.intro__logo');
+    var rule = overlay.querySelector('.intro__rule');
+    var skip = overlay.querySelector('.intro__skip');
+
+    skip.addEventListener('click', finish);
+    overlay.addEventListener('click', function (e) { if (e.target !== skip) finish(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') finish(); });
+
+    /* failsafe: aconteça o que acontecer, a cortina sai */
+    at(4200, finish);
+
+    if (reduced.matches) {
+      logo.style.clipPath = 'inset(0 0 0 0)';
+      at(700, function () { overlay.classList.add('is-leaving'); });
+      at(1000, finish);
+      return;
+    }
+
+    requestAnimationFrame(function () {
+      /* 1. o wordmark é revelado por máscara, da esquerda pra direita */
+      logo.style.clipPath = 'inset(0 0 0 0)';
+
+      /* 2. a régua vermelha atravessa por baixo — o mesmo gesto que a Porsche
+            usa dentro do próprio wordmark dela */
+      at(430, function () {
+        var r = logo.getBoundingClientRect();
+        rule.style.width = r.width + 'px';
+        rule.style.left = r.left + 'px';
+        rule.style.top = (r.bottom + 18) + 'px';
+        requestAnimationFrame(function () { rule.style.transform = 'scaleX(1)'; });
+      });
+
+      /* 3. o carro chega: a foto real sai de escala+desfoque pro foco,
+            enquanto a cortina abre e o logo sobe pro MEIO do cabeçalho */
+      at(1020, function () {
+        hero.classList.remove('is-arriving');
+        rule.style.opacity = '0';
+
+        var a = logo.getBoundingClientRect();
+        var b = brand.getBoundingClientRect();
+        if (b.width > 0) {
+          var scale = b.width / a.width;
+          var dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+          var dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+          logo.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + scale + ')';
+        }
+        at(180, function () { overlay.classList.add('is-leaving'); });
+      });
+
+      at(1960, finish);
+    });
+  } catch (err) {
+    finish();
+  }
+})();
+</script>
 </body>
 </html>
