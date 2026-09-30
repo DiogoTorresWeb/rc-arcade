@@ -1,6 +1,19 @@
 # RC Arcade — status atual
 
-**Atualizado:** 13/09/2026, depois de receber e ler o material do cliente.
+> Tipo: **estado** — reescrito quando muda. Não acumula histórico.
+> Atualizado: 30/09/2026 · Revisar até: 31/10/2026 · Dono: Diogo
+> Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
+
+**Onde o projeto está (30/09):** o site saiu do papel. Em 24/09 foram feitos a
+estrutura em HTML/CSS, o registro visual "Porsche" (intro, logo ao centro,
+tipografia), o Design Gate na Direção de Arte V2 e três itens do plano — "Qué
+es" como timeline horizontal, "Para el operador" como manifesto e "Contacto"
+como fechamento silencioso. Está publicado no GitHub Pages.
+**Próximo passo:** seguir `PLANO-IMPLEMENTACAO-V2.md`.
+
+O material abaixo é do levantamento de **13/09**, quando nenhuma linha de site
+existia ainda. Continua valendo como retrato do que o cliente entregou e do que
+foi decidido na Etapa 1 — só não descreve mais o estado do código.
 
 **Cliente:** RC ARCADE — pilotagem de carro RC real com câmera FPV, vista em
 primeira pessoa, num circuito físico. Espanha, material todo em espanhol.
