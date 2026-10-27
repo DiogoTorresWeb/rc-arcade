@@ -166,8 +166,9 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
   Motivo: ele teve de reenviar dossiê e vídeo porque o contexto dos materiais se perdeu.
 - O modelo maior (Fable) falhou nas 4 pesquisas: exige créditos pagos na conta. A rodada foi refeita em Opus.
   Síntese final em Fable só com o Diogo liberando créditos.
-- Pesquisas (em `estudo/estrategia-2026-10/`): 01 mercado e concorrentes e 04 referências e conversão
-  concluídas; 02 SEO/GEO e 03 voz do comprador em andamento na hora da passagem.
+- Pesquisas (em `estudo/estrategia-2026-10/`): 01 mercado e concorrentes, 02 SEO/GEO e 04 referências e conversão
+  concluídas; 03 voz do comprador em andamento na hora da passagem. O 02 achou o domínio rcarcade.es do
+  cliente (já 1º no Google) e a menção do El Hormiguero (07/10/2026), ambas a confirmar com ele.
 - Achados que já corrigem documentos nossos: `CONCORRENTES.md` dizia que ninguém tinha telemetria (a Wehop,
   da China, promete até 6 jogadores com telemetria e ranking); a contagem de fotos do Instagram é **23**, não 16;
   `marca video.png`, que faltava desde 23/09, veio no Dropbox.
