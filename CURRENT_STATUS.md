@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 27/10/2026 (passagem do fim do dia) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 27/10/2026 (passagem da noite) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
 
@@ -29,9 +29,11 @@ Site no ar: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/
 
 1. **Diogo:** dizer se o cabeçalho é A (`?hero=a`, sem barra) ou B (`?hero=b`, logo no centro +
    menu no canto) e se a branch `hero-teste` entra na `main`.
-2. **Claude, em sessão nova:** abrir `nickho-motorsports.nl` no navegador e **medir** como o carro
-   desce no scroll (tecnologia, paradas, diferença PC/celular) antes de planejar; confirmar o
-   entendimento com o Diogo; só então fazer o V0. Uma unidade por vez, com aprovação entre elas.
+2. **Diogo decide 3 coisas do scroll do carro** (já medido, plano em `TASKS.md`): onde entra
+   (recomendado: variante `?scroll=car` de "Qué es"); qual imagem do carro (**falta uma vista de
+   cima**; garimpar no Dropbox do cliente — o Diogo passa os links, ainda não estão registrados —
+   ou usar o recorte 3/4 só como prova); "ré" como na referência ou não.
+   Só então o V0, numa branch, uma unidade por vez.
 3. Depois, `PLANO-IMPLEMENTACAO-V2.md` no item 4 (o plano ainda diz "nenhum passo executado").
 
 ## Em aberto (nada disto foi corrigido ainda)

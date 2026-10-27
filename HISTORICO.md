@@ -137,3 +137,17 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
   `nickho-motorsports.nl`, que já está em `REFERENCIAS.md`.
 - Princípio registrado: qualidade da entrega decide a ferramenta (ver `DECISIONS.md`).
 - Passagem: estado, tarefas, decisões e histórico atualizados antes de limpar a conversa.
+
+## 27/10/2026 (noite) — Referência do scroll do carro medida; plano V0 sem código
+
+- Medido de verdade o "carro que desce" do `nickho-motorsports.nl` (entrada de 27/10 em
+  `REFERENCIAS.md`): é a seção "RACE CALENDAR"; o carro é uma imagem **vista de cima** que entra e
+  sai por gatilho (0,8 s), desliza devagar preso à rolagem e vai "de ré" se você para no meio e volta.
+- Achado que muda o plano: não temos imagem do carro vista de cima (as 4 fotos do disco são
+  3/4; as 16 fotos do Instagram não estão no disco).
+- O Diogo explicou a frase cortada: a divisão por modelo "funcionou bem para a entrega de hoje" e
+  quer escalar esse jeito de trabalhar. Virou a lição 57 (`Recursos/aprendizados/`).
+- Passagem rodada ao fim do dia. Nenhuma linha de código foi escrita nesta etapa.
+- Verificado o repositório do cliente (entrada acima em `TASKS.md`): sem foto do carro de cima no
+  disco; Dropbox conectado vazio; links das pastas nunca foram registrados. O Diogo cobrou a
+  passagem (handoff) várias vezes; esta é a primeira feita de fato.

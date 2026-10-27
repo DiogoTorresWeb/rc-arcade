@@ -91,14 +91,33 @@ Material do cliente recebido e lido em 13/09/2026 — ver
 - [x] **Topo (27/10/2026, branch `hero-teste`, commit 17ef1d9):** palavra CARRERA atrás do carro
       recortado. Versão atual **finalizada** pelo Diogo ("funcionou bem"); refinos depois.
       **Falta registrar:** cabeçalho A ou B? e merge na `main`?
-- [ ] **Scroll com o carro descendo — modelo do nickho-motorsports.nl, V0 (só plano).** Pedido do
-      Diogo (27/10): no PC o carro desce pelo meio da página conforme se rola; no celular desce
-      pelo canto; ao rolar de volta ele sobe pelo mesmo caminho; se parar no meio e voltar, vai de
-      ré (preso à rolagem, nos dois sentidos). Na referência, "ficou perfeito em PC e mobile".
-      **Passo 0, antes de qualquer código:** abrir o site no navegador e medir como funciona
-      (tecnologia, pontos de parada, diferença PC/celular), sem recriar de memória — o Opus só viu
-      camadas do mesmo quadro + canvas com mapa de profundidade, não esta seção. Confirmar o
-      entendimento com o Diogo; depois o V0 numa branch.
+- [ ] **Scroll do carro — modelo do nickho-motorsports.nl, V0. MEDIDO em 27/10; falta decidir.**
+      O que a referência faz de verdade está em `REFERENCIAS.md` (entrada de 27/10): carro de
+      cima, entra e sai por gatilho (0,8 s), desliza devagar preso à rolagem, itens acendem ao
+      passar pelo centro; PC no meio da página, celular colado na borda direita; "ré" quando para
+      no meio e volta. **Plano do V0 (sem código ainda):** variante `?scroll=car` da seção "Qué es"
+      (a timeline aprovada fica como padrão); os 4 passos reais (Elige/Siéntate/Conduce/Compite)
+      fazem o papel da lista; JS puro com `IntersectionObserver` + transição CSS com o `--ease`
+      do site (sem biblioteca, falha aberto) + deriva de -12% a +12% pela rolagem; destaque dos
+      passos em prata/branco com filete vermelho (vermelho em texto pequeno reprova no AA, 4,2:1);
+      `prefers-reduced-motion` = carro parado. **Decisões do Diogo antes de codar:** (1) onde
+      entra — "Qué es" como variante (recomendado), bloco novo ou "Tres vías"; (2) **qual imagem
+      do carro**: falta uma vista de cima — pedir ao cliente (pasta Dropbox "Open Rcarcade/360" e as
+      16 fotos do Instagram) ou, só para provar o movimento, usar o recorte 3/4 do #22 sem girar;
+      (3) manter a "ré" como na referência ou virar 180° na hora.
+- [ ] **Repositório de fotos e dados do cliente — o que existe de verdade (verificado 27/10).**
+      No disco: 4 fotos DSLR 3/4 (`cliente/fotos-pista/DSC09861/62/64/65`), vídeo de 42 s e 25
+      quadros (`sequence-launch`), logos (só marca: `lateral*.png` são o letreiro; `principal.png`
+      é o conceito do simulador). Fora do projeto, na Área de Trabalho: `RC Arcade Design System/`
+      (da etapa do Claude Design: componentes `StepList`, `ContactForm`, `StatCard`, `SpecTable`,
+      `QuoteBlock` em React + `cockpit.jpeg`, foto real do circuito e dos cockpits). **Nenhuma
+      imagem do carro vista de cima.** O resto está no Dropbox do cliente (Open Rcarcade com
+      `360` e `action5`; RCA publicacion insta; Rcarcade Cont com Editados, estreno lona,
+      Jornada de puertas abiertas): o Dropbox conectado ao Claude está **vazio** e os links das
+      pastas **não estão registrados em nenhum documento**. Contagem inconsistente: o inventário
+      diz 16 fotos em "RCA publicacion insta" e `DESIGN-DIRECTION.md` diz 23. **Pendente:** o
+      Diogo passar os links (ou adicionar as pastas ao Dropbox dele) para garimpar uma foto de
+      cima do carro (360/action5 são os candidatos) e para registrar os links aqui.
 - [ ] **Modelos de "Contacto" e de "Media y Artículos" do mesmo site (só plano).** Regra de
       honestidade: o material do cliente **não tem** artigos nem imprensa; sem conteúdo real a
       seção não entra com texto inventado (estrutura vazia marcada como pendência). "Contacto"
