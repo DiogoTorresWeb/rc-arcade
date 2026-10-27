@@ -124,3 +124,16 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Validação: Chrome controlado por DevTools Protocol em 1440, 1024, 768 e 390 px (o painel do
   app corta a captura; ver `runbooks/capturar-telas.md`). `impeccable detect`: zero achados novos
   em relação à `main`.
+
+## 27/10/2026 (fim do dia) — Avaliação do topo e passagem
+
+- O Diogo avaliou o topo: "funcionou bem"; versão atual finalizada, refinos depois. Escolha entre
+  cabeçalho A e B não registrada.
+- `localhost` não abria no celular dele; foi dado o endereço da rede local (192.168.1.6:8791). Não
+  se confirmou que abriu (firewall do Windows em "Público").
+- Pedido novo, só plano: copiar do `nickho-motorsports.nl` o scroll em que o carro desce (PC pelo
+  meio, celular pelo canto, volta de ré se rolar para cima), mais os modelos de "Contacto" e de
+  "Media y Artículos". Na mensagem o nome saiu "nickromotorsports.nl"; vale o link que ele mandou,
+  `nickho-motorsports.nl`, que já está em `REFERENCIAS.md`.
+- Princípio registrado: qualidade da entrega decide a ferramenta (ver `DECISIONS.md`).
+- Passagem: estado, tarefas, decisões e histórico atualizados antes de limpar a conversa.

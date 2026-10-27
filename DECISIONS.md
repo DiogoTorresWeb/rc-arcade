@@ -159,3 +159,16 @@ do próprio hero tratado, por isso alinha ao pixel. Um polígono remove o caminh
 `<title>` e na meta description — ainda não atualizados); o teto do carro cobre a base das letras,
 e em telas muito largas o "E" pode lembrar um "F"; o recorte de 2560 px pesa 229 KB em WebP (em
 AVIF seriam ~89 KB, otimização guardada se o teste ficar).
+
+## [2026-10-27] Topo: versão atual finalizada (supera o "EM TESTE" da entrada anterior)
+**Decidido pelo Diogo:** a versão atual do topo está finalizada ("funcionou bem"); voltamos nele
+para refinos depois. Segue na branch `hero-teste`; **ainda não registrado**: se o cabeçalho é A ou
+B e se a branch entra na `main`. Referência continua sendo direção, não lei.
+
+## [2026-10-27] Qualidade da entrega decide a ferramenta
+**Decidido pelo Diogo:** a escolha do recorte do carro com o caminho de melhor qualidade (rembg +
+BiRefNet, que exigiu instalar o Visual C++ da Microsoft) em vez do mais rápido foi o acerto. Vira
+modo de trabalho **pelo resultado, não pela ferramenta**: quando a qualidade final difere de
+verdade, o caminho de melhor qualidade é o padrão e o custo de preparo se absorve; um modelo de IA
+que não entrega algo que surpreenda é trocado por um melhor. Lição geral em
+`../../Recursos/aprendizados/ferramenta-se-escolhe-pelo-resultado-de-entrega.md`.

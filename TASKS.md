@@ -88,8 +88,21 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       preenchidos com suposição.
 - [x] Plano V2 — P1.1 "Qué es", P1.3 "Para el operador" e item 6 "Contacto" implementados e
       commitados em 24/09/2026 (aprovação explícita do Diogo só de P1.1 e P1.3).
-- [ ] **Teste do topo (27/10/2026, branch `hero-teste`):** palavra CARRERA atrás do carro
-      recortado, A/B `?hero=a|b`. Aguarda a avaliação do Diogo. Ver `CURRENT_STATUS.md`.
+- [x] **Topo (27/10/2026, branch `hero-teste`, commit 17ef1d9):** palavra CARRERA atrás do carro
+      recortado. Versão atual **finalizada** pelo Diogo ("funcionou bem"); refinos depois.
+      **Falta registrar:** cabeçalho A ou B? e merge na `main`?
+- [ ] **Scroll com o carro descendo — modelo do nickho-motorsports.nl, V0 (só plano).** Pedido do
+      Diogo (27/10): no PC o carro desce pelo meio da página conforme se rola; no celular desce
+      pelo canto; ao rolar de volta ele sobe pelo mesmo caminho; se parar no meio e voltar, vai de
+      ré (preso à rolagem, nos dois sentidos). Na referência, "ficou perfeito em PC e mobile".
+      **Passo 0, antes de qualquer código:** abrir o site no navegador e medir como funciona
+      (tecnologia, pontos de parada, diferença PC/celular), sem recriar de memória — o Opus só viu
+      camadas do mesmo quadro + canvas com mapa de profundidade, não esta seção. Confirmar o
+      entendimento com o Diogo; depois o V0 numa branch.
+- [ ] **Modelos de "Contacto" e de "Media y Artículos" do mesmo site (só plano).** Regra de
+      honestidade: o material do cliente **não tem** artigos nem imprensa; sem conteúdo real a
+      seção não entra com texto inventado (estrutura vazia marcada como pendência). "Contacto"
+      depende do contato comercial que o cliente ainda não mandou.
 - [ ] Plano V2 do item 4 em diante (assets de "Tres vías" e "Escalas", etc.) — retoma depois do
       teste do topo, uma unidade por vez.
 - [ ] Etapa 6 — validar canal de captação (Google Ads/WhatsApp é do Paulo;
