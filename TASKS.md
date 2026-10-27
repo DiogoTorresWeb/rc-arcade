@@ -95,7 +95,7 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       os 3 zips de `cliente/acervo-dropbox/`, registrar tudo em `cliente/ACERVO.md`; (b) ver os vídeos novos
       (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`) com o pipeline completo (quadros + áudio) e
       garimpar a vista de cima do carro em `360`, `action5` e nas 23 fotos; (c) ler os 4 estudos de
-      `estudo/estrategia-2026-10/` (03 voz do comprador pode ter chegado de madrugada), corrigir `CONCORRENTES.md` e fazer
+      `estudo/estrategia-2026-10/` (os 4 estão prontos), corrigir `CONCORRENTES.md` e fazer
       a síntese; (d) revisor cego sobre a síntese; (e) só então decidir o scroll e o V0.
 - [ ] **Scroll do carro — modelo do nickho-motorsports.nl, V0. MEDIDO em 27/10; falta decidir.**
       O que a referência faz de verdade está em `REFERENCIAS.md` (entrada de 27/10): carro de

@@ -30,8 +30,7 @@ Site no ar: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/
 1. **Acervo:** conferir se o download de "Open Rcarcade" terminou (`cliente/acervo-dropbox/`), extrair os 3 zips,
    completar `cliente/ACERVO.md`. Ver os vídeos novos (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`)
    com o pipeline completo e procurar a **vista de cima do carro** em `360`, `action5` e nas 23 fotos.
-2. **Estratégia:** quatro estudos em `estudo/estrategia-2026-10/` (01 mercado, 02 SEO/GEO e 04 referências prontos;
-   o 03 voz do comprador, conferir se chegou). Ler, corrigir `CONCORRENTES.md`, fazer a síntese, passar o
+2. **Estratégia:** quatro estudos prontos em `estudo/estrategia-2026-10/` (01 mercado, 02 SEO/GEO, 03 voz do comprador, 04 referências). Ler, corrigir `CONCORRENTES.md`, fazer a síntese, passar o
    revisor cego. A síntese em Fable depende de o Diogo liberar créditos (senão, Opus).
 3. **Diogo decide depois da síntese:** cabeçalho A ou B; se `hero-teste` entra na `main` (versão antiga fica na
    tag `antes-v2-2026-10-27`); onde entra o scroll; "ré" ou não. Só então o V0, numa branch.
@@ -42,7 +41,8 @@ o operador compra número (m², jogadores por hora, retorno), e o dossiê não t
 concorrente chinês (Wehop) que também promete até 6 com telemetria; a carga mais forte que sobra é o vídeo real.
 O estudo 02 achou que **o cliente já tem domínio próprio (rcarcade.es), com uma página antiga que é o 1º resultado no
 Google**, e que o El Hormiguero (Antena 3) fez uma corrida num "simulador de RC Arcade" em 07/10/2026 (ser o mesmo cliente
-não está confirmado). Isso muda onde publicar o site e o item "não há imprensa" abaixo. Detalhe nos estudos 01, 02 e 04.
+não está confirmado). Isso muda onde publicar o site e o item "não há imprensa" abaixo. O estudo 03 mostra que o comprador faz conta (m², pessoas por hora, pessoal), teme quebra e peça, e desconfia de foto
+feita por IA: o vídeo real com telemetria deve abrir o site. Detalhe nos estudos 01 a 04.
 
 ## Em aberto (nada disto foi corrigido ainda)
 
