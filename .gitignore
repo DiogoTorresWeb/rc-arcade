@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# Acervo do cliente: pesado e com pessoas, fica so no disco (repo publico)
+cliente/acervo-dropbox/

@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 27/10/2026 (passagem da noite) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 28/10/2026 (passagem da madrugada) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
 
@@ -25,16 +25,22 @@ Site no ar: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/
 | Contacto | Redesenhada (fechamento silencioso); sem aprovação explícita do Diogo | no ar; faltam dados do cliente |
 | **Ideias novas** (pedido de 27/10, só plano) | scroll com o carro descendo; modelo de "Contacto"; "Media y Artículos" — todos do nickho-motorsports.nl | `TASKS.md` |
 
-## Próximo passo
+## Próximo passo (pivô de 27/10: estratégia e acervo antes do scroll)
 
-1. **Diogo:** dizer se o cabeçalho é A (`?hero=a`, sem barra) ou B (`?hero=b`, logo no centro +
-   menu no canto) e se a branch `hero-teste` entra na `main`.
-2. **Diogo decide 3 coisas do scroll do carro** (já medido, plano em `TASKS.md`): onde entra
-   (recomendado: variante `?scroll=car` de "Qué es"); qual imagem do carro (**falta uma vista de
-   cima**; garimpar no Dropbox do cliente — o Diogo passa os links, ainda não estão registrados —
-   ou usar o recorte 3/4 só como prova); "ré" como na referência ou não.
-   Só então o V0, numa branch, uma unidade por vez.
-3. Depois, `PLANO-IMPLEMENTACAO-V2.md` no item 4 (o plano ainda diz "nenhum passo executado").
+1. **Acervo:** conferir se o download de "Open Rcarcade" terminou (`cliente/acervo-dropbox/`), extrair os 3 zips,
+   completar `cliente/ACERVO.md`. Ver os vídeos novos (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`)
+   com o pipeline completo e procurar a **vista de cima do carro** em `360`, `action5` e nas 23 fotos.
+2. **Estratégia:** quatro estudos em `estudo/estrategia-2026-10/` (01 mercado e 04 referências prontos; 02 SEO/GEO
+   e 03 voz do comprador conferir se chegaram). Ler, corrigir `CONCORRENTES.md`, fazer a síntese, passar o
+   revisor cego. A síntese em Fable depende de o Diogo liberar créditos (senão, Opus).
+3. **Diogo decide depois da síntese:** cabeçalho A ou B; se `hero-teste` entra na `main` (versão antiga fica na
+   tag `antes-v2-2026-10-27`); onde entra o scroll; "ré" ou não. Só então o V0, numa branch.
+4. Depois, `PLANO-IMPLEMENTACAO-V2.md` no item 4.
+
+**Achados que já mudam o rumo (ainda sem decisão):** o botão principal talvez deva ser "Solicitar demostración";
+o operador compra número (m², jogadores por hora, retorno), e o dossiê não traz nenhum — pedir ao cliente; há
+concorrente chinês (Wehop) que também promete até 6 com telemetria; a carga mais forte que sobra é o vídeo real.
+Detalhe nos estudos 01 e 04.
 
 ## Em aberto (nada disto foi corrigido ainda)
 
@@ -68,5 +74,6 @@ entra com texto inventado.
 | Revisão do plano antes de codar | `DESIGN-GATE-V2.md` |
 | Estrutura de blocos da página | `ESTRUTURA-DO-SITE.md` |
 | Referências visuais guardadas | `REFERENCIAS.md` |
-| Material do cliente | `cliente/MATERIAL-RECEBIDO.md` |
+| Material do cliente (leitura) e registro de tudo que chegou | `cliente/MATERIAL-RECEBIDO.md` e `cliente/ACERVO.md` |
+| Estudos de estratégia (27/10) | `estudo/estrategia-2026-10/` |
 | Capturar telas em vários tamanhos | `runbooks/capturar-telas.md` |

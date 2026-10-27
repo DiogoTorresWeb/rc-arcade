@@ -91,6 +91,12 @@ Material do cliente recebido e lido em 13/09/2026 — ver
 - [x] **Topo (27/10/2026, branch `hero-teste`, commit 17ef1d9):** palavra CARRERA atrás do carro
       recortado. Versão atual **finalizada** pelo Diogo ("funcionou bem"); refinos depois.
       **Falta registrar:** cabeçalho A ou B? e merge na `main`?
+- [ ] **PRIMEIRO (pivô de 27/10): estratégia e acervo.** (a) Conferir o download de "Open Rcarcade" e extrair
+      os 3 zips de `cliente/acervo-dropbox/`, registrar tudo em `cliente/ACERVO.md`; (b) ver os vídeos novos
+      (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`) com o pipeline completo (quadros + áudio) e
+      garimpar a vista de cima do carro em `360`, `action5` e nas 23 fotos; (c) ler os 4 estudos de
+      `estudo/estrategia-2026-10/` (02 e 03 podem ter chegado de madrugada), corrigir `CONCORRENTES.md` e fazer
+      a síntese; (d) revisor cego sobre a síntese; (e) só então decidir o scroll e o V0.
 - [ ] **Scroll do carro — modelo do nickho-motorsports.nl, V0. MEDIDO em 27/10; falta decidir.**
       O que a referência faz de verdade está em `REFERENCIAS.md` (entrada de 27/10): carro de
       cima, entra e sai por gatilho (0,8 s), desliza devagar preso à rolagem, itens acendem ao

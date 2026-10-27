@@ -172,3 +172,13 @@ modo de trabalho **pelo resultado, não pela ferramenta**: quando a qualidade fi
 verdade, o caminho de melhor qualidade é o padrão e o custo de preparo se absorve; um modelo de IA
 que não entrega algo que surpreenda é trocado por um melhor. Lição geral em
 `../../Recursos/aprendizados/ferramenta-se-escolhe-pelo-resultado-de-entrega.md`.
+
+## [2026-10-27] Estratégia antes do scroll; antes e depois separados; acervo sagrado
+**Decidido pelo Diogo:** (1) antes de construir o scroll do carro, redocumentar o projeto e rodar a pesquisa de
+estratégia completa (SEO, marketing, referências, o que funciona para este cliente) com o maior modelo
+disponível; (2) a imagem do carro sai de "olhar tudo": dossiê, vídeo e Dropbox, e só se não houver nada se
+discutem alternativas; (3) versão antiga e nova ficam separadas para medir o caminhar antes e depois (tag
+`antes-v2-2026-10-27` na `main`; segundo repositório só se ele quiser dois endereços públicos);
+(4) **regra global do projeto: nunca perder material do cliente** (`CLAUDE.md`).
+**Escolha minha, a confirmar:** pesquisa em Opus porque o Fable exige créditos pagos; o cabeçalho A/B segue
+em aberto.

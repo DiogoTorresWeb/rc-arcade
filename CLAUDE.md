@@ -16,6 +16,16 @@ categoria de serviço, número, estatística. Campo vazio, nunca chute. Se falta
 informação, perguntar ou marcar como pendente em `CURRENT_STATUS.md` — nunca
 preencher com suposição.
 
+## Regra do acervo: nunca perder material do cliente (Diogo, 27/10/2026)
+Todo material que o cliente mandou (dossiê, vídeo, fotos, logos, pastas do Dropbox), usado ou não,
+fica guardado inteiro e registrado em `cliente/ACERVO.md`. Nada é descartado por "não entrou no
+site". Material novo entra no acervo e no registro **no mesmo dia em que chega**, com origem, data,
+tamanho e impressão digital (md5). Os arquivos pesados moram em `cliente/acervo-dropbox/` e em
+`cliente/` (fora do git por tamanho e por mostrar pessoas, o repositório do site é público); o
+registro vai no git. Link de Dropbox com chave **nunca** vai para arquivo versionado. Antes de
+dizer "não temos X", conferir o `ACERVO.md`. Perder contexto do material já custou caro nesta
+conversa: o Diogo teve de reenviar o dossiê e o vídeo.
+
 ## Documentação como fonte da verdade
 Três arquivos nesta pasta: `CURRENT_STATUS.md` (onde está), `DECISIONS.md`
 (o que foi decidido e por quê), `TASKS.md` (o que falta). Se não está neles,

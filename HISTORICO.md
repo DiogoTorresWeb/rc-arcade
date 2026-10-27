@@ -151,3 +151,23 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Verificado o repositório do cliente (entrada acima em `TASKS.md`): sem foto do carro de cima no
   disco; Dropbox conectado vazio; links das pastas nunca foram registrados. O Diogo cobrou a
   passagem (handoff) várias vezes; esta é a primeira feita de fato.
+
+## 27/10/2026 (madrugada) — Pivô: redocumentar, acervo completo e estratégia antes do scroll
+
+- O Diogo respondeu às perguntas do handoff com uma mudança de rumo: antes de qualquer scroll, **redocumentar
+  o RC Arcade, rodar a pesquisa de estratégia com o maior modelo disponível** (cruzamento de referências,
+  SEO, marketing, o que funciona para este cliente) e **olhar todo o material** (dossiê, vídeo, Dropbox). Cabeçalho
+  A ou B ficou "ainda não sei"; sobre a `hero-teste`, quer **versão antiga e nova separadas** para medir o
+  caminhar antes e depois (talvez repositórios separados no GitHub).
+- Feito: tag local `antes-v2-2026-10-27` no ponto da `main` (site no ar); dossiê novo (PDF) recebido e guardado
+  em `cliente/`; vídeo reenviado era idêntico ao já guardado; os 3 links do Dropbox chegaram e as pastas foram
+  baixadas inteiras (registro em `cliente/ACERVO.md`, links só em arquivo local).
+- Regra nova do Diogo: **nunca perder material do cliente**, usado ou não (`CLAUDE.md`, "Regra do acervo").
+  Motivo: ele teve de reenviar dossiê e vídeo porque o contexto dos materiais se perdeu.
+- O modelo maior (Fable) falhou nas 4 pesquisas: exige créditos pagos na conta. A rodada foi refeita em Opus.
+  Síntese final em Fable só com o Diogo liberando créditos.
+- Pesquisas (em `estudo/estrategia-2026-10/`): 01 mercado e concorrentes e 04 referências e conversão
+  concluídas; 02 SEO/GEO e 03 voz do comprador em andamento na hora da passagem.
+- Achados que já corrigem documentos nossos: `CONCORRENTES.md` dizia que ninguém tinha telemetria (a Wehop,
+  da China, promete até 6 jogadores com telemetria e ranking); a contagem de fotos do Instagram é **23**, não 16;
+  `marca video.png`, que faltava desde 23/09, veio no Dropbox.
