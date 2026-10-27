@@ -86,6 +86,12 @@ Material do cliente recebido e lido em 13/09/2026 — ver
       Bloco 5 parcial (faltam medidas reais de espaço). Blocos 7 e 8
       deixados como placeholder — sem dado operacional do cliente, não
       preenchidos com suposição.
+- [x] Plano V2 — P1.1 "Qué es", P1.3 "Para el operador" e item 6 "Contacto" implementados e
+      commitados em 24/09/2026 (aprovação explícita do Diogo só de P1.1 e P1.3).
+- [ ] **Teste do topo (27/10/2026, branch `hero-teste`):** palavra CARRERA atrás do carro
+      recortado, A/B `?hero=a|b`. Aguarda a avaliação do Diogo. Ver `CURRENT_STATUS.md`.
+- [ ] Plano V2 do item 4 em diante (assets de "Tres vías" e "Escalas", etc.) — retoma depois do
+      teste do topo, uma unidade por vez.
 - [ ] Etapa 6 — validar canal de captação (Google Ads/WhatsApp é do Paulo;
       B2B provavelmente é outro caminho — talvez LinkedIn ou contato direto
       com operadores)

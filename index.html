@@ -6,8 +6,10 @@
 <title>RC ARCADE — No miras la carrera. Estás dentro de ella.</title>
 <meta name="description" content="Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico. Hasta seis simuladores simultáneos.">
 <meta name="theme-color" content="#0A0B0D">
+<script>(function(){var m=/[?&]hero=(a|b)\b/.exec(location.search);document.documentElement.setAttribute('data-hero',m?m[1]:'a');})();</script>
 
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/hero-mobile.jpg" media="(max-aspect-ratio: 3/4)">
 <link rel="preload" as="image" media="(min-aspect-ratio: 3/4)"
       href="assets/hero-1920.jpg"
@@ -30,6 +32,14 @@
   src:url('assets/fonts/jetbrainsmono-latin.woff2') format('woff2');
   font-weight:400 500; font-style:normal; font-display:swap;
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212;
+}
+
+/* Anton (OFL, Google Fonts) — só a palavra gigante do topo. Teste: pode ser
+   trocada por outra condensada depois (Bebas Neue, Archivo wdth 62). */
+@font-face{
+  font-family:'Anton';
+  src:url('assets/fonts/anton-latin.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
 }
 
 /* ─── Tokens ─── */
@@ -136,6 +146,17 @@ section{padding-block:var(--section)}
 
 .header-right{justify-self:end;display:flex;align-items:center;gap:12px}
 
+/* Teste A/B do topo (?hero=a | ?hero=b). A: sem barra nenhuma sobre o hero, só
+   aparece depois que a página rola. B: logo no centro e só o ícone de menu. */
+html[data-hero="a"] .site-header{transition:background-color .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease),opacity .4s var(--ease),visibility .4s}
+html[data-hero="a"] .site-header:not(.is-scrolled){opacity:0;visibility:hidden;pointer-events:none}
+html[data-hero="b"] .nav,
+html[data-hero="b"] .header-right .btn--primary{display:none}
+html[data-hero="b"] .menu-btn{display:block}
+html[data-hero="b"] .brand{grid-column:2}
+html[data-hero="b"] .header-right{grid-column:3}
+html[data-hero="b"] .hero__corner{top:calc(52px + 1vh)}
+
 /* ─── Botões ─── */
 .btn{
   --btn-fg:#fff;
@@ -182,8 +203,8 @@ section{padding-block:var(--section)}
   overflow:hidden;
   background:var(--black) url('assets/hero-lqip.jpg') center/cover no-repeat;
 }
-.hero__media{position:absolute;inset:0;overflow:hidden}
-.hero__media picture{display:block;width:100%;height:100%}
+.hero__media{position:absolute;inset:0;overflow:hidden;container-type:size}
+.hero__media picture{position:absolute;inset:0;display:block;width:100%;height:100%}
 .hero__media img{
   width:100%;height:100%;object-fit:cover;object-position:center 46%;
   transform:scale(1.001);
@@ -196,10 +217,43 @@ section{padding-block:var(--section)}
   background:
     linear-gradient(180deg,rgba(10,11,13,.72) 0%,rgba(10,11,13,.12) 26%,rgba(10,11,13,.20) 52%,rgba(10,11,13,.86) 88%,var(--black) 100%);
 }
-.hero__inner{position:relative;width:100%;max-width:var(--maxw);margin-inline:auto}
-.hero h1{max-width:16ch}
-.hero .lead{margin-top:22px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero__inner{position:relative;width:100%}
+
+/* Palavra gigante ATRÁS do carro: fundo (foto) → palavra → carro recortado.
+   A foto usa object-fit:cover; a palavra acompanha essa mesma geometria pra
+   ficar sempre no mesmo ponto do carro, em qualquer proporção de tela. */
+.hero__word{
+  position:absolute;left:0;right:0;margin:0;text-align:center;pointer-events:none;
+  top:calc((100cqh - max(100cqh, 56.25cqw)) * .46 + max(100cqh, 56.25cqw) * .113);
+  font-family:'Anton',var(--sans);font-weight:400;text-transform:uppercase;
+  font-size:23cqw;line-height:.8;letter-spacing:0;
+  color:rgba(177,176,171,.88);white-space:nowrap;text-wrap:nowrap;
+}
+.hero__word,.hero__corner{opacity:1}
+
+/* microtextos de canto (linguagem de HUD, como no pôster de referência) */
+.hero__corner{
+  position:absolute;top:calc(34px + 1.2vh);max-width:24ch;
+  font-family:var(--mono);font-size:.6875rem;line-height:1.55;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--silver);
+}
+.hero__corner--tl{left:var(--gutter)}
+.hero__corner--tr{right:var(--gutter);text-align:right}
+.hero__tagline{
+  font-family:var(--mono);font-size:.6875rem;line-height:1.55;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--silver);max-width:26ch;
+}
+
+/* botões do topo: par vermelho cheio + secundário translúcido (print do Autrix) */
+.hero__cta{display:flex;flex-direction:column;gap:10px;width:min(100%,236px);margin-top:18px}
+.hero__cta .btn{
+  justify-content:center;min-height:50px;padding:15px 22px;border-radius:12px;
+}
+.hero__cta .btn--ghost{
+  background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+.hero__cta .btn--ghost:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.34)}
 
 .hero__line{
   width:64px;height:2px;background:var(--red);margin-bottom:30px;
@@ -217,14 +271,7 @@ section{padding-block:var(--section)}
   display:block;font-size:clamp(1.5rem,3vw,2.125rem);
   letter-spacing:.01em;color:#fff;margin-top:6px;text-transform:none;
 }
-.hero__status{
-  position:absolute;top:calc(56px + 2vh);left:var(--gutter);
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--silver);
-}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
-.hero__status svg{color:var(--silver-dim)}
 
 .scroll-cue{
   position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
@@ -234,12 +281,13 @@ section{padding-block:var(--section)}
 .scroll-cue svg{animation:cue 2.6s var(--ease) infinite}
 
 /* entrada do conteúdo do hero, depois da intro */
-.hero__inner>*,.readout,.hero__status{opacity:1}
+.hero__inner>*,.readout{opacity:1}
 .hero.is-holding .hero__inner>*,
 .hero.is-holding .readout,
-.hero.is-holding .hero__status,
+.hero.is-holding .hero__word,
+.hero.is-holding .hero__corner,
 .hero.is-holding .scroll-cue{opacity:0;transform:translateY(14px)}
-.hero__inner>*,.readout,.hero__status,.scroll-cue{
+.hero__inner>*,.readout,.hero__word,.hero__corner,.scroll-cue{
   transition:opacity .9s var(--ease),transform .9s var(--ease);
 }
 .hero__inner>:nth-child(2){transition-delay:.06s}
@@ -412,10 +460,24 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
   .timeline__step:nth-child(n+3){padding-bottom:26px}
   .timeline__step:last-child{padding-bottom:0}
   .scales{grid-template-columns:1fr}
-  .readout{position:static;text-align:left;margin-top:34px}
-  .hero__cta{margin-top:30px}
-  .hero__cta .btn{flex:1 1 auto;justify-content:center}
+  .readout{position:relative;right:auto;bottom:auto;text-align:left;margin-top:34px}
+  .hero__cta{flex-direction:row;width:100%;margin-top:16px}
+  .hero__cta .btn{flex:1 1 0;justify-content:center;padding-inline:12px}
+  .hero__corner{top:calc(52px + 1.5vh)}
   .scroll-cue{display:none}
+}
+/* tela alta (celular em pé): a foto vira o recorte retrato 3:4, então a palavra
+   usa a mesma geometria, com o carro mais abaixo na imagem */
+@media (max-aspect-ratio:3/4){
+  .hero__word{
+    font-size:25cqw;
+    top:calc((100cqh - max(100cqh, 133.333cqw)) * .46 + max(100cqh, 133.333cqw) * .43 - 20.8cqw);
+  }
+}
+@media (max-aspect-ratio:3/5){
+  .hero__word{
+    top:calc((100cqh - max(100cqh, 133.333cqw)) * .46 + max(100cqh, 133.333cqw) * .452 - 20.8cqw);
+  }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -475,23 +537,26 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
              alt="Coche RC de competición en pista, captado en movimiento durante una sesión real"
              fetchpriority="high" decoding="async">
       </picture>
+
+      <!-- palavra gigante: texto real (SEO, leitor de tela), entre a foto e o carro -->
+      <h1 class="hero__word">Carrera</h1>
+
+      <!-- o carro recortado, com o mesmo tratamento e o mesmo quadro da foto,
+           por cima da palavra -->
+      <picture>
+        <source media="(max-aspect-ratio: 3/4)" srcset="assets/hero-car-mobile.webp" width="1080" height="1440">
+        <img src="assets/hero-car-1920.webp"
+             srcset="assets/hero-car-1280.webp 1280w, assets/hero-car-1920.webp 1920w, assets/hero-car-2560.webp 2560w"
+             sizes="100vw" width="2560" height="1440" alt="" decoding="async">
+      </picture>
     </div>
 
-    <p class="hero__status">
-      <span class="dot" aria-hidden="true"></span>
-      Telemetría en cabina
-      <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true">
-        <rect x="0" y="8" width="3" height="3" fill="currentColor"/>
-        <rect x="5" y="5.5" width="3" height="5.5" fill="currentColor"/>
-        <rect x="10" y="3" width="3" height="8" fill="currentColor"/>
-        <rect x="15" y="0" width="3" height="11" fill="currentColor"/>
-      </svg>
-    </p>
+    <p class="hero__corner hero__corner--tl">Atracción FPV para centros de ocio</p>
+    <p class="hero__corner hero__corner--tr">Hasta 6 simuladores, un circuito</p>
 
     <div class="hero__inner">
       <div class="hero__line" aria-hidden="true"></div>
-      <h1>No miras la carrera. Estás dentro de ella.</h1>
-      <p class="lead">Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico.</p>
+      <p class="hero__tagline">Coches RC reales en primera persona</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
         <a class="btn btn--ghost" href="#operador">Ver capacidad</a>
@@ -514,6 +579,7 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
        é a informação: é a mecânica do produto, não decoração. ── -->
   <section id="que-es">
     <div class="shell">
+      <span class="tag">No miras la carrera. Estás dentro de ella.</span>
       <h2>Cuatro pasos. Cero curva de aprendizaje.</h2>
       <p class="lead" style="margin-top:20px">La misma secuencia que ya funciona en la operación real.</p>
 
@@ -858,7 +924,7 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
 
         var a = logo.getBoundingClientRect();
         var b = brand.getBoundingClientRect();
-        if (b.width > 0) {
+        if (b.width > 0 && document.documentElement.getAttribute('data-hero') !== 'a') {
           var scale = b.width / a.width;
           var dx = (b.left + b.width / 2) - (a.left + a.width / 2);
           var dy = (b.top + b.height / 2) - (a.top + a.height / 2);

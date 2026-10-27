@@ -129,3 +129,33 @@ template escuro genérico de tecnologia.
 **Tokens de marca extraídos do dossiê por análise de pixel** (não chutados):
 vermelho **#E31B23** (idêntico no logo e nos acentos), preto #0A0B0D,
 superfície #191A1E, prata #B1B0AB. Detalhe em `DESIGN-DIRECTION.md`.
+
+## [2026-10-27] Topo reaberto para teste — palavra gigante atrás do carro
+**Status:** EM TESTE na branch `hero-teste` (não publicada). Direção, não lei: o Diogo pediu
+"se for bom fica, mais ou menos escalamos, ruim voltamos". Reabre o topo, que o
+`PLANO-IMPLEMENTACAO-V2.md` mandava não mexer.
+
+**Decidido pelo Diogo, em entrevista (27/10):**
+- Referência: pôster "SEPTEMBER" (palavra enorme atrás da montanha) e Behance "Autrix".
+- Palavra gigante **CARRERA** (de 8 candidatas do Opus, todas ligadas ao material do cliente).
+- 3 microtextos de canto, conjunto "operador": "Atracción FPV para centros de ocio", "Hasta 6
+  simuladores, un circuito", "Coches RC reales en primera persona" (a de "alquiler" ficou fora:
+  o dossiê não diz se é aluguel).
+- Fonte **Anton** agora; testar outra mais para a frente, não agora.
+- Botões do topo no estilo do print do Autrix (vermelho cheio + secundário translúcido).
+- Sai do topo: o selo "Telemetría en cabina" com a bolinha e o ícone de sinal, e a frase
+  "No miras la carrera. Estás dentro de ella." (vai para outra seção).
+- Teste A/B do cabeçalho: A sem barra nenhuma sobre o topo; B logo RC no centro e só o menu no canto.
+
+**Escolhas minhas, a confirmar:** a frase do cliente virou rótulo (`.tag`) acima do título de "Qué
+es"; o parágrafo de apoio do topo ("Coches RC reales, cámara FPV…") foi removido do topo (segue na
+meta description); o cronômetro "Mejor vuelta" foi mantido.
+
+**Como é feito (não desfazer sem saber):** três camadas do mesmo quadro — foto, `<h1>` Anton em
+`cqw`, carro recortado em WebP com transparência. O recorte usa só a máscara do BiRefNet; a cor vem
+do próprio hero tratado, por isso alinha ao pixel. Um polígono remove o caminhão desfocado do fundo.
+
+**Risco aceito:** o `<h1>` passa a ser só "Carrera" (os termos de busca ficam nos microtextos, no
+`<title>` e na meta description — ainda não atualizados); o teto do carro cobre a base das letras,
+e em telas muito largas o "E" pode lembrar um "F"; o recorte de 2560 px pesa 229 KB em WebP (em
+AVIF seriam ~89 KB, otimização guardada se o teste ficar).

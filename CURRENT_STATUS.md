@@ -1,73 +1,61 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 18/10/2026 · Revisar até: 18/11/2026 · Dono: Diogo
+> Atualizado: 27/10/2026 · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
+> Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`.
 
-**Onde o projeto está (30/09):** o site saiu do papel. Em 24/09 foram feitos a
-estrutura em HTML/CSS, o registro visual "Porsche" (intro, logo ao centro,
-tipografia), o Design Gate na Direção de Arte V2 e três itens do plano — "Qué
-es" como timeline horizontal, "Para el operador" como manifesto e "Contacto"
-como fechamento silencioso. Está publicado no GitHub Pages.
-**Próximo passo:** seguir `PLANO-IMPLEMENTACAO-V2.md`.
-**Referências visuais guardadas para essa hora:** `REFERENCIAS.md` — o Diogo mandou a do Nick Ho Motorsports em 18/10.
+**Cliente:** RC ARCADE (Espanha, material em espanhol) — pilotagem de carro RC real com câmera
+FPV em primeira pessoa, num circuito físico; até 6 simuladores simultâneos, tempo de volta e
+posição medidos. Site B2B para operador de centro de lazer. Identidade já existe: vermelho
+`#E31B23`, preto `#0A0B0D`, prata `#B1B0AB`.
 
-O material abaixo é do levantamento de **13/09**, quando nenhuma linha de site
-existia ainda. Continua valendo como retrato do que o cliente entregou e do que
-foi decidido na Etapa 1 — só não descreve mais o estado do código.
+## Onde estamos
 
-**Cliente:** RC ARCADE — pilotagem de carro RC real com câmera FPV, vista em
-primeira pessoa, num circuito físico. Espanha, material todo em espanhol.
-Contatos identificados no Dropbox: **ximodj navarro** e **David Navarro
-Rodriguez**.
+- **No ar** (`main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/): `index.html`
+  com o plano V2 em 3 de 12 itens — "Qué es" (timeline), "Para el operador" (manifesto), "Contacto"
+  (fechamento silencioso). "Contacto" ainda **sem aprovação explícita** do Diogo.
+- **Em teste, não publicado** (branch `hero-teste`): o topo com a palavra **CARRERA** gigante atrás
+  do carro recortado, 3 microtextos de canto e botões estilo Autrix. Duas versões do cabeçalho:
+  `?hero=a` (sem barra) e `?hero=b` (logo no centro + menu no canto). Para ver: na pasta do
+  projeto, `python -m http.server 8791` e abrir `http://localhost:8791/index.html?hero=a`.
 
-**Onde estamos:** fim da Etapa 1 / começo da Etapa 2 do método
-(`diogo-base/Areas/agencia/metodo.md`). O material do cliente foi lido e
-inventariado em `cliente/MATERIAL-RECEBIDO.md`. Nenhuma linha de site escrita
-ainda, de propósito.
+## Próximo passo (decisão do Diogo)
 
-**Combinado com o cliente:** começar pelo site; pacote digital completo pode
-fechar depois.
+Avaliar o A/B do topo: **bom fica** (apaga a versão perdedora e faz merge), **mais ou menos
+escala** (uma rodada de ajuste), **ruim volta** (apaga a branch). Depois, retomar o
+`PLANO-IMPLEMENTACAO-V2.md` no item 4 (preparar os assets de "Tres vías" e "Escalas"; o plano ainda
+diz "nenhum passo executado" — está defasado). Uma unidade por vez, com aprovação entre elas.
 
-## Etapa 1 — o que o material já respondeu
+## Em aberto (nada disto foi corrigido ainda)
 
-- **O que é o produto:** carro RC real + FPV + cockpit (volante, pedais, tela).
-  Até 6 simuladores simultâneos num circuito compartilhado, com tempo de volta
-  e posição medidos. Mecânica em 4 passos: elige → siéntate → conduce → compite.
-- **Como o cliente se posiciona (palavras dele):** *"No miras la carrera.
-  Estás dentro de ella."* — a frase-âncora do dossiê. Visão de marca:
-  *"Convertir cada circuito en un lugar donde cualquiera pueda sentirse piloto."*
-- **O argumento B2B pro operador:** diferenciação (difícil de confundir com
-  outra atração), escalabilidade (adapta ao espaço), rotação (sessões e
-  competições programáveis), conteúdo (gera conversa e material visual).
-- **Os 4 públicos finais:** famílias, jovens, aficionados de RC, empresas/eventos.
-- **Identidade visual:** já existe e está definida — vermelho (energia e
-  competição), preto (tecnologia e profundidade), prata (precisão e caráter
-  mecânico), com sistema de logo completo em 9 variações.
-- **Prova de que funciona:** vídeo real de 42s de uma sessão rodando, com
-  telemetria na tela (voltagem, 25Mbps, latência). Não é conceito, já opera.
+- **"La prueba" mostra "8 ms" e "Vuelta 4/6 — P1"**: não achei esses números no inventário do
+  cliente (só "latência em ms" e "12 voltas, posição 02"). Podem estar no vídeo; conferir ou trocar.
+- **Notas internas visíveis no site**: "Lo que todavía falta del cliente" e os nomes `TASKS.md` e
+  `ESTRUTURA-DO-SITE.md` em "Escalas" e "Contacto".
+- **SEO**: o `<title>` e a meta description ainda usam a frase antiga; o menu não tem link para
+  "Tres vías". A frase do cliente "No miras la carrera…" saiu do topo e está provisória como
+  rótulo em "Qué es".
+- **Teste do `rc-arcade/CLAUDE.md`**: ainda não se confirmou se uma sessão nova aberta nesta
+  pasta o carrega sozinha (`/context` → "Memory files").
 
-## Etapa 1 — o que ainda falta (não preencher com suposição)
+## Dados do cliente que ainda faltam (não preencher com suposição)
 
-1. **Qual das 3 vias o site prioriza.** O dossiê apresenta três modelos de
-   negócio como iguais — instalação fixa, evento temporal e formato competição.
-   Cada um fala com um comprador diferente. **Um site não consegue priorizar
-   os três.** Essa é a decisão que trava o resto.
-2. **O site fala com o operador (B2B) ou com o público final (B2C)?** O dossiê
-   é B2B puro. Mas as fotos de Instagram e a pasta "Jornada de puertas
-   abiertas" indicam operação já aberta ao público. Pode ser que precise dos
-   dois, com caminhos separados — mas isso precisa ser decisão, não acidente.
-3. **Concorrentes** — nada no material, ninguém levantou ainda.
-4. **Dados operacionais:** onde fica, se já tem unidade aberta, contato
-   comercial que vai no site.
+Qual das 3 vias o site prioriza (premissa de trabalho: instalação fixa, **não confirmada por
+escrito**); medidas reais em m²; contato comercial e se prefere formulário ou WhatsApp; onde fica e
+se há unidade aberta ao público; clipe de vídeo dedicado para o topo; as 16 fotos "RCA publicacion
+insta" (não estão no disco).
 
-**Regra de honestidade (herdada do método):** nada marcado como "falta" pode
-ser preenchido com suposição. Campo vazio, nunca chute.
+## Onde cada coisa mora
 
-## Impacto na Etapa 3 (design)
-
-A marca **já existe**. Isso muda como a técnica do @matheusgomes vai ser usada:
-o Claude Design não vai inventar a identidade — vai construir o sistema de
-design **web** (tokens, componentes, escala tipográfica, estados) fiel ao que
-já está definido. A referência do Behance entra como padrão de layout, não
-como fonte da identidade. Detalhe em `cliente/MATERIAL-RECEBIDO.md`.
+| Pergunta | Arquivo |
+|---|---|
+| Regras de trabalho deste projeto | `CLAUDE.md` |
+| Tokens, movimento, HUD, hero | `DESIGN-DIRECTION.md` |
+| Crítica de qualidade visual (15 dimensões) | `DIRECAO-DE-ARTE-V2.md` |
+| Plano de execução e ordem | `PLANO-IMPLEMENTACAO-V2.md` |
+| Revisão do plano antes de codar | `DESIGN-GATE-V2.md` |
+| Estrutura de blocos da página | `ESTRUTURA-DO-SITE.md` |
+| Referências visuais guardadas | `REFERENCIAS.md` |
+| Material do cliente | `cliente/MATERIAL-RECEBIDO.md` |
+| Como capturar telas em vários tamanhos | `runbooks/capturar-telas.md` |
