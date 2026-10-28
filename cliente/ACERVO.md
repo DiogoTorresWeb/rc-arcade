@@ -35,3 +35,9 @@ dele. Os vídeos de julho valem ser vistos com o pipeline completo: são a prova
 ## Pendente de conferir com o cliente
 - Autorização de imagem das pessoas que aparecem nas fotos e vídeos (Etapa 2 do `TASKS.md`).
 - O que são `Editados` e `Jornada de puertas abiertas` e onde estão.
+
+## Site atual do cliente (rcarcade.es / rcarcade.com) — copiado em 28/10/2026
+Cópia completa das 4 variações (`.es`/`.com`, com/sem `www`), do texto visível, dos cabeçalhos e das 18 imagens de cada
+domínio, em `cliente/acervo-dropbox/site-antigo-rcarcade-es/` (fora do git: a página traz e-mail e telefones do cliente).
+Páginas: `.es` md5 `9825b7e5aa7b981e1239b7e663b1fb02` (17/09/2026), `.com` md5 `699ffcfdac5d5007ff2b725ca7374ec0` (01/10/2026).
+Análise e nota em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`. Se o cliente mudar o site, copiar de novo e guardar ao lado.

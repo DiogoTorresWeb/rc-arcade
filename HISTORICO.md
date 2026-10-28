@@ -172,3 +172,11 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Achados que já corrigem documentos nossos: `CONCORRENTES.md` dizia que ninguém tinha telemetria (a Wehop,
   da China, promete até 6 jogadores com telemetria e ranking); a contagem de fotos do Instagram é **23**, não 16;
   `marca video.png`, que faltava desde 23/09, veio no Dropbox.
+
+## 28/10/2026 — Estudo 05: o site atual do cliente
+- Diogo perguntou desde quando o `rcarcade.es` existe e como foi feito. Copiei as 4 variações do site e as imagens
+  (acervo, fora do git) e analisei: conteúdo de 15–17/09/2026, HTTPS só desde 01/10/2026, `.com` registrado em 21/04/2026
+  (o `.com` teve dono anterior em 2011–2020). Data de registro do `.es` não é pública: perguntar ao cliente.
+- Feito de um deck de 23 slides em página única, sem JavaScript nem CMS; logo e foto de abertura passaram pelo ChatGPT
+  (assinatura C2PA da OpenAI). Nota minha: 5/10 como captação B2B (SEO 2, conversão 3, prova 3), 7/10 como apresentação.
+- Detalhe em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`.
