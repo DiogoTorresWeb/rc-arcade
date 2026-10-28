@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 28/10/2026 (noite, refino do site publicado) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 29/10/2026 (madrugada, carro 43 e crédito da agência publicados) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Última passagem: `runbooks/passagem-2026-10-28-noite-site-2.md` (manifesto completo de fontes; **substitui** a primeira da noite).
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: seção "Próximo passo" abaixo (`TASKS.md` está desatualizado).
@@ -11,9 +11,9 @@ FPV em primeira pessoa, num circuito físico; até 6 simuladores simultâneos, t
 posição medidos. Site B2B para operador de centro de lazer. Identidade já existe: vermelho
 `#E31B23`, preto `#0A0B0D`, prata `#B1B0AB`.
 
-## Onde estamos (28/10 noite): site V3 **publicado** (`main` = `hero-teste`, commit 544bca2)
+## Onde estamos (29/10 madrugada): site V3 **publicado** (`main` = `hero-teste`, commit b33da37)
 
-**No ar desde 28/10/2026 (ordem do Diogo, "do jeito que está"):** `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/ (a versão antiga está na tag `antes-v2-2026-10-27`). Medido no endereço público (celular, Lighthouse): **96 · 100 · 100 · 100**, LCP 1,6 s, 722 KB; o site antigo `rcarcade.es` no mesmo teste: 74 · 89 · 96 · 91, LCP 13,5 s, 4,3 MB.
+**No ar desde 28/10/2026 (ordem do Diogo, "do jeito que está"); atualizado em 29/10 ("publique"): carro nº 43 em Cómo trabajamos e crédito "Por Agencia Bienquisto" no rodapé.** `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/ (a versão antiga está na tag `antes-v2-2026-10-27`). Medido no endereço público (celular, Lighthouse, 29/10 com o carro): **96 · 100 · 100 · 100**, LCP 1,7 s, 628 KB; o site antigo `rcarcade.es` no mesmo teste: 74 · 89 · 96 · 91, LCP 13,5 s, 4,3 MB.
 Medido no servidor local (celular): **desempenho 97 · acessibilidade 100 · boas práticas 100 · SEO 100**, LCP ~1,7 s, ~714 KB (28/10 noite, depois do refino); PC 99/100/100/100 (antes: 97/100/100/100, 603 KB).
 O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebrado nem rolagem lateral, em PC e celular.
 
@@ -25,7 +25,7 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 | Lo que gana quien la contrata | Faixa de foto (escudo aceso) + 4 argumentos |
 | Dos formas de contratarla | **Evento** e **Instalación fija** com o mesmo peso; competição como reforço |
 | ¿Cabe en tu espacio? | Uma foto por escala; convite a mandar as medidas (sem m² inventado) |
-| Cómo trabajamos | 4 passos do próprio cliente, em lista grande (Anton) que fica vermelha ao descer, com o carro nº 43 de cima passando ao lado (local, não publicado) |
+| Cómo trabajamos | 4 passos do próprio cliente, em lista grande (Anton) que fica vermelha ao descer, com o carro nº 43 de cima passando ao lado (opacidade 90 %, borda esmaecida) — **no ar** |
 | Prensa y registro | Título fantasma + cartões que deslizam (El Hormiguero, Volrace, Madrid) + cartão vazio "tu nota" + 3 comentários públicos (provisórios) |
 | Contacto | Foto escurecida ao fundo; formulário (evento primeiro, cidade, WhatsApp sem telefone/correo na mensagem, referência de campanha) |
 | Rodapé | Institucional: contato, legal (aviso, privacidade, cookies, preferências), **espaço reservado** para logotipos oficiais de apoio (não são selos reais) |
@@ -41,7 +41,7 @@ Detalhe, decisões e manifesto de fontes: `runbooks/passagem-2026-10-28-noite-si
 2. **Lista que fica vermelha: FEITA junto** (cada passo fica vermelho quando o topo passa do centro da tela e continua vermelho; volta ao subir).
 3. Anton nos `h2` das seções (a lista de Cómo trabajamos já usa Anton).
 4. **Votos do Diogo:** tópicos da galeria, efeito de cor no celular, foto da faixa grande, vídeos (B), "pode" das 6 ideias do texto.
-5. Fotos reais por evento (hoje só Madrid tem foto; TV e Zaragoza sem). 6. Publicar o crédito "Por Agencia Bienquisto" do rodapé (só com "publica").
+5. Fotos reais por evento (hoje só Madrid tem foto; TV e Zaragoza sem). 6. (feito 29/10: crédito do rodapé publicado junto com o carro.)
 7. Do quadro visual ainda falta: foto no título de "La prueba" e "Cómo trabajamos" (esta pede foto de montagem ao cliente); vídeos de Cheste; selos de apoio (só com arquivo oficial do cliente).
 
 **Material do cliente ainda não visto:** mais de 50 vídeos de julho ("Open Rcarcade"), 3 das 15 fotos de julho, 7 vídeos "Avatar", áudio do vídeo de Cheste (`cliente/ACERVO.md`).
