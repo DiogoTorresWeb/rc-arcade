@@ -37,7 +37,7 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 Detalhe, decisões e manifesto de fontes: `runbooks/passagem-2026-10-28-noite-site-2.md` (**ler a seção 1 inteira**). Proposta visual aprovada: `estudo/visual/board-visual.html`.
 
 **Site (esta conversa):**
-1. **Carro de rally nº 43 com câmera FPV (decidido)** visto de cima, coreografia do Nick Ho (desce e some, volta ao contrário, dá ré); se não ficar bem feito, o carro sai e fica só a lista vermelha. **Aberto:** se o carro sair, o mini-traçado ilustrativo do site sai junto?
+1. **Carro de rally nº 43 com câmera FPV (decidido)** visto de cima, coreografia do Nick Ho; se não ficar bem feito, o carro sai e fica só a lista vermelha. **Situação (28/10, 23h30):** nenhuma foto é de cima; IA bloqueada (plano grátis, 1,42 crédito, nada gasto); vetor v1 (`estudo/carro-43/`) ficou com cara de ícone, **não recomendado**. **Aguarda o Diogo:** assinar plano da ferramenta de imagem para refazer de cima, ou tirar o carro. **Aberto:** se o carro sair, o mini-traçado ilustrativo do site sai junto?
 2. Lista que fica vermelha ao descer (aprovada). 3. Anton nos `h2` das seções.
 4. **Votos do Diogo:** tópicos da galeria, efeito de cor no celular, foto da faixa grande, vídeos (B), "pode" das 6 ideias do texto.
 5. Fotos reais por evento (hoje só Madrid tem foto; TV e Zaragoza sem). 6. Publicar o crédito "Por Agencia Bienquisto" do rodapé (só com "publica").
