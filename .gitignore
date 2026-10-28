@@ -5,3 +5,6 @@ Thumbs.db
 
 # Acervo do cliente: pesado e com pessoas, fica so no disco (repo publico)
 cliente/acervo-dropbox/
+
+# Fotos da auto-revisão visual (pesadas, regeneráveis com scripts/revisar-visual.mjs)
+runbooks/revisao-visual/*.png

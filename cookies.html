@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de cookies · RC ARCADE</title>
+<meta name="description" content="Política de cookies de RC Arcade: qué almacenamiento usa el sitio, qué herramientas de medición puede activar y cómo elegir.">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Archivo';src:url('assets/fonts/archivo-latin.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:'JetBrains Mono';src:url('assets/fonts/jetbrainsmono-latin.woff2') format('woff2');font-weight:400 500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+:root{--black:#0A0B0D;--surface:#191A1E;--silver:#B1B0AB;--silver-dim:#8B8D8C;--red:#E31B23;--rule:rgba(177,176,171,.16);--sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;--gutter:clamp(20px,5vw,48px)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--silver-dim) var(--black)}
+body{margin:0;background:var(--black);color:#fff;font-family:var(--sans);font-size:1rem;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:#fff;text-underline-offset:3px;text-decoration-color:rgba(177,176,171,.5)}
+a:hover{text-decoration-color:#fff}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:1px}
+.skip{position:absolute;left:-9999px;top:8px;background:#fff;color:#000;padding:8px 14px;z-index:10}
+.skip:focus{left:8px}
+.bar{border-bottom:1px solid var(--rule)}
+.bar__in{max-width:68ch;margin-inline:auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bar__in--wide{max-width:calc(68ch + 2 * var(--gutter))}
+.logo{display:inline-flex;line-height:0}
+.logo img{height:24px;width:auto}
+.back{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);text-decoration:none;padding:6px 0}
+.back:hover{color:#fff}
+main{flex:1;width:100%;max-width:calc(68ch + 2 * var(--gutter));margin-inline:auto;padding:clamp(40px,8vh,88px) var(--gutter) clamp(56px,10vh,112px)}
+.notice{border:1px solid var(--rule);background:var(--surface);color:var(--silver);font-size:.875rem;line-height:1.55;padding:12px 16px;margin:0 0 clamp(36px,6vh,56px)}
+.notice strong{font-family:var(--mono);font-weight:500;font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-right:8px}
+.kicker{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin:0 0 14px}
+.title-wrap{border-top:2px solid var(--red);padding-top:20px;margin-bottom:12px}
+h1{font-size:2.5rem;line-height:1.1;font-weight:400;letter-spacing:.005em;margin:0;text-wrap:balance}
+.updated{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);margin:0 0 32px}
+h2{font-size:1.375rem;line-height:1.3;font-weight:400;margin:0 0 12px;padding-top:32px;border-top:1px solid var(--rule)}
+h2 .n{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:var(--silver);margin-right:12px;vertical-align:.12em}
+section{margin-top:40px}
+section:first-of-type{margin-top:0}
+p,li,dd{color:var(--silver)}
+p{margin:0 0 1em}
+ul{margin:0 0 1em;padding-left:1.25em}
+li{margin-bottom:.4em}
+strong{color:#fff;font-weight:500}
+code{font-family:var(--mono);font-size:.875em;color:#fff;background:var(--surface);border:1px solid var(--rule);padding:1px 6px;border-radius:2px}
+dl.ficha{margin:0 0 1em;border-top:1px solid var(--rule)}
+dl.ficha div{display:grid;grid-template-columns:minmax(9rem,12rem) 1fr;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)}
+dl.ficha dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);padding-top:.35em}
+dl.ficha dd{margin:0}
+.pend{background:rgba(227,27,35,.16);color:#fff;border:1px dashed rgba(227,27,35,.7);padding:1px 6px;border-radius:2px;font-size:.9375rem;line-height:1.5;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+footer{border-top:1px solid var(--rule)}
+.foot{max-width:calc(68ch + 2 * var(--gutter));margin-inline:auto;padding:24px var(--gutter);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
+.foot span,.foot a{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.foot a{text-decoration:none;padding:4px 0}
+.foot a:hover,.foot a[aria-current="page"]{color:#fff}
+.foot a[aria-current="page"]{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--silver)}
+@media (max-width:560px){h1{font-size:2rem}dl.ficha div{grid-template-columns:1fr;gap:2px}}
+@media print{body{background:#fff;color:#000}p,li,dd{color:#222}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="bar">
+  <div class="bar__in bar__in--wide">
+    <a class="logo" href="index.html" aria-label="RC Arcade, ir al inicio"><img src="assets/logo-rcarcade.png" width="960" height="227" alt="RC Arcade"></a>
+    <a class="back" href="index.html">&larr; Volver</a>
+  </div>
+</header>
+<main id="contenido">
+  <p class="notice" role="note"><strong>Aviso</strong>Texto base provisional: se completa y se revisa antes de publicar el sitio.</p>
+  <p class="kicker">Información legal</p>
+  <div class="title-wrap"><h1>Política de cookies</h1></div>
+  <p class="updated">Versión provisional · <span class="pend">[Pendiente: fecha de la versión definitiva]</span></p>
+  <section>
+    <h2><span class="n">01</span>Resumen</h2>
+    <p><strong>Este sitio solo usa almacenamiento técnico por defecto.</strong> Las cookies de analítica y de marketing (medir visitas y mejorar campañas) <strong>solo se activan si las aceptas</strong> en el aviso de cookies, y puedes cambiar tu elección cuando quieras desde «Preferencias de cookies», en el pie de página.</p>
+    <p>Hasta que decidas, no se carga ninguna herramienta de terceros. Aceptar y rechazar tienen el mismo botón y el mismo tamaño en el aviso. <strong>Ahora mismo (versión de prueba) no hay ninguna herramienta de medición activa</strong>, por lo que el aviso solo aparece cuando se activa alguna.</p>
+  </section>
+  <section>
+    <h2><span class="n">02</span>Qué almacenamiento técnico se usa</h2>
+    <p>Por defecto el sitio usa solo almacenamiento técnico del navegador, no cookies. El primero es de <strong>sesión</strong> (<code>sessionStorage</code>); el segundo, <code>rca_consent_v1</code>, se describe en el apartado 03.</p>
+    <dl class="ficha">
+      <div><dt>Clave</dt><dd><code>rca_intro_v1</code></dd></div>
+      <div><dt>Finalidad</dt><dd>Recordar que ya has visto la animación de entrada durante la sesión, para no repetirla cada vez que vuelves a la página de inicio.</dd></div>
+      <div><dt>Titular</dt><dd>Propio (RC Arcade)</dd></div>
+      <div><dt>Duración</dt><dd>Solo la sesión: se borra al cerrar la pestaña o el navegador.</dd></div>
+      <div><dt>Tipo</dt><dd>Técnico, estrictamente necesario para esa función.</dd></div>
+    </dl>
+    <p>Este dato no identifica a ninguna persona, no se envía a ningún servidor y no se usa para analizar tu comportamiento. Al ser de carácter técnico y estar exento de consentimiento (art. 22.2 LSSI-CE), no requiere que lo aceptes.</p>
+  </section>
+  <section>
+    <h2><span class="n">03</span>Analítica y marketing (solo con tu consentimiento)</h2>
+    <p>El sitio está preparado para medir su uso y sus campañas con las herramientas siguientes. <strong>Cada una se activa únicamente cuando el titular configura su identificador y tú la has aceptado.</strong> Si una herramienta aún no está activa, no se carga.</p>
+    <dl class="ficha">
+      <div><dt>Necesarias</dt><dd><code>rca_consent_v1</code> (almacenamiento local, propio): guarda tu elección sobre cookies. Duración: hasta que la borres o la cambies.</dd></div>
+      <div><dt>Analítica</dt><dd>Google Tag Manager y Google Analytics 4 (<code>_ga</code>, <code>_ga_*</code>, hasta 2 años); Microsoft Clarity (<code>_clck</code>, <code>_clsk</code>, hasta 1 año). Finalidad: contar visitas, ver qué secciones se usan y mejorar el sitio.</dd></div>
+      <div><dt>Marketing</dt><dd>Píxel de Meta (<code>_fbp</code>, <code>_fbc</code>, hasta 90 días) y API de Conversiones de Meta. Finalidad: medir qué campañas traen consultas y mejorar su publicidad. No se envían nombre, teléfono ni correo.</dd></div>
+    </dl>
+    <p>Los eventos que se miden son de uso, no personales: pulsaciones en botones de contacto, inicio y envío del formulario, profundidad de desplazamiento, secciones vistas y reproducción del clip de pista. <span class="pend">[Pendiente: confirmar con el titular qué herramientas activará y sus identificadores; ajustar esta tabla a las que se activen]</span></p>
+    <p>Puedes cambiar tu decisión en cualquier momento: <a href="index.html?cookies=1">Preferencias de cookies</a>.</p>
+  </section>
+  <section>
+    <h2><span class="n">04</span>Cómo gestionar el almacenamiento en tu navegador</h2>
+    <p>Puedes consultar, bloquear o borrar cookies y datos de sitios desde los ajustes de tu navegador. Si bloqueas el almacenamiento, el sitio sigue funcionando; lo único que cambia es que la animación de entrada puede mostrarse de nuevo y que el aviso de cookies reaparecerá.</p>
+    <p>Guías de los navegadores más habituales:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+      <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+  </section>
+  <section>
+    <h2><span class="n">05</span>Más información</h2>
+    <p>Para saber cómo tratamos los datos personales, consulta la <a href="privacidad.html">política de privacidad</a>. Para cualquier duda, escribe a <a href="mailto:info@rcarcade.com">info@rcarcade.com</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="foot">
+    <span>&copy; 2026 RC Arcade</span>
+    <nav aria-label="Información legal">
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html" aria-current="page">Cookies</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

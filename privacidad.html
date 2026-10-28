@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad · RC ARCADE</title>
+<meta name="description" content="Política de privacidad de RC ARCADE: responsable, cómo funciona el formulario de contacto (WhatsApp o correo), finalidad, conservación y derechos RGPD.">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Archivo';src:url('assets/fonts/archivo-latin.woff2') format('woff2');font-weight:400 600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:'JetBrains Mono';src:url('assets/fonts/jetbrainsmono-latin.woff2') format('woff2');font-weight:400 500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+:root{--black:#0A0B0D;--surface:#191A1E;--silver:#B1B0AB;--silver-dim:#8B8D8C;--red:#E31B23;--rule:rgba(177,176,171,.16);--sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;--gutter:clamp(20px,5vw,48px)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--silver-dim) var(--black)}
+body{margin:0;background:var(--black);color:#fff;font-family:var(--sans);font-size:1rem;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:#fff;text-underline-offset:3px;text-decoration-color:rgba(177,176,171,.5)}
+a:hover{text-decoration-color:#fff}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:1px}
+.skip{position:absolute;left:-9999px;top:8px;background:#fff;color:#000;padding:8px 14px;z-index:10}
+.skip:focus{left:8px}
+.bar{border-bottom:1px solid var(--rule)}
+.bar__in{max-width:68ch;margin-inline:auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bar__in--wide{max-width:calc(68ch + 2 * var(--gutter))}
+.logo{display:inline-flex;line-height:0}
+.logo img{height:24px;width:auto}
+.back{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);text-decoration:none;padding:6px 0}
+.back:hover{color:#fff}
+main{flex:1;width:100%;max-width:calc(68ch + 2 * var(--gutter));margin-inline:auto;padding:clamp(40px,8vh,88px) var(--gutter) clamp(56px,10vh,112px)}
+.notice{border:1px solid var(--rule);background:var(--surface);color:var(--silver);font-size:.875rem;line-height:1.55;padding:12px 16px;margin:0 0 clamp(36px,6vh,56px)}
+.notice strong{font-family:var(--mono);font-weight:500;font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-right:8px}
+.kicker{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin:0 0 14px}
+.title-wrap{border-top:2px solid var(--red);padding-top:20px;margin-bottom:12px}
+h1{font-size:2.5rem;line-height:1.1;font-weight:400;letter-spacing:.005em;margin:0;text-wrap:balance}
+.updated{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);margin:0 0 32px}
+h2{font-size:1.375rem;line-height:1.3;font-weight:400;margin:0 0 12px;padding-top:32px;border-top:1px solid var(--rule)}
+h2 .n{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:var(--silver);margin-right:12px;vertical-align:.12em}
+section{margin-top:40px}
+section:first-of-type{margin-top:0}
+p,li,dd{color:var(--silver)}
+p{margin:0 0 1em}
+ul{margin:0 0 1em;padding-left:1.25em}
+li{margin-bottom:.4em}
+strong{color:#fff;font-weight:500}
+code{font-family:var(--mono);font-size:.875em;color:#fff;background:var(--surface);border:1px solid var(--rule);padding:1px 6px;border-radius:2px}
+dl.ficha{margin:0 0 1em;border-top:1px solid var(--rule)}
+dl.ficha div{display:grid;grid-template-columns:minmax(9rem,12rem) 1fr;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)}
+dl.ficha dt{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);padding-top:.35em}
+dl.ficha dd{margin:0}
+.pend{background:rgba(227,27,35,.16);color:#fff;border:1px dashed rgba(227,27,35,.7);padding:1px 6px;border-radius:2px;font-size:.9375rem;line-height:1.5;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+footer{border-top:1px solid var(--rule)}
+.foot{max-width:calc(68ch + 2 * var(--gutter));margin-inline:auto;padding:24px var(--gutter);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
+.foot span,.foot a{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.foot a{text-decoration:none;padding:4px 0}
+.foot a:hover,.foot a[aria-current="page"]{color:#fff}
+.foot a[aria-current="page"]{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--silver)}
+@media (max-width:560px){h1{font-size:2rem}dl.ficha div{grid-template-columns:1fr;gap:2px}}
+@media print{body{background:#fff;color:#000}p,li,dd{color:#222}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="bar">
+  <div class="bar__in bar__in--wide">
+    <a class="logo" href="index.html" aria-label="RC Arcade, ir al inicio"><img src="assets/logo-rcarcade.png" width="960" height="227" alt="RC Arcade"></a>
+    <a class="back" href="index.html">&larr; Volver</a>
+  </div>
+</header>
+<main id="contenido">
+  <p class="notice" role="note"><strong>Aviso</strong>Texto base provisional: se completa y se revisa antes de publicar el sitio.</p>
+  <p class="kicker">Información legal</p>
+  <div class="title-wrap"><h1>Política de privacidad</h1></div>
+  <p class="updated">Versión provisional · <span class="pend">[Pendiente: fecha de la versión definitiva]</span></p>
+  <section>
+    <h2><span class="n">01</span>Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de los datos personales recogidos a través de este sitio es:</p>
+    <dl class="ficha">
+      <div><dt>Titular</dt><dd><span class="pend">[Pendiente: razón social o nombre del titular — lo aporta RC Arcade]</span></dd></div>
+      <div><dt>NIF / CIF</dt><dd><span class="pend">[Pendiente: NIF o CIF — lo aporta RC Arcade]</span></dd></div>
+      <div><dt>Domicilio</dt><dd><span class="pend">[Pendiente: domicilio del titular — lo aporta RC Arcade]</span></dd></div>
+      <div><dt>Contacto</dt><dd><a href="mailto:info@rcarcade.com">info@rcarcade.com</a></dd></div>
+    </dl>
+    <p>Esta política se ha redactado conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
+  </section>
+  <section>
+    <h2><span class="n">02</span>Cómo funciona el formulario de contacto</h2>
+    <p><strong>El formulario de contacto de este sitio no envía tus datos a ningún servidor del sitio.</strong> Al pulsar el botón, el formulario monta un mensaje con lo que hayas escrito y abre <strong>WhatsApp</strong> o tu <strong>programa de correo</strong>, según lo que elijas. El mensaje lo envías tú, desde tu dispositivo, cuando decides enviarlo.</p>
+    <p>Por eso este sitio no guarda en ninguna base de datos propia el contenido del formulario. Los campos del formulario son: nombre, empresa, teléfono o correo, tipo de interés, ciudad o provincia y un mensaje libre sobre tu evento o tu espacio. Si escribes por WhatsApp, el mensaje no incluye tu teléfono ni tu correo; si escribes por correo, sí. Solo se tratan los datos que tú decides incluir y enviar.</p>
+  </section>
+  <section>
+    <h2><span class="n">02 bis</span>Medición del uso del sitio (solo con tu consentimiento)</h2>
+    <p>Si lo aceptas en el aviso de cookies, el sitio puede medir su uso y sus campañas con herramientas de terceros (Google Tag Manager y Google Analytics, Microsoft Clarity, Píxel y API de Conversiones de Meta). Se miden <strong>eventos de uso, no datos personales</strong>: pulsaciones en botones de contacto, inicio y envío del formulario, profundidad de desplazamiento, secciones vistas y reproducción del clip. <strong>Nunca se envían tu nombre, teléfono ni correo</strong> a estas herramientas. Si no aceptas, no se carga ninguna. Si llegaste desde una campaña, el mensaje de WhatsApp puede incluir una referencia corta de esa campaña (por ejemplo «instagram/cpc»), nunca tus datos. Puedes cambiar tu decisión en <a href="index.html?cookies=1">Preferencias de cookies</a> y ver el detalle en la <a href="cookies.html">política de cookies</a>.</p>
+    <p><span class="pend">[Pendiente: el titular confirma qué herramientas activará, los encargados del tratamiento y las transferencias internacionales (Google, Meta, Microsoft)]</span></p>
+  </section>
+  <section>
+    <h2><span class="n">03</span>Finalidad y base jurídica</h2>
+    <p>Cuando nos envías un mensaje por WhatsApp o por correo, RC Arcade recibe esos datos y los usa <strong>únicamente para responder a tu consulta</strong> y, en su caso, preparar una propuesta o demostración.</p>
+    <ul>
+      <li><strong>Base jurídica:</strong> tu consentimiento, que se manifiesta al enviar el mensaje por iniciativa propia (art. 6.1.a RGPD), y la aplicación de medidas precontractuales a petición tuya (art. 6.1.b RGPD).</li>
+      <li><strong>No se toman decisiones automatizadas</strong> ni se elaboran perfiles con estos datos.</li>
+      <li>No se usan para enviarte comunicaciones comerciales no solicitadas.</li>
+    </ul>
+  </section>
+  <section>
+    <h2><span class="n">04</span>Destinatarios y servicios de terceros</h2>
+    <p>Al enviar el mensaje por WhatsApp o por correo electrónico, los datos pasan por los servicios que utilices (por ejemplo, WhatsApp y tu proveedor de correo). Esos servicios tratan los datos conforme a sus propias políticas de privacidad, de las que RC Arcade no es responsable. Te recomendamos consultarlas.</p>
+    <p>RC Arcade no cede tus datos a terceros salvo obligación legal. Si fuera necesario contar con un proveedor para gestionar las consultas recibidas, se informará aquí. <span class="pend">[Pendiente: RC Arcade debe indicar si usa algún proveedor de correo o de gestión de clientes para atender las consultas]</span></p>
+  </section>
+  <section>
+    <h2><span class="n">05</span>Plazo de conservación</h2>
+    <p>Los datos se conservan durante el tiempo necesario para atender tu consulta. Después, se mantienen bloqueados solo durante los plazos legales aplicables para atender posibles responsabilidades, y se suprimen al terminar esos plazos. Si la consulta deriva en una relación comercial, los datos se tratarán conforme a esa relación.</p>
+    <p>El plazo concreto de conservación lo fija RC Arcade: <span class="pend">[Pendiente: plazo orientativo, por ejemplo «hasta X meses desde el último contacto»]</span></p>
+  </section>
+  <section>
+    <h2><span class="n">06</span>Alojamiento del sitio</h2>
+    <p>El sitio web está alojado en: <span class="pend">[Pendiente: proveedor de alojamiento: nombre, domicilio y política de privacidad]</span></p>
+    <p>El proveedor de alojamiento puede registrar datos técnicos de la conexión (como la dirección IP) de forma estándar, para el funcionamiento y la seguridad del servicio, conforme a su política de privacidad.</p>
+  </section>
+  <section>
+    <h2><span class="n">07</span>Tus derechos</h2>
+    <p>Puedes ejercer los derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong>, así como retirar tu consentimiento en cualquier momento, sin que ello afecte a la licitud del tratamiento previo.</p>
+    <p>Para ejercerlos, escribe a <a href="mailto:info@rcarcade.com">info@rcarcade.com</a> indicando el derecho que quieres ejercer y adjuntando un medio para identificarte. Responderemos en el plazo que establece la normativa (con carácter general, un mes).</p>
+    <p>Si compartiste datos por WhatsApp, también puedes gestionarlos desde los ajustes de ese servicio, según su política.</p>
+  </section>
+  <section>
+    <h2><span class="n">08</span>Reclamación ante la autoridad de control</h2>
+    <p>Si consideras que el tratamiento de tus datos no se ajusta a la normativa, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD): <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+  </section>
+  <section>
+    <h2><span class="n">09</span>Cambios en esta política</h2>
+    <p>RC Arcade puede actualizar esta política para adaptarla a cambios legales o del sitio. La versión vigente es la publicada en esta página.</p>
+  </section>
+</main>
+<footer>
+  <div class="foot">
+    <span>&copy; 2026 RC Arcade</span>
+    <nav aria-label="Información legal">
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="privacidad.html" aria-current="page">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

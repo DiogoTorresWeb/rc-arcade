@@ -91,8 +91,11 @@ Material do cliente recebido e lido em 13/09/2026 — ver
 - [x] **Topo (27/10/2026, branch `hero-teste`, commit 17ef1d9):** palavra CARRERA atrás do carro
       recortado. Versão atual **finalizada** pelo Diogo ("funcionou bem"); refinos depois.
       **Falta registrar:** cabeçalho A ou B? e merge na `main`?
-- [ ] **PRIMEIRO (aprovado pelo Diogo em 28/10 à tarde): síntese + execução do site V3.** Ordem fixa, uma etapa por vez,
+- [x] **SITE V3 MONTADO em 28/10 noite (branch `hero-teste`, não commitado):** fotos, bordas sutis, carrinho da rolagem, rodapé, páginas legais, textos B2B (evento + fixo), rastreio com consentimento, PageSpeed 97/100/100/100. Ver `CURRENT_STATUS.md`. Faltam: parecer do revisor cego, decisão do Diogo de ir ao ar, perguntas e identificadores do cliente.
+- [x] (histórico) **PRIMEIRO (aprovado pelo Diogo em 28/10 à tarde): síntese + execução do site V3.** Ordem fixa, uma etapa por vez,
       cada uma fecha com commit e doc em dia. Detalhe e metas em `PLANO-DE-MELHORIA.md`, seção "Diretrizes aprovadas".
+      **FEITO em 28/10 noite: (1) síntese + revisor cego (6/10, correções aplicadas); ver `CURRENT_STATUS.md` para a nova ordem
+      (perguntas ao cliente e `noindex` primeiro; seções com foto esperam a resposta da pergunta 1).**
       (1) **Síntese da estratégia** em 1 só agente de modelo forte (Opus; Fable se o Diogo liberar créditos), lendo só
       arquivos locais (estudos 01 a 05, plano, quadro visual), saída `estudo/estrategia-2026-10/06-sintese.md` (até 3
       páginas), depois revisor cego; (2) **medir a linha de base do PageSpeed** do site de hoje; (3) **sistema visual**

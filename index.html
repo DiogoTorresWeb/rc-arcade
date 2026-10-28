@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RC ARCADE — No miras la carrera. Estás dentro de ella.</title>
-<meta name="description" content="Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales, sobre un circuito físico. Hasta seis simuladores simultáneos.">
+<title>RC Arcade: simuladores con coches RC reales y cámara FPV</title>
+<meta name="description" content="Para tu evento o tu centro de ocio: hasta 6 simuladores con coches RC reales en un circuito físico. Ves lo que ve el coche. Pide una propuesta.">
 <meta name="theme-color" content="#0A0B0D">
 <!-- Endereço provisório (GitHub Pages). Quando o site for para o domínio do cliente,
      trocar canonical, og:url, og:image, sitemap.xml, robots.txt e o JSON-LD abaixo. -->
@@ -12,8 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="RC Arcade">
-<meta property="og:title" content="RC ARCADE — Carreras FPV con coches RC reales">
-<meta property="og:description" content="Coches RC reales, cámara FPV en primera persona y cockpit con volante y pedales sobre un circuito físico. Hasta seis simuladores simultáneos.">
+<meta property="og:title" content="No miras la carrera. Estás dentro de ella. | RC Arcade">
+<meta property="og:description" content="Coches RC reales, cámara a bordo y cockpit con volante y pedales. Hasta 6 pilotos en un mismo circuito, para eventos e instalaciones fijas.">
 <meta property="og:url" content="https://diogotorresweb.github.io/rc-arcade/">
 <meta property="og:image" content="https://diogotorresweb.github.io/rc-arcade/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
  "sameAs":["https://www.instagram.com/rcarcade/"],
  "contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+34630380424","availableLanguage":"es"}}
 </script>
-<script>(function(){var m=/[?&]hero=(a|b)\b/.exec(location.search);document.documentElement.setAttribute('data-hero',m?m[1]:'a');})();</script>
+<script>(function(){var m=/[?&]hero=(a|b)\b/.exec(location.search);document.documentElement.setAttribute('data-hero',m?m[1]:'b');})();</script>
 
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -75,6 +75,10 @@
 
   --rule:rgba(177,176,171,.14);
   --rule-mid:rgba(177,176,171,.26);
+  --line:rgba(255,255,255,.08);
+  --line-hi:rgba(255,255,255,.16);
+  --card:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));
+  --r-card:20px;--r-img:16px;--r-ctl:12px;
 
   --sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
@@ -138,7 +142,7 @@ section{padding-block:var(--section)}
 /* ─── Cabeçalho: logo no CENTRO ─── */
 .site-header{
   position:fixed;inset:0 0 auto;z-index:60;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;
   padding:14px var(--gutter);
   transition:background-color .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
   border-bottom:1px solid transparent;
@@ -173,8 +177,7 @@ section{padding-block:var(--section)}
    aparece depois que a página rola. B: logo no centro e só o ícone de menu. */
 html[data-hero="a"] .site-header{transition:background-color .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease),opacity .4s var(--ease),visibility .4s}
 html[data-hero="a"] .site-header:not(.is-scrolled){opacity:0;visibility:hidden;pointer-events:none}
-html[data-hero="b"] .nav,
-html[data-hero="b"] .header-right .btn--primary{display:none}
+html[data-hero="b"] .nav{display:none}
 html[data-hero="b"] .menu-btn{display:block}
 html[data-hero="b"] .brand{grid-column:2}
 html[data-hero="b"] .header-right{grid-column:3}
@@ -307,9 +310,11 @@ html[data-hero="b"] .hero__corner{top:calc(52px + 1vh)}
 .hero__inner>*,.readout{opacity:1}
 .hero.is-holding .hero__inner>*,
 .hero.is-holding .readout,
-.hero.is-holding .hero__word,
 .hero.is-holding .hero__corner,
 .hero.is-holding .scroll-cue{opacity:0;transform:translateY(14px)}
+/* a palavra existe desde o início (atrás da cortina opaca da intro): só sobe 14px quando a cortina abre.
+   Assim o maior elemento do topo é pintado cedo, sem mudar nada do que o visitante vê. */
+.hero.is-holding .hero__word{transform:translateY(14px)}
 .hero__inner>*,.readout,.hero__word,.hero__corner,.scroll-cue{
   transition:opacity .9s var(--ease),transform .9s var(--ease);
 }
@@ -488,19 +493,212 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
 .wa-float{
   position:fixed;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,32px);z-index:50;
   display:inline-flex;align-items:center;gap:10px;padding:13px 18px 13px 14px;
-  background:#1FAF38;color:#fff;text-decoration:none;font:500 .9375rem/1 var(--sans);
+  background:#12803A;color:#fff;text-decoration:none;font:500 .9375rem/1 var(--sans);
   border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.45);
   opacity:0;visibility:hidden;transform:translateY(10px);
   transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s,background-color .25s var(--ease);
 }
 .wa-float.is-on{opacity:1;visibility:visible;transform:none}
-.wa-float:hover{background:#188a2c}
+.wa-float:hover{background:#0e6a31}
 .wa-float svg{flex:none}
+
+/* aviso de protótipo: mora na célula vazia do cabeçalho, nunca cobre conteúdo */
+.proto-tag{
+  grid-column:1;grid-row:1;justify-self:start;
+  font:500 .5625rem/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--silver-dim);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.proto-tag::before{content:'';flex:none;width:6px;height:6px;margin-top:3px;background:var(--red)}
+.brand{grid-column:2;grid-row:1}
+.header-right{grid-column:3;grid-row:1}
 
 footer .shell a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule-mid);padding-bottom:1px}
 footer .shell a:hover{color:#fff}
 .footer__links{display:flex;gap:22px;flex-wrap:wrap}
 
+
+/* ═══════════ V3 — sistema de bordas sutis (cartão de produto, mais leve) ═══════════
+   Uma régua só: filete de 1px quase invisível, canto arredondado generoso, brilho de 1px
+   no topo. Foto e cartão usam a mesma linha. O vermelho continua sendo só sinal gráfico. */
+.card{
+  border:1px solid var(--line);border-radius:var(--r-card);
+  background:var(--card);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:border-color .45s var(--ease),transform .45s var(--ease);
+}
+.card:hover,.card.is-lit{border-color:var(--line-hi)}
+.ph{position:relative;overflow:hidden;border-radius:var(--r-img);background:var(--surface);margin:0}
+.ph::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+.ph img,.ph video{width:100%;height:100%;object-fit:cover;display:block}
+.btn{border-radius:var(--r-ctl)}
+.sec-sub{color:var(--silver);margin-top:20px;max-width:56ch}
+
+/* ─── Qué es: 4 passos, cada um com a sua foto ─── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;padding-top:24px;border-top:2px solid var(--red)}
+.step{padding:10px;display:flex;flex-direction:column;gap:12px}
+.step .ph{aspect-ratio:4/5}
+.step__body{padding:4px 10px 12px}
+.step__num{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:var(--silver-dim);transition:color .4s var(--ease)}
+.step.is-lit .step__num{color:#fff}
+.step h3{margin:8px 0 6px}
+.step p{color:var(--silver);font-size:.9375rem}
+
+/* ─── La prueba: clipe real + ficha ─── */
+.proof{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:52px}
+.proof__clip{aspect-ratio:9/16;max-height:78vh;width:100%}
+.proof__clip .play{
+  position:absolute;inset:auto 14px 14px auto;width:44px;height:44px;border-radius:50%;z-index:2;
+  display:grid;place-items:center;background:rgba(10,11,13,.7);border:1px solid var(--line-hi);color:#fff;cursor:pointer;
+}
+.proof__tag{position:absolute;left:12px;top:12px;z-index:2;display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:999px;background:rgba(10,11,13,.66);border:1px solid var(--line);font:500 .625rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.proof__side{display:grid;gap:26px}
+.readout-big{font-family:var(--mono);color:var(--silver);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase}
+.readout-big b{display:block;font-weight:400;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;letter-spacing:.005em;color:#fff;text-transform:none;margin-top:10px}
+.specs{display:grid;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;background:var(--card)}
+.spec{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:16px 22px;border-bottom:1px solid var(--line)}
+.spec:last-child{border-bottom:0}
+.proof__note{color:var(--silver-dim);font-size:.8125rem;max-width:52ch}
+
+/* ─── Para el operador: faixa de foto + argumentos ─── */
+.band{position:relative;margin-top:44px;min-height:clamp(360px,46vw,580px);border-radius:24px;overflow:hidden;display:flex;align-items:flex-end;border:1px solid var(--line)}
+.band picture,.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.band::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,13,.3),rgba(10,11,13,.04) 38%,rgba(10,11,13,.9))}
+.band__txt{position:relative;z-index:2;padding:clamp(22px,4vw,52px)}
+.band__txt .statement{margin:0;max-width:24ch}
+.band__txt .statement .n{font-family:inherit;color:#fff;box-shadow:inset 0 -.14em 0 var(--red)}
+.args{margin-top:40px;border-top:1px solid var(--line)}
+.arg{border-bottom-color:var(--line)}
+
+/* ─── Dos formas de contratarla ─── */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.path{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.path h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+.path>p{color:var(--silver);max-width:46ch}
+.path ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.path li{padding:12px 0 12px 22px;border-bottom:1px solid var(--line);color:var(--silver);font-size:.9375rem;position:relative}
+.path li::before{content:'';position:absolute;left:0;top:24px;width:10px;height:2px;background:var(--red)}
+.path .btn{margin-top:auto;align-self:flex-start}
+.path-note{margin-top:16px;padding:20px 26px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline}
+.path-note p{color:var(--silver);max-width:70ch;font-size:.9375rem}
+
+/* ─── ¿Cabe en tu espacio?: uma foto por escala ─── */
+.sizes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.size{padding:10px;display:flex;flex-direction:column;gap:6px}
+.size .ph{aspect-ratio:4/3}
+.size__body{padding:18px 16px 14px}
+.size__body .tag{margin-bottom:12px}
+.size__body h3{margin-bottom:12px}
+.size ul{list-style:none;margin:0;padding:0;color:var(--silver);font-size:.9375rem;border-top:1px solid var(--line)}
+.size li{padding:10px 0;border-bottom:1px solid var(--line)}
+.scales-cta{border-top-color:var(--line)}
+
+/* ─── Cómo trabajamos ─── */
+.process{border-top-color:var(--line)}
+.process__row{border-bottom-color:var(--line)}
+
+/* ─── Prensa y registro: título fantasma + cartões que deslizam ─── */
+.press{position:relative;overflow:hidden}
+.ghost{font-family:'Anton',var(--sans);font-size:clamp(5rem,17vw,14rem);line-height:.8;text-transform:uppercase;color:rgba(177,176,171,.055);white-space:nowrap;user-select:none;pointer-events:none;margin:0 0 -.12em;letter-spacing:0}
+.ghost::before{content:attr(data-t)}
+.rcards{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px calc(50vw - 50%) 26px 0;margin:44px calc(50% - 50vw) 0 0;scrollbar-width:none}
+.rcards::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 min(330px,82vw);scroll-snap-align:start;overflow:hidden;display:flex;flex-direction:column}
+.rcard__cover{
+  aspect-ratio:16/10;position:relative;display:flex;align-items:flex-end;padding:18px 20px;overflow:hidden;
+  background:radial-gradient(120% 90% at 85% 0%,rgba(227,27,35,.16),transparent 60%),linear-gradient(160deg,#17181c,#0e0f12);
+  border-bottom:1px solid var(--line);
+}
+.rcard__cover b{font:400 clamp(2.4rem,4.2vw,3.2rem)/.9 'Anton',var(--sans);text-transform:uppercase;color:rgba(255,255,255,.88);letter-spacing:.01em}
+.rcard__cover::before{content:'';position:absolute;left:20px;top:18px;width:28px;height:2px;background:var(--red)}
+.rcard__body{padding:18px 20px 22px;display:grid;gap:8px;flex:1;align-content:start}
+.rcard__date{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.rcard h3{font-size:1.125rem}
+.rcard p{color:var(--silver-dim);font-size:.875rem}
+.rcard .log__link{justify-self:start;margin-top:6px}
+.rcard--empty{border-style:dashed;background:transparent;box-shadow:none}
+.rcard--empty .rcard__cover{background:none;border-bottom-style:dashed}
+.rcard--empty .rcard__cover b{color:rgba(255,255,255,.55)}
+.voices{margin-top:30px}
+.voice{margin:0;padding:24px;border-top:1px solid var(--line)}
+.voice blockquote{font-size:clamp(1.0625rem,1.5vw,1.25rem)}
+
+/* ─── Contacto: foto escurecida ao fundo, formulário em cartão ─── */
+#contacto{position:relative;isolation:isolate;overflow:hidden}
+.contact__bg{position:absolute;inset:0;z-index:-1}
+.contact__bg img{width:100%;height:100%;object-fit:cover;display:block}
+.contact__bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--black) 0%,rgba(10,11,13,.55) 30%,rgba(10,11,13,.78) 100%)}
+.form{padding:clamp(22px,3vw,36px);background:rgba(15,16,19,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.field input,.field select,.field textarea{border-radius:var(--r-ctl);border-color:var(--line-hi)}
+.direct,.direct li{border-color:var(--line)}
+.contact__next{margin-top:28px;display:grid;gap:10px;color:var(--silver);font-size:.9375rem}
+.contact__next li{list-style:none;display:flex;gap:12px;align-items:baseline}
+.contact__next span{font-family:var(--mono);font-size:.6875rem;color:var(--silver-dim);letter-spacing:.1em}
+.contact__next{padding:0}
+
+/* ─── Rodapé institucional ─── */
+footer .shell{display:block}
+footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);font-family:var(--sans);font-size:.9375rem;letter-spacing:0}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(28px,5vw,72px)}
+.foot__brand img{height:26px;width:auto;margin-bottom:18px}
+.foot__brand p{color:var(--silver-dim);max-width:38ch}
+.foot h3,.apoyos h3{margin:0 0 14px;font:500 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--silver-dim)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.foot a{color:var(--silver);text-decoration:none;border:0;padding:0}
+.foot a:hover{color:#fff}
+.apoyos{margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
+.apoyos h3{margin-bottom:16px}
+.apoyos__row{display:flex;flex-wrap:wrap;gap:12px}
+.apoyo{min-width:150px;padding:18px 22px;border:1px dashed var(--line-hi);border-radius:var(--r-ctl);color:var(--silver-dim);font:500 .6875rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.apoyos__note{margin-top:12px;color:var(--silver-dim);font-size:.8125rem}
+.foot__base{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--silver-dim);font:400 .75rem/1.5 var(--mono);letter-spacing:.04em}
+
+/* ─── Carrinho da rolagem: o circuito se desenha enquanto a página desce ───
+   Modelo medido no nickho-motorsports.nl (REFERENCIAS.md, 27/10): carro de cima, preso à
+   rolagem, itens que acendem quando ele passa. Aqui o carro corre num traçado ILUSTRATIVO
+   (não medido) e a régua vermelha do topo acompanha em qualquer tela. */
+.rail{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;pointer-events:none;background:rgba(255,255,255,.04)}
+.rail i{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(var(--p,0))}
+.circuit{
+  position:fixed;right:clamp(14px,2vw,30px);top:50%;transform:translateY(-50%);width:96px;z-index:40;
+  pointer-events:none;display:none;opacity:0;transition:opacity .6s var(--ease);
+}
+.circuit.is-on{opacity:1}
+.circuit svg{width:100%;height:auto;display:block;overflow:visible}
+.circuit__base{fill:none;stroke:rgba(255,255,255,.16);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.circuit__line{fill:none;stroke:var(--red);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.circuit__lab{margin-top:8px;text-align:center;font:500 .5625rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--silver-dim)}
+.circuit__lab b{display:block;font-weight:500;color:var(--silver)}
+.circuit__sec{display:flex;justify-content:center;gap:6px;margin-top:6px}
+.circuit__sec i{width:14px;height:2px;background:rgba(255,255,255,.18);transition:background-color .35s var(--ease)}
+.circuit__sec i.on{background:var(--red)}
+@media (min-width:1300px){.circuit{display:block}}
+
+@media (max-width:1000px){
+  .steps{grid-template-columns:1fr 1fr}
+  .proof{grid-template-columns:1fr;justify-items:center}
+  .proof__side{width:100%}
+  .paths,.sizes{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .foot__brand{grid-column:1/-1}
+}
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .step .ph{aspect-ratio:4/3}
+  .proof__clip{max-height:70vh;max-width:300px}
+  .foot{grid-template-columns:1fr}
+}
+
+/* ─── Faixa de consentimento (aceitar e recusar com o mesmo peso) ─── */
+.cmp{position:fixed;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);z-index:90;width:min(430px,calc(100vw - 24px));padding:20px;border:1px solid var(--line-hi);border-radius:var(--r-card);background:rgba(15,16,19,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.cmp__t{margin:0 0 14px;font-size:.875rem;color:var(--silver)}
+.cmp__t b{color:#fff;font-weight:500;margin-right:6px}
+.cmp__set{display:grid;gap:8px;margin-bottom:14px;font-size:.875rem;color:#fff}
+.cmp__set[hidden]{display:none}
+.cmp__set label{display:flex;gap:10px;align-items:baseline}
+.cmp__set span{color:var(--silver-dim);font-size:.8125rem}
+.cmp__b{display:flex;gap:8px;flex-wrap:wrap}
+.cmp__b .btn{flex:1 1 0;min-width:0;justify-content:center;padding:12px 8px;font-size:.875rem}
+.cmp__l{margin:12px 0 0;font-size:.75rem}
+.cmp__l a{color:var(--silver-dim)}
 
 /* ─── Intro (montada por JS; se o JS falhar, nada disso existe e a página abre normal) ─── */
 .intro{
@@ -549,7 +747,9 @@ footer .shell a:hover{color:#fff}
 @media (max-width:760px){
   .nav{display:none}
   .menu-btn{display:block}
-  .site-header{grid-template-columns:1fr auto 1fr;padding:10px var(--gutter)}
+  .site-header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);padding:10px var(--gutter)}
+  .pt-more{display:none}
+  .proto-tag{font-size:.5rem;letter-spacing:.08em}
   .header-right .btn--primary{display:none}
   /* abaixo de ~700px a linha horizontal não cabe: gira 90° e vira uma
      régua vertical à esquerda, com os passos empilhados ao lado dela */
@@ -596,10 +796,12 @@ footer .shell a:hover{color:#fff}
 <body>
 
 <header class="site-header" id="siteHeader">
+  <span class="proto-tag" role="note"><span>Sitio en construcción<span class="pt-more"><br>prototipo para el cliente</span></span></span>
   <nav class="nav" aria-label="Secciones">
     <a href="#que-es">Qué es</a>
     <a href="#prueba">La prueba</a>
-    <a href="#operador">Operador</a>
+    <a href="#formas">Contratar</a>
+    <a href="#registro">Registro</a>
     <a href="#contacto">Contacto</a>
   </nav>
 
@@ -608,7 +810,7 @@ footer .shell a:hover{color:#fff}
   </a>
 
   <div class="header-right">
-    <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
+    <a class="btn btn--primary" href="#contacto" data-track="cta_propuesta" data-track-label="cabecera">Pedir propuesta</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobilePanel" aria-label="Abrir menú">
       <svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
         <path d="M0 1h22M0 7h22M0 13h22" stroke="currentColor" stroke-width="1.5"/>
@@ -620,10 +822,10 @@ footer .shell a:hover{color:#fff}
 <div class="mobile-panel" id="mobilePanel" hidden>
   <a href="#que-es">Qué es</a>
   <a href="#prueba">La prueba</a>
-  <a href="#operador">Operador</a>
-  <a href="#escalas">Escalas</a>
-  <a href="#registro">Registro de pista</a>
-  <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
+  <a href="#formas">Contratar</a>
+  <a href="#escalas">¿Cabe en tu espacio?</a>
+  <a href="#registro">Registro</a>
+  <a class="btn btn--primary" href="#contacto" data-track="cta_propuesta" data-track-label="menu">Pedir propuesta</a>
 </div>
 
 <main id="top">
@@ -664,13 +866,13 @@ footer .shell a:hover{color:#fff}
       <div class="hero__line" aria-hidden="true"></div>
       <p class="hero__tagline">Coches RC reales en primera persona</p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="#contacto">Solicitar demostración</a>
-        <a class="btn btn--ghost" href="#operador">Ver capacidad</a>
+        <a class="btn btn--primary" href="#contacto" data-track="cta_propuesta" data-track-label="hero">Pedir propuesta</a>
+        <a class="btn btn--ghost" href="#formas" data-track="cta_formas" data-track-label="hero">Evento o instalación fija</a>
       </div>
     </div>
 
     <p class="readout">
-      Mejor vuelta
+      Tiempo por vuelta
       <span class="readout__time" id="heroLap">00:42.381</span>
     </p>
 
@@ -681,239 +883,256 @@ footer .shell a:hover{color:#fff}
     </div>
   </section>
 
-  <!-- ── 2. Qué es — los 4 pasos. A sequência numerada fica porque a ordem
-       é a informação: é a mecânica do produto, não decoração. ── -->
-  <section id="que-es">
+  <!-- ── 2. Qué es — os 4 passos, cada um com a sua foto real. A sequência numerada
+       fica porque a ordem é a informação (mecânica do produto). ── -->
+  <section id="que-es" data-sector="Qué es">
     <div class="shell">
       <span class="tag">No miras la carrera. Estás dentro de ella.</span>
-      <h2>Cuatro pasos. Cero curva de aprendizaje.</h2>
-      <p class="lead" style="margin-top:20px">La misma secuencia que ya funciona en la operación real.</p>
+      <h2 style="margin-top:18px;max-width:22ch">Un coche real. Una mirada en primera persona. Una carrera que se siente.</h2>
+      <p class="lead" style="margin-top:20px">Te sientas en un cockpit con volante y pedales y conduces un coche RC real por un circuito físico. Una cámara a bordo te manda su imagen: ves lo que ve el coche. Eso es FPV.</p>
 
-      <div class="timeline">
-        <article class="timeline__step">
-          <span class="timeline__num">01</span>
-          <h3>Elige</h3>
-          <p>Selecciona tu coche y tu circuito.</p>
+      <div class="steps">
+        <article class="step card" data-lit>
+          <figure class="ph"><img src="assets/fotos/paso-elige-560.webp" srcset="assets/fotos/paso-elige-560.webp 560w, assets/fotos/paso-elige-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Dos coches RC de competición a punto de salir en el circuito"></figure>
+          <div class="step__body"><span class="step__num">01</span><h3>Elige</h3><p>Piloto, coche y puesto asignados.</p></div>
         </article>
-        <article class="timeline__step">
-          <span class="timeline__num">02</span>
-          <h3>Siéntate</h3>
-          <p>Cockpit con volante, pedales y pantalla FPV.</p>
+        <article class="step card" data-lit>
+          <figure class="ph"><img src="assets/fotos/paso-sientate-560.webp" srcset="assets/fotos/paso-sientate-560.webp 560w, assets/fotos/paso-sientate-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Fila de cockpits con volante, pedales y pantalla"></figure>
+          <div class="step__body"><span class="step__num">02</span><h3>Siéntate</h3><p>Ajustas tu posición y recibes las instrucciones.</p></div>
         </article>
-        <article class="timeline__step">
-          <span class="timeline__num">03</span>
-          <h3>Conduce</h3>
-          <p>Cámara en primera persona, sensación real de pilotaje.</p>
+        <article class="step card" data-lit>
+          <figure class="ph"><img src="assets/fotos/paso-conduce-560.webp" srcset="assets/fotos/paso-conduce-560.webp 560w, assets/fotos/paso-conduce-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con la cámara FPV montada a bordo"></figure>
+          <div class="step__body"><span class="step__num">03</span><h3>Conduce</h3><p>Volante y pedales mueven el coche. La pantalla te enseña su camino.</p></div>
         </article>
-        <article class="timeline__step">
-          <span class="timeline__num">04</span>
-          <h3>Compite</h3>
-          <p>Tiempos de vuelta y posición medidos en directo.</p>
+        <article class="step card" data-lit>
+          <figure class="ph"><img src="assets/fotos/paso-compite-560.webp" srcset="assets/fotos/paso-compite-560.webp 560w, assets/fotos/paso-compite-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC tomando una curva del circuito"></figure>
+          <div class="step__body"><span class="step__num">04</span><h3>Compite</h3><p>Vueltas, tiempos y posición convierten la tanda en carrera.</p></div>
         </article>
       </div>
+      <p class="sec-sub" style="margin-top:28px">No hace falta saber de radiocontrol.</p>
     </div>
   </section>
 
-  <!-- ── 3. La prueba — foto real SEM tratamento: o argumento é “esto ya
-       funciona”, então a imagem tem que ser crua. ── -->
-  <section id="prueba" class="rule-top">
+  <!-- ── 3. La prueba — clipe real em loop + ficha com dados que têm fonte.
+       Fontes: 12.3 V e 25 Mbps (vídeo de 42 s), 00:42.381 (dossiê p.10), até 6 (dossiê). ── -->
+  <section id="prueba" class="rule-top" data-sector="La prueba">
     <div class="shell">
-      <h2>No es una promesa. Ya está rodando.</h2>
-      <p class="lead" style="margin-top:20px">Sesión real, con telemetría en pantalla durante la carrera.</p>
+      <h2>No es un render. Ya está rodando.</h2>
+      <p class="lead" style="margin-top:20px">Imagen real del circuito: coches de verdad, en pista, durante una sesión.</p>
 
       <div class="proof">
-        <figure class="proof__frame" style="margin:0">
-          <img src="assets/prueba-1600.jpg" width="1600" height="1066" loading="lazy" decoding="async"
-               alt="Circuito físico de RC Arcade con coches en pista durante una sesión">
-          <div class="proof__hud" aria-hidden="true">
-            <div class="proof__hud-top">
-              <span><span class="dot"></span> Señal</span>
-              <span>25 Mbps · 8 ms</span>
-            </div>
-            <div class="proof__lap">
-              Vuelta 4/6 — P1
-              <b>00:42.381</b>
-              <i>+0.814</i>
-            </div>
-          </div>
+        <figure class="ph proof__clip">
+          <span class="proof__tag"><span class="dot"></span> Pista real</span>
+          <video id="proofVideo" data-track-video muted loop playsinline preload="none" poster="assets/video/pista-poster.webp" width="540" height="960" aria-label="Vista aérea del circuito de RC Arcade con coches en pista">
+            <source src="assets/video/pista.webm" type="video/webm">
+            <source src="assets/video/pista.mp4" type="video/mp4">
+          </video>
+          <button class="play" id="proofToggle" type="button" aria-label="Pausar vídeo" aria-pressed="false">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M3 1h3v12H3zM8 1h3v12H8z"/><path class="i-play" d="M3 1l9 6-9 6z" style="display:none"/></svg>
+          </button>
         </figure>
 
-        <dl class="specs">
-          <div class="spec"><dt>Voltaje del sistema</dt><dd>12.3 V</dd></div>
-          <div class="spec"><dt>Transmisión de vídeo</dt><dd>25 Mbps</dd></div>
-          <div class="spec"><dt>Latencia</dt><dd>8 ms</dd></div>
-          <div class="spec"><dt>Mejor vuelta</dt><dd>00:42.381</dd></div>
-        </dl>
+        <div class="proof__side">
+          <p class="readout-big">Tiempo por vuelta<b class="mono">00:42.381</b></p>
+          <dl class="specs">
+            <div class="spec"><dt>Voltaje en pantalla</dt><dd>12.3 V</dd></div>
+            <div class="spec"><dt>Transmisión de vídeo</dt><dd>25 Mbps</dd></div>
+            <div class="spec"><dt>Pilotos en la misma carrera</dt><dd>Hasta 6</dd></div>
+          </dl>
+          <p class="proof__note">Telemetría de ejemplo del dossier de RC Arcade y de una sesión grabada desde el cockpit.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 4. Para el operador — núcleo comercial. Sem cards: linhas
-       editoriais separadas por filetes. Os números ficam visíveis de cara,
-       como manda o DESIGN-DIRECTION.md. ── -->
-  <section id="operador" class="rule-top">
+  <!-- ── 4. Lo que gana quien la contrata — núcleo comercial ── -->
+  <section id="operador" class="rule-top" data-sector="Contratar">
     <div class="shell">
-      <h2>Una atracción difícil de confundir con otra.</h2>
+      <h2>Lo que gana quien la contrata.</h2>
 
-      <p class="statement">Hasta <span class="n">seis</span> simuladores simultáneos sobre <span class="n">un</span> circuito compartido.</p>
+      <div class="band">
+        <picture>
+          <source media="(max-width:700px)" srcset="assets/fotos/operador-retrato-640.webp 640w, assets/fotos/operador-retrato-960.webp 960w" sizes="100vw">
+          <img src="assets/fotos/operador-faixa-1920.webp" srcset="assets/fotos/operador-faixa-1280.webp 1280w, assets/fotos/operador-faixa-1920.webp 1920w" sizes="(max-width:1300px) 94vw, 1180px" width="1920" height="1032" loading="lazy" decoding="async" alt="Escudo de RC Arcade encendido sobre el pórtico de salida del circuito">
+        </picture>
+        <div class="band__txt">
+          <p class="statement">Hasta <span class="n">seis</span> simuladores con coches reales, en <span class="n">un</span> solo circuito compartido.</p>
+        </div>
+      </div>
 
       <div class="args">
-        <article class="arg">
-          <h3>Diferenciación</h3>
-          <p>Ninguna otra atracción combina coche real, cámara FPV y cockpit físico sobre un mismo circuito.</p>
+        <article class="arg"><h3>Diferenciación</h3><p>No es un videojuego. No es solo radiocontrol. Difícil de confundir con otra actividad.</p></article>
+        <article class="arg"><h3>Escalabilidad</h3><p>Se configura según tu espacio y tu demanda: de compacta a completa.</p></article>
+        <article class="arg"><h3>Rotación</h3><p>Sesiones cortas y claras, y competiciones que puedes programar.</p></article>
+        <article class="arg"><h3>Contenido</h3><p>Coches reales, pantallas y clasificación: imágenes que se graban y se comparten sin parar la carrera.</p></article>
+      </div>
+      <p class="sec-sub">La carrera también se vive desde fuera.</p>
+    </div>
+  </section>
+
+  <!-- ── 5. Dos formas de contratarla: evento e instalação fixa com o mesmo peso
+       (decisão do Diogo, 28/10). Competição é reforço das duas. ── -->
+  <section id="formas" class="rule-top" data-sector="Dos formas">
+    <div class="shell">
+      <h2>Dos formas de contratarla.</h2>
+      <p class="lead" style="margin-top:20px">Para unos días o para quedarse. La misma carrera.</p>
+
+      <div class="paths">
+        <article class="path card" data-lit>
+          <span class="tag">Evento</span>
+          <h3>Llevamos la carrera a tu evento.</h3>
+          <p>Ferias, festivales, activaciones de marca y acciones de empresa. Nuestro equipo monta el circuito, recibe a los participantes y lanza las carreras. Tú contratas una actividad lista para funcionar.</p>
+          <ul>
+            <li>Montaje, configuración y pruebas, a cargo de nuestro equipo.</li>
+            <li>Briefing a cada piloto, control de carrera y atención de incidencias.</li>
+            <li>Tu marca en barreras, puentes, pantallas, coches y clasificación.</li>
+            <li>Carrera, contrarreloj, equipos o activación de marca: tú eliges el formato.</li>
+          </ul>
+          <a class="btn btn--primary" href="#contacto" data-interes="evento" data-track="cta_propuesta" data-track-label="evento">Pedir propuesta de evento</a>
         </article>
-        <article class="arg">
-          <h3>Escalabilidad</h3>
-          <p>El sistema se adapta al espacio disponible, desde una instalación compacta hasta el circuito completo.</p>
+
+        <article class="path card" data-lit>
+          <span class="tag">Instalación fija</span>
+          <h3>Una atracción propia en tu centro.</h3>
+          <p>Para centros de ocio, locales especializados y espacios comerciales. El circuito es modular y se ajusta a tu superficie, tu aforo y tu público.</p>
+          <ul>
+            <li>Escala compacta o completa, con hasta seis puestos.</li>
+            <li>Trazado a medida: longitud, dificultad y zonas para el público.</li>
+            <li>Sesiones claras y competiciones programables.</li>
+            <li>El público ve correr los coches y espera su turno.</li>
+          </ul>
+          <a class="btn btn--primary" href="#contacto" data-interes="instalacion" data-track="cta_propuesta" data-track-label="instalacion">Pedir propuesta para mi centro</a>
         </article>
-        <article class="arg">
-          <h3>Rotación</h3>
-          <p>Sesiones y competiciones programables: el flujo de clientes no depende de horarios fijos.</p>
-        </article>
-        <article class="arg">
-          <h3>Contenido</h3>
-          <p>Cada sesión genera material visual y conversación. La telemetría y el cronómetro son parte del espectáculo.</p>
-        </article>
+      </div>
+
+      <div class="path-note card">
+        <span class="tag tag--quiet">Competición</span>
+        <p>¿Liga, ranking o final? Las dos formas admiten formato competición: tiempos, posiciones y clasificación entre tandas.</p>
+        <a class="btn btn--quiet" href="#contacto" data-interes="competicion" data-track="cta_propuesta" data-track-label="competicion">Consultar</a>
       </div>
     </div>
   </section>
 
-  <!-- ── 5. Las escalas — parcial: medidas reais pendentes do cliente ── -->
-  <section id="escalas" class="rule-top">
+  <!-- ── 6. ¿Cabe en tu espacio? — uma foto por escala; sem medidas inventadas ── -->
+  <section id="escalas" class="rule-top" data-sector="Tu espacio">
     <div class="shell">
       <h2>¿Cabe en tu espacio?</h2>
 
-      <div class="scales">
-        <article class="scale">
-          <span class="tag">Compacto</span>
-          <h3>Operación ágil</h3>
-          <ul>
-            <li>Menos puestos de pilotaje</li>
-            <li>Circuito reducido</li>
-            <li>Rotación rápida de clientes</li>
-          </ul>
+      <div class="sizes">
+        <article class="size card" data-lit>
+          <figure class="ph"><img src="assets/fotos/escala-compacto-640.webp" srcset="assets/fotos/escala-compacto-640.webp 640w, assets/fotos/escala-compacto-1000.webp 1000w" sizes="(max-width:1000px) 92vw, 560px" width="640" height="480" loading="lazy" decoding="async" alt="Coche RC y arco del circuito visto desde arriba"></figure>
+          <div class="size__body">
+            <span class="tag">Compacto</span><h3>Operación ágil</h3>
+            <ul><li>Pocos puestos de pilotaje.</li><li>Trazado modular ajustado a tu superficie.</li></ul>
+          </div>
         </article>
-        <article class="scale">
-          <span class="tag">Completo</span>
-          <h3>Hasta seis simuladores</h3>
-          <ul>
-            <li>Circuito compartido completo</li>
-            <li>Competición con posición en vivo</li>
-            <li>Capacidad máxima de la atracción</li>
-          </ul>
+        <article class="size card" data-lit>
+          <figure class="ph"><img src="assets/fotos/escala-completo-640.webp" srcset="assets/fotos/escala-completo-640.webp 640w, assets/fotos/escala-completo-1000.webp 1000w" sizes="(max-width:1000px) 92vw, 560px" width="640" height="480" loading="lazy" decoding="async" alt="Circuito completo de RC Arcade con curvas, pórtico y barreras"></figure>
+          <div class="size__body">
+            <span class="tag">Completo</span><h3>Hasta seis simuladores</h3>
+            <ul><li>Hasta seis simuladores con coches reales.</li><li>Todos en un mismo circuito, en la misma carrera.</li><li>Más capacidad por tanda.</li></ul>
+          </div>
         </article>
       </div>
 
       <div class="scales-cta">
-        <p>Cuéntanos cuántos metros cuadrados, qué altura y qué conexión eléctrica tienes, y te proponemos la configuración que cabe.</p>
-        <a class="btn btn--primary" href="#contacto" data-interes="instalacion">Enviar las medidas de mi espacio</a>
+        <p>Mándanos los metros, la altura y la toma eléctrica de tu espacio, o el lugar y la fecha de tu evento. Te proponemos la configuración que cabe.</p>
+        <a class="btn btn--primary" href="#contacto" data-interes="instalacion" data-track="cta_medidas">Enviar mis medidas</a>
       </div>
     </div>
   </section>
 
-  <!-- ── Cómo trabajamos — os 4 passos e o texto vêm da apresentação do próprio
-       cliente (site rcarcade.es, "Colaboración", 28/10/2026). ── -->
-  <section id="proceso" class="rule-top">
+  <!-- ── Cómo trabajamos — passos do próprio cliente (rcarcade.com, "Colaboración") ── -->
+  <section id="proceso" class="rule-top" data-sector="Cómo trabajamos">
     <div class="shell">
       <span class="tag">Cómo trabajamos</span>
-      <h2 style="margin-top:18px">Cada proyecto se diseña alrededor del espacio.</h2>
+      <h2 style="margin-top:18px;max-width:24ch">Cada proyecto se diseña alrededor del espacio y del objetivo.</h2>
       <div class="process">
         <article class="process__row"><span class="process__num">01</span><h3>Definir</h3><p>Ubicación, público, fechas y duración.</p></article>
-        <article class="process__row"><span class="process__num">02</span><h3>Configurar</h3><p>Trazado, puestos, carrera y personalización.</p></article>
+        <article class="process__row"><span class="process__num">02</span><h3>Configurar</h3><p>Trazado, puestos, formato de carrera y tu marca.</p></article>
         <article class="process__row"><span class="process__num">03</span><h3>Instalar</h3><p>Transporte, montaje, pruebas y briefing.</p></article>
-        <article class="process__row"><span class="process__num">04</span><h3>Activar</h3><p>Participantes, resultados y contenidos.</p></article>
+        <article class="process__row"><span class="process__num">04</span><h3>Activar</h3><p>Participantes, resultados y contenido.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- ── Registro de pista — só fatos datados que o Instagram do cliente prova
-       (conferidos em 28/10/2026). Sem número que não seja visível na fonte. ── -->
-  <section id="registro" class="rule-top">
+  <!-- ── Prensa y registro — só o que aconteceu, com data e fonte. Título fantasma e
+       cartões que deslizam (estrutura do nickho-motorsports.nl; conteúdo é nosso).
+       O cartão vazio é de propósito: "cuando haya otra nota, entra aquí". ── -->
+  <section id="registro" class="rule-top press" data-sector="Registro">
     <div class="shell">
+      <p class="ghost" aria-hidden="true" data-t="Prensa"></p>
       <span class="tag">Registro de pista</span>
-      <h2 style="margin-top:18px">Ya ha pasado por la televisión.</h2>
-      <p class="lead" style="margin-top:20px">El Hormiguero (Antena 3) llevó una carrera de RC Arcade a su programa el 7 de octubre de 2026. El vídeo supera los 6.000 «me gusta» en Instagram.</p>
+      <h2 style="margin-top:18px;max-width:22ch">Ya está en pista. Y ya ha salido en televisión.</h2>
+      <p class="lead" style="margin-top:20px">Fechas y lugares reales, de julio a octubre de 2026.</p>
+    </div>
 
-      <div class="log">
-        <article class="log__row">
-          <span class="log__date">24–26 oct. 2026</span>
-          <div class="log__what"><h3>Volrace Motorshow</h3><p>Carreras gratis contra uno de nuestros pilotos.</p></div>
-          <span class="log__where">Feria de Zaragoza</span>
-          <a class="log__link" href="https://www.instagram.com/rcarcade/p/De6p88Utn-6/" target="_blank" rel="noopener">Ver en Instagram</a>
+    <div class="shell">
+      <div class="rcards" tabindex="0" aria-label="Registro de pista, desliza para ver más">
+        <article class="rcard card">
+          <div class="rcard__cover"><b>TV</b></div>
+          <div class="rcard__body">
+            <span class="rcard__date">7 oct. 2026 · Televisión</span>
+            <h3>El Hormiguero (Antena 3)</h3>
+            <p>Carrera de coches teledirigidos entre David Bustamante y Pablo Motos. Colaboración oficial con @rcarcade.</p>
+            <a class="log__link" href="https://www.instagram.com/elhormiguero/reel/DeNVhYgk969/" target="_blank" rel="noopener">Ver el vídeo</a>
+          </div>
         </article>
-        <article class="log__row">
-          <span class="log__date">7 oct. 2026</span>
-          <div class="log__what"><h3>El Hormiguero · Antena 3</h3><p>Carrera de coches teledirigidos entre David Bustamante y Pablo Motos.</p></div>
-          <span class="log__where">Televisión</span>
-          <a class="log__link" href="https://www.instagram.com/elhormiguero/reel/DeNVhYgk969/" target="_blank" rel="noopener">Ver el vídeo</a>
+        <article class="rcard card">
+          <div class="rcard__cover"><b>Zaragoza</b></div>
+          <div class="rcard__body">
+            <span class="rcard__date">24–26 oct. 2026 · Feria de Zaragoza</span>
+            <h3>Volrace Motorshow</h3>
+            <p>Carreras gratis para el público contra uno de nuestros pilotos.</p>
+            <a class="log__link" href="https://www.instagram.com/rcarcade/p/De6p88Utn-6/" target="_blank" rel="noopener">Ver en Instagram</a>
+          </div>
         </article>
-        <article class="log__row">
-          <span class="log__date">2–3 jul. 2026</span>
-          <div class="log__what"><h3>Jornada de puertas abiertas</h3><p>Presentación oficial: pilotaje en primera persona con coches reales.</p></div>
-          <span class="log__where">Madrid</span>
-          <span></span>
+        <article class="rcard card">
+          <div class="rcard__cover"><b>Madrid</b></div>
+          <div class="rcard__body">
+            <span class="rcard__date">2–3 jul. 2026 · Madrid</span>
+            <h3>Jornada de puertas abiertas</h3>
+            <p>Presentación oficial: pilotaje en primera persona con coches reales.</p>
+          </div>
+        </article>
+        <article class="rcard card rcard--empty">
+          <div class="rcard__cover"><b>Tu nota</b></div>
+          <div class="rcard__body">
+            <span class="rcard__date">Próximamente</span>
+            <h3>Próximas apariciones</h3>
+            <p>Aquí iremos sumando ferias, vídeos y notas de prensa.</p>
+          </div>
         </article>
       </div>
 
-      <!-- PROVISÓRIO (28/10/2026): comentários públicos do vídeo do El Hormiguero, sem
-           o nome de usuário, só até haver depoimento de cliente final. Pontuação
-           normalizada, palavras originais. Trocar e apagar este bloco quando chegarem
-           os depoimentos reais (PLANO-DE-MELHORIA.md, "Provas sociais"). -->
+      <!-- PROVISÓRIO (28/10/2026): comentários públicos do vídeo do El Hormiguero, sem nome de
+           usuário, só até haver depoimento de cliente final. Trocar quando chegarem os reais. -->
       <div class="voices" data-provisional="true">
         <figure class="voice"><blockquote>«¿Dónde hay un circuito de estos?»</blockquote><figcaption>Comentario público · Instagram, oct. 2026</figcaption></figure>
         <figure class="voice"><blockquote>«Me invitáis a hacer eso porfa (pago si hace falta)»</blockquote><figcaption>Comentario público · Instagram, oct. 2026</figcaption></figure>
         <figure class="voice"><blockquote>«Una auténtica pasada»</blockquote><figcaption>Comentario público · Instagram, oct. 2026</figcaption></figure>
       </div>
-      <p class="voices-note">Comentarios del público en el vídeo de El Hormiguero. El público ya pregunta dónde probarlo.</p>
+      <p class="voices-note">Comentarios públicos en el vídeo de El Hormiguero, oct. 2026. El público ya pregunta dónde probarlo.</p>
     </div>
   </section>
 
-  <!-- ── 6. Las tres vías. Premissa de trabalho registrada em
-       ESTRUTURA-DO-SITE.md: instalação fixa como via principal. ── -->
-  <section id="vias" class="rule-top">
-    <div class="shell">
-      <h2>Tres formas de entrar en pista.</h2>
-
-      <div class="ways">
-        <article class="way way--main">
-          <span class="tag">Vía principal</span>
-          <div>
-            <h3>Instalación fija</h3>
-            <p>El operador incorpora la atracción de forma permanente en su centro de ocio.</p>
-          </div>
-          <a class="btn btn--primary" href="#contacto" data-interes="instalacion">Solicitar información</a>
-        </article>
-
-        <article class="way">
-          <span class="tag tag--quiet">Segunda puerta</span>
-          <div>
-            <h3>Evento temporal</h3>
-            <p>Contratación para ferias, activaciones de marca o eventos puntuales.</p>
-          </div>
-          <a class="btn btn--ghost" href="#contacto" data-interes="evento">Consultar disponibilidad</a>
-        </article>
-
-        <article class="way">
-          <span class="tag tag--quiet">Apoyo</span>
-          <div>
-            <h3>Formato competición</h3>
-            <p>Liga o ranking entre pilotos. Refuerza la propuesta; no es la puerta de entrada.</p>
-          </div>
-          <a class="btn btn--ghost" href="#contacto" data-interes="competicion">Saber más</a>
-        </article>
-      </div>
+  <!-- ── Contacto. O formulário não envia nada a servidor: monta a mensagem e abre o
+       WhatsApp (ou o correo) do cliente. No WhatsApp não vão telefone nem correo, só nome,
+       empresa e o pedido; a referência de campanha (utm) entra se existir. ── -->
+  <section id="contacto" class="rule-top" data-sector="Contacto">
+    <div class="contact__bg" aria-hidden="true">
+      <img src="assets/fotos/contacto-fondo-960.webp" srcset="assets/fotos/contacto-fondo-960.webp 960w, assets/fotos/contacto-fondo-1600.webp 1600w" sizes="100vw" width="960" height="1020" loading="lazy" decoding="async" alt="">
     </div>
-  </section>
-
-  <!-- ── Contacto. O formulário não envia nada a servidor nenhum: monta a mensagem
-       e abre o WhatsApp (ou o correo) do cliente. Números/e-mail: públicos no
-       Instagram e no site do cliente; CONFIRMAR que são os comerciais. ── -->
-  <section id="contacto" class="rule-top">
     <div class="shell contact__grid">
       <div class="contact__intro">
-        <span class="tag">Contacto</span>
-        <h2 style="margin-top:18px">Cuéntanos tu espacio y preparamos una propuesta.</h2>
-        <p class="lead">Cinco datos bastan para una primera configuración: tipo de espacio o evento, ubicación y fechas, público, duración y nivel de personalización.</p>
+        <span class="tag">Pedir propuesta</span>
+        <h2 style="margin-top:18px">Cinco datos bastan para una primera propuesta.</h2>
+        <p class="lead">Tipo de espacio o evento, lugar y fechas, público, duración y nivel de personalización. Con eso preparamos la configuración.</p>
+        <ul class="contact__next">
+          <li><span>01</span> Nos cuentas tu evento o tu espacio.</li>
+          <li><span>02</span> Preparamos una primera propuesta de configuración.</li>
+          <li><span>03</span> La ajustamos contigo: trazado, puestos y formato.</li>
+        </ul>
         <ul class="direct">
           <li><a href="https://wa.me/34630380424" target="_blank" rel="noopener"><span>WhatsApp</span><span class="mono">+34 630 38 04 24</span></a></li>
           <li><a href="mailto:info@rcarcade.com"><span>Correo</span><span>info@rcarcade.com</span></a></li>
@@ -921,46 +1140,102 @@ footer .shell a:hover{color:#fff}
         </ul>
       </div>
 
-      <form class="form" id="contactForm" novalidate>
+      <form class="form card" id="contactForm" novalidate>
         <div class="form__row">
           <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" type="text" autocomplete="name" required></div>
-          <div class="field"><label for="f-empresa">Centro o empresa</label><input id="f-empresa" name="empresa" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="f-empresa">Empresa</label><input id="f-empresa" name="empresa" type="text" autocomplete="organization"></div>
         </div>
-        <div class="field"><label for="f-contacto">Teléfono o correo</label><input id="f-contacto" name="contacto" type="text" autocomplete="email" required></div>
-        <div class="field">
-          <label for="f-interes">¿Qué buscas?</label>
-          <select id="f-interes" name="interes">
-            <option value="instalacion">Instalación fija en mi centro de ocio</option>
-            <option value="evento">Evento, feria o activación de marca</option>
-            <option value="competicion">Liga o competición</option>
-            <option value="espacio">Quiero comprobar si cabe en mi espacio</option>
-            <option value="otro">Otra consulta</option>
-          </select>
+        <div class="field"><label for="f-contacto">Teléfono o correo</label><input id="f-contacto" name="contacto" type="text" autocomplete="off" inputmode="email"></div>
+        <div class="form__row">
+          <div class="field">
+            <label for="f-interes">¿Qué buscas?</label>
+            <select id="f-interes" name="interes">
+              <option value="evento">Evento, feria o festival</option>
+              <option value="empresa">Acción de empresa o activación de marca</option>
+              <option value="instalacion">Instalación fija en mi centro o local</option>
+              <option value="competicion">Liga o competición</option>
+              <option value="otro">Otra consulta</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-ciudad">Ciudad o provincia</label><input id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2"></div>
         </div>
-        <div class="field"><label for="f-mensaje">Tu espacio o evento</label><textarea id="f-mensaje" name="mensaje" placeholder="Ubicación, fechas, público previsto, duración, metros cuadrados…"></textarea></div>
+        <div class="field"><label for="f-mensaje">Tu evento o tu espacio</label><textarea id="f-mensaje" name="mensaje" placeholder="Lugar y fechas, público previsto, duración, metros disponibles, si quieres tu marca en la pista…"></textarea></div>
         <div class="form__actions">
-          <button class="btn btn--primary" type="submit">Enviar por WhatsApp</button>
-          <button class="btn btn--ghost" type="button" id="sendMail">Enviar por correo</button>
+          <button class="btn btn--primary" type="submit" data-track="cta_enviar_whatsapp">Pedir propuesta por WhatsApp</button>
+          <button class="btn btn--ghost" type="button" id="sendMail" data-track="cta_enviar_correo">Pedir propuesta por correo</button>
         </div>
-        <p class="form__note" id="formNote" role="status">Al enviar se abre tu WhatsApp o tu correo con estos datos. Esta web no guarda nada.</p>
+        <p class="form__note" id="formNote" role="status">Al enviar se abre tu WhatsApp o tu correo con el mensaje listo. Esta web no guarda tus datos. Más información en <a href="privacidad.html">Privacidad</a>.</p>
       </form>
     </div>
   </section>
 
 </main>
 
-<a class="wa-float" id="waFloat" href="https://wa.me/34630380424" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<div class="rail" aria-hidden="true"><i id="railFill"></i></div>
+
+<!-- circuito ilustrativo (não medido): o carro corre enquanto a página desce -->
+<div class="circuit" id="circuit" aria-hidden="true">
+  <svg viewBox="0 0 100 170" fill="none">
+    <path id="cirBase" class="circuit__base" d="M28 158 L28 112 C28 98 18 94 18 80 C18 64 36 60 44 52 C52 44 46 30 58 24 C72 17 88 24 86 40 C84 56 66 58 64 70 C62 82 80 86 82 100 C84 116 66 122 62 134 C59 146 70 158 78 158"/>
+    <path id="cirLine" class="circuit__line" d="M28 158 L28 112 C28 98 18 94 18 80 C18 64 36 60 44 52 C52 44 46 30 58 24 C72 17 88 24 86 40 C84 56 66 58 64 70 C62 82 80 86 82 100 C84 116 66 122 62 134 C59 146 70 158 78 158"/>
+    <path d="M22 158 H34" stroke="#fff" stroke-width="1.4" stroke-dasharray="2 2"/>
+    <g id="cirCar"><g transform="scale(.9)">
+      <rect x="-8" y="-9" width="2.6" height="5.5" rx="1" fill="#fff"/><rect x="5.4" y="-9" width="2.6" height="5.5" rx="1" fill="#fff"/>
+      <rect x="-8" y="4" width="2.6" height="5.5" rx="1" fill="#fff"/><rect x="5.4" y="4" width="2.6" height="5.5" rx="1" fill="#fff"/>
+      <rect x="-5.5" y="-12" width="11" height="24" rx="4.5" fill="#E31B23"/>
+      <rect x="-3.6" y="-4.5" width="7.2" height="7" rx="2" fill="#0A0B0D" opacity=".85"/>
+    </g></g>
+  </svg>
+  <div class="circuit__lab"><b id="cirName">Qué es</b>Trazado ilustrativo</div>
+  <div class="circuit__sec" id="cirSec"><i></i><i></i><i></i></div>
+</div>
+
+<a class="wa-float" id="waFloat" href="https://wa.me/34630380424" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" data-track="click_whatsapp" data-track-label="flotante">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.08.9.92-3-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm-3.1 3.9c-.2 0-.5.07-.75.35-.26.28-.98.96-.98 2.34s1 2.7 1.15 2.9c.14.18 1.96 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.67-.68 1.9-1.34.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.54-.33-.28-.14-1.67-.82-1.93-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.1-.16.2-.33.21-.6.07-.3-.14-1.2-.44-2.28-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.1-.19.05-.35-.02-.5-.07-.14-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55Z"/></svg>
   <span>WhatsApp</span>
 </a>
 
 <footer>
   <div class="shell">
-    <span>© 2026 RC Arcade</span>
-    <span class="footer__links">
-      <a href="https://www.instagram.com/rcarcade/" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:info@rcarcade.com">info@rcarcade.com</a>
-    </span>
+    <div class="foot">
+      <div class="foot__brand">
+        <img src="assets/logo-rcarcade.png" width="960" height="227" alt="RC Arcade" loading="lazy" decoding="async">
+        <p>RC ARCADE · La carrera empieza aquí. Experiencia FPV, coches RC reales, hasta 6 simuladores.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="https://wa.me/34630380424" target="_blank" rel="noopener">WhatsApp +34 630 38 04 24</a></li>
+          <li><a href="mailto:info@rcarcade.com">info@rcarcade.com</a></li>
+          <li><a href="https://www.instagram.com/rcarcade/" target="_blank" rel="noopener">Instagram @rcarcade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+          <li><a href="#" data-cmp-open>Preferencias de cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Espaço reservado: logotipos oficiais de apoio público só entram com o arquivo e o texto
+         exatos que o programa exige (o cliente os aporta). Não são selos reais. -->
+    <div class="apoyos">
+      <h3>Con el apoyo de</h3>
+      <div class="apoyos__row">
+        <div class="apoyo">Espacio reservado<br>Logotipo oficial</div>
+        <div class="apoyo">Espacio reservado<br>Logotipo oficial</div>
+      </div>
+      <p class="apoyos__note">Se completa con los logotipos y textos que exija cada programa de apoyo.</p>
+    </div>
+
+    <div class="foot__base">
+      <span>© 2026 RC Arcade · Sitio en construcción (prototipo)</span>
+      <span>Titular, NIF y domicilio: ver <a href="aviso-legal.html">Aviso legal</a></span>
+    </div>
   </div>
 </footer>
 
@@ -1035,49 +1310,128 @@ footer .shell a:hover{color:#fff}
   onScrollWa();
 
   /* ── Contacto: o formulário monta a mensagem e abre o WhatsApp ou o correo do
-       cliente. Nada vai para servidor nenhum (sem conta externa, sem guardar
-       dados de ninguém). Números públicos do cliente; confirmar que são os comerciais. ── */
+       cliente. Nada vai para servidor nenhum. No WhatsApp não vão telefone nem correo
+       (o cliente já vê o número de quem escreve); a referência de campanha entra se existir. ── */
   var CONTACT = { phone: '34630380424', email: 'info@rcarcade.com' };
   var form = $('#contactForm'), note = $('#formNote');
   var interesTxt = {
-    instalacion: 'una instalación fija en mi centro de ocio',
-    evento: 'un evento, feria o activación de marca',
+    evento: 'un evento, feria o festival',
+    empresa: 'una acción de empresa o activación de marca',
+    instalacion: 'una instalación fija en mi centro o local',
     competicion: 'una liga o competición',
-    espacio: 'comprobar si cabe en mi espacio',
     otro: 'otra consulta'
   };
-  var compose = function () {
+  var track = function (n, p) { try { if (window.rcaTrack) window.rcaTrack(n, p || {}); } catch (e) {} };
+  var compose = function (withContact) {
     var f = form.elements;
     var l = ['Hola, soy ' + f.nombre.value.trim() + (f.empresa.value.trim() ? ' (' + f.empresa.value.trim() + ')' : '') + '.',
-             'Me interesa ' + (interesTxt[f.interes.value] || interesTxt.otro) + '.'];
+             'Quiero pedir una propuesta para ' + (interesTxt[f.interes.value] || interesTxt.otro) + '.'];
+    if (f.ciudad.value.trim()) l.push('Ciudad o provincia: ' + f.ciudad.value.trim());
     if (f.mensaje.value.trim()) l.push('', f.mensaje.value.trim());
-    l.push('', 'Contacto: ' + f.contacto.value.trim());
+    if (withContact && f.contacto.value.trim()) l.push('', 'Contacto: ' + f.contacto.value.trim());
+    var ref = window.rcaTrack && window.rcaTrack.ref && window.rcaTrack.ref();
+    if (ref) l.push('', 'Ref: ' + ref);
     return l.join('\n');
   };
-  var check = function () {
+  var check = function (needContact) {
     var f = form.elements;
-    if (f.nombre.value.trim() && f.contacto.value.trim()) return true;
-    note.textContent = 'Falta tu nombre y un teléfono o correo para que podamos responderte.';
+    if (f.nombre.value.trim() && (!needContact || f.contacto.value.trim())) return true;
+    note.textContent = needContact ? 'Falta tu nombre y un teléfono o correo para que podamos responderte.' : 'Falta tu nombre para empezar el mensaje.';
     (f.nombre.value.trim() ? f.contacto : f.nombre).focus();
     return false;
   };
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!check()) return;
-      window.open('https://wa.me/' + CONTACT.phone + '?text=' + encodeURIComponent(compose()), '_blank', 'noopener');
+      if (!check(false)) return;
+      window.open('https://wa.me/' + CONTACT.phone + '?text=' + encodeURIComponent(compose(false)), '_blank', 'noopener');
+      track('generate_lead', { channel: 'whatsapp', interest: form.elements.interes.value, has_city: !!form.elements.ciudad.value.trim() });
       note.textContent = 'Se ha abierto WhatsApp con tu mensaje. Pulsa enviar allí.';
     });
     $('#sendMail').addEventListener('click', function () {
-      if (!check()) return;
-      window.location.href = 'mailto:' + CONTACT.email + '?subject=' + encodeURIComponent('Solicitud de demostración — RC Arcade') +
-        '&body=' + encodeURIComponent(compose());
+      if (!check(true)) return;
+      window.location.href = 'mailto:' + CONTACT.email + '?subject=' + encodeURIComponent('Solicitud de propuesta — RC Arcade') +
+        '&body=' + encodeURIComponent(compose(true));
+      track('generate_lead', { channel: 'email', interest: form.elements.interes.value, has_city: !!form.elements.ciudad.value.trim() });
       note.textContent = 'Se ha abierto tu correo con el mensaje listo.';
     });
     /* os botões de outras seções escolhem o que a pessoa busca */
     document.querySelectorAll('[data-interes]').forEach(function (a) {
       a.addEventListener('click', function () { form.elements.interes.value = a.getAttribute('data-interes'); });
     });
+  }
+
+  /* ── Clipe da pista: toca só quando aparece, para quando sai (e só carrega aí) ── */
+  var pv = $('#proofVideo'), pt = $('#proofToggle'), userPaused = false;
+  if (pt && pv) {
+    pt.addEventListener('click', function () {
+      userPaused = !pv.paused;
+      if (userPaused) pv.pause(); else { var q = pv.play(); if (q && q.catch) q.catch(function () {}); }
+      pt.setAttribute('aria-pressed', String(userPaused));
+      pt.setAttribute('aria-label', userPaused ? 'Reproducir vídeo' : 'Pausar vídeo');
+      pt.querySelector('.i-pause').style.display = userPaused ? 'none' : '';
+      pt.querySelector('.i-play').style.display = userPaused ? '' : 'none';
+    });
+  }
+  if (pv) {
+    if (reduced.matches || !('IntersectionObserver' in window)) { pv.controls = true; }
+    else {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting) { if (!userPaused) { var p = pv.play(); if (p && p.catch) p.catch(function () {}); } }
+          else pv.pause();
+        });
+      }, { threshold: .35 }).observe(pv);
+    }
+  }
+
+  /* ── Itens que acendem quando passam pelo centro da tela (modelo nickho-motorsports) ── */
+  if ('IntersectionObserver' in window) {
+    var lit = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { en.target.classList.toggle('is-lit', en.isIntersecting); });
+    }, { rootMargin: '-42% 0px -42% 0px' });
+    document.querySelectorAll('[data-lit]').forEach(function (el) { lit.observe(el); });
+  }
+
+  /* ── Carrinho da rolagem: o carro corre no traçado ilustrativo e a régua do topo
+       acompanha. Sem biblioteca; falha aberto; com "reduzir movimento" não há suavização. ── */
+  var cir = $('#circuit'), cirLine = $('#cirLine'), cirCar = $('#cirCar'), railEl = document.querySelector('.rail');
+  if (cirLine && cirCar && cirLine.getTotalLength) {
+    var LEN = cirLine.getTotalLength();
+    cirLine.style.strokeDasharray = LEN;
+    var cirName = $('#cirName'), cirSec = document.querySelectorAll('#cirSec i');
+    var secs = [].slice.call(document.querySelectorAll('main section[data-sector]'));
+    var cur = 0, tgt = 0, busy = false;
+    var paint = function (p) {
+      cirLine.style.strokeDashoffset = LEN * (1 - p);
+      var a = cirLine.getPointAtLength(Math.max(0, LEN * p - 1)), b = cirLine.getPointAtLength(Math.min(LEN, LEN * p + 1));
+      var c = cirLine.getPointAtLength(LEN * p);
+      var ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI + 90;
+      cirCar.setAttribute('transform', 'translate(' + c.x.toFixed(2) + ' ' + c.y.toFixed(2) + ') rotate(' + ang.toFixed(1) + ')');
+      if (railEl) railEl.style.setProperty('--p', p.toFixed(4));
+      for (var i = 0; i < cirSec.length; i++) cirSec[i].classList.toggle('on', p > 0.001 && i <= Math.min(2, Math.floor(p * 3)));
+    };
+    var label = function () {
+      var name = '';
+      for (var i = 0; i < secs.length; i++) { if (secs[i].getBoundingClientRect().top <= innerHeight * .4) name = secs[i].getAttribute('data-sector'); }
+      if (cirName && name && cirName.textContent !== name) cirName.textContent = name;
+    };
+    var loop = function () {
+      var d = tgt - cur;
+      cur = (reduced.matches || Math.abs(d) < .0006) ? tgt : cur + d * .14;
+      paint(cur);
+      if (cur !== tgt) requestAnimationFrame(loop); else busy = false;
+    };
+    var onCir = function () {
+      var h = document.documentElement.scrollHeight - innerHeight;
+      tgt = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+      if (cir) cir.classList.toggle('is-on', window.scrollY > innerHeight * .6);
+      label();
+      if (!busy) { busy = true; requestAnimationFrame(loop); }
+    };
+    window.addEventListener('scroll', onCir, { passive: true });
+    window.addEventListener('resize', onCir);
+    onCir();
   }
 
   /* ─────────────────────────────────────────────────────────────
@@ -1094,6 +1448,7 @@ footer .shell a:hover{color:#fff}
 
   var seen = false;
   try { seen = sessionStorage.getItem('rca_intro_v1') === '1'; } catch (e) {}
+  if (location.hash && location.hash.length > 1) seen = true; /* link de anúncio para #contacto: sem cortina */
 
   var reveal = function () {
     hero.classList.remove('is-holding', 'is-arriving');
@@ -1189,5 +1544,11 @@ footer .shell a:hover{color:#fff}
   }
 })();
 </script>
+<script>
+/* Rastreo: preencher com os identificadores do cliente (ver runbooks/rastreo.md).
+   Vazio = nenhuma ferramenta externa carrega. Nada carrega sem consentimento. */
+window.RCA_TRACK = { gtm: '', ga4: '', meta: '', clarity: '', endpoint: '' };
+</script>
+<script src="assets/track.js" defer></script>
 </body>
 </html>

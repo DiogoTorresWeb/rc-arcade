@@ -35,3 +35,6 @@ não aconteceu. Ver `estudo/vibe-coding-toolkit.md` pras ferramentas adotadas
 ## Segurança (herdado do `diogo-base/CLAUDE.md`)
 Nunca hardcode segredo/chave de API. `.env` + `.gitignore` antes do primeiro
 commit real de código. Rotacionar qualquer chave que vazar.
+
+## Regra do protótipo (Diogo, 28/10/2026)
+Até o cliente aprovar e pagar e o site subir, o trabalho é **protótipo para apresentar**. Direito de imagem (rosto, banner da Red Bull, logos de terceiros) **não é bloqueio**: usar a melhor foto. Banner de terceiro nunca se altera. A autorização vira condição só na hora de ir ao ar. O protótipo pode ficar público com o aviso "Sitio en construcción" (Diogo, 28/10 noite).

@@ -1,0 +1,88 @@
+[
+  {
+    "tela": "pc",
+    "altura": 10162,
+    "secoes": 10,
+    "erros": [],
+    "falhas": [],
+    "scrollLateral": false,
+    "imagensQuebradas": [],
+    "h1": 1,
+    "linksInternosQuebrados": [],
+    "semAlt": 0,
+    "titulo": "RC Arcade: simuladores con coches RC reales y cámara FPV",
+    "pesoImagens": 816682,
+    "video": {
+      "tocando": true,
+      "tempo": 1.9
+    },
+    "itensAcesos": 4,
+    "faixaCookies": {
+      "aparece": true,
+      "botoes": [
+        [
+          "Rechazar",
+          124,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ],
+        [
+          "Ajustes",
+          124,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ],
+        [
+          "Aceptar todo",
+          124,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ]
+      ],
+      "primeiroDoTeclado": true
+    }
+  },
+  {
+    "tela": "celular",
+    "altura": 14115,
+    "secoes": 10,
+    "erros": [],
+    "falhas": [],
+    "scrollLateral": false,
+    "imagensQuebradas": [],
+    "h1": 1,
+    "linksInternosQuebrados": [],
+    "semAlt": 0,
+    "titulo": "RC Arcade: simuladores con coches RC reales y cámara FPV",
+    "pesoImagens": 587271,
+    "video": {
+      "tocando": true,
+      "tempo": 1.8
+    },
+    "itensAcesos": 1,
+    "faixaCookies": {
+      "aparece": true,
+      "botoes": [
+        [
+          "Rechazar",
+          103,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ],
+        [
+          "Ajustes",
+          103,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ],
+        [
+          "Aceptar todo",
+          103,
+          40,
+          "rgba(0, 0, 0, 0)"
+        ]
+      ],
+      "primeiroDoTeclado": true
+    }
+  }
+]

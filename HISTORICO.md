@@ -212,3 +212,25 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - O Diogo aprovou o quadro visual e a execução. Pediu: síntese da estratégia com modelo forte sem estourar limite, execução focada em PageSpeed e atenção do contratante, bordas finas sutis (estilo Apple, mais leves), rodapé institucional sério, e nada perdido.
 - O quadro visual passou a ficar versionado em `estudo/visual/board-visual.html` (as fotos continuam fora do git, no acervo local).
 - Sessão encerrada com passagem: o estado está em `PLANO-DE-MELHORIA.md`, `TASKS.md` e `CURRENT_STATUS.md`.
+
+## 28/10/2026 (noite) — Síntese e revisão cega
+- Um agente (Opus, sem web) escreveu `estudo/estrategia-2026-10/06-sintese.md` a partir dos estudos 01 a 05, do plano e do quadro visual.
+- O revisor cego deu 6/10. Achados aceitos e aplicados: a ordem não obedecia ao risco da premissa "instalação fixa" (agora as perguntas ao cliente saem primeiro e as seções esperam); o corte das três vias se apoiava num formulário que não mede nada (só abre WhatsApp ou e-mail); vídeo decidido sem ser visto; `noindex` e `canonical` passaram para o começo; El Hormiguero virou prova de existência; publicar no `.es` virou conversa com o cliente; PageSpeed e jurídico corrigidos.
+- Conferido no quadro visual: a síntese segue a direção aprovada. Pontos abertos: a foto 9864 está em "Qué es" mas fora da lista das 12; a 9861 está na lista de uso e na de banner Red Bull; o vídeo em "La prueba" seria um terceiro movimento (o quadro diz só dois).
+
+## 28/10/2026 (noite) — Regra do protótipo
+- O Diogo esclareceu: antes de aprovação e pagamento do cliente, tudo é protótipo e imagem não bloqueia (rosto, banner da Red Bull, nomes de outras empresas). Usar a melhor foto. A síntese e o status foram ajustados; a regra está também em `CLAUDE.md`. Cuidado mantido: o protótipo com essas fotos não vai ao repositório público.
+
+## 28/10/2026 (noite) — Decisões do Diogo e cabeçalho B
+- Foco em evento com uma parte de instalação fixa; cabeçalho B como padrão; protótipo público com aviso de "en construcción"; prova liberada. Detalhe em `DECISIONS.md`. A regra anterior de repositório público (protótipo não vai ao GitHub Pages) está **superada**: ele pode ficar público com o aviso.
+
+## 28/10/2026 (noite) — Site V3 montado
+- Fotos reais tratadas e leves (`scripts/preparar-fotos.py`), clipe da pista de 1 MB, bordas sutis, carrinho da rolagem, rodapé institucional, páginas legais, textos B2B para evento e instalação fixa (redator Opus, `estudo/estrategia-2026-10/07-textos-es.md`).
+- Camada de rastreio com consentimento (`assets/track.js`, `runbooks/rastreo.md`), IDs vazios.
+- Robô de auto-revisão (`scripts/revisar-visual.mjs`) e Lighthouse: 97/100/100/100. Achados e corrigidos no caminho: rodapé com linhas curtas, painel de cookies aberto, título fantasma com contraste ruim, ordem de títulos, LCP que pulou para 3,3 s por causa da intro (corrigido).
+- Revisor cego sobre o site construído: pedido, parecer pendente.
+
+## 28/10/2026 (noite, 2) — Revisão cega do site V3 e correções
+- Revisor cego (Opus): 5/10. Aceito e corrigido: faixa de cookies com Aceitar destacado (agora três botões iguais, primeiro item do teclado, aparece só com ferramenta ativa, vence em 24 meses, revogar apaga cookies e recarrega); textos legais que contradiziam o código; etiqueta fixa que cobria botões (foi para o cabeçalho); vídeo sem pausa (WCAG 2.2.2); contraste do WhatsApp; link para `#contacto` travado pela intro; GA4 contando a visita em dobro; frases sem prova ("el mismo equipo detrás", "Nadie la confunde", "Mejor vuelta").
+- Decisão minha, avisar o Diogo: botão "Pedir propuesta" agora aparece também ao lado do menu no cabeçalho B do PC (o revisor mostrou que sem ele não havia botão fixo de proposta).
+- Não resolvido por depender do cliente: respostas comerciais (modelo, preço, pessoas por hora, m², montagem, seguro, razão social).
