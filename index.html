@@ -468,18 +468,18 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
 .race__pos{position:relative;transform:translateY(-110vh);will-change:transform}
 /* brilho vermelho suave embaixo do carro (o 'escudo aceso' da marca); no lugar da sombra, que sumia no fundo preto.
    Fica na camada que não gira, então não vira ao contrário quando o carro dá a volta. */
-.race__pos::before{content:'';position:absolute;left:-36%;right:-36%;top:4%;bottom:4%;background:radial-gradient(closest-side,rgba(227,27,35,.14),rgba(227,27,35,.05) 55%,transparent 100%);pointer-events:none}
+.race__pos::before{content:'';position:absolute;left:-36%;right:-36%;top:4%;bottom:4%;background:radial-gradient(closest-side,rgba(227,27,35,.09),rgba(227,27,35,.03) 55%,transparent 100%);pointer-events:none}
 .race__lane[data-state="mid"] .race__pos{transform:none;transition:transform .8s cubic-bezier(.16,1,.3,1)}
 .race__lane[data-state="top"] .race__pos{transform:translateY(-110vh);transition:transform .8s cubic-bezier(.7,0,.84,0)}
 .race__lane[data-state="bottom"] .race__pos{transform:translateY(110vh);transition:transform .8s cubic-bezier(.7,0,.84,0)}
 .race__lane.is-jump .race__pos{transition:none}
 .race__rot{position:relative;transform:rotate(var(--rot,0deg))}
-.race__car{display:block;width:clamp(150px,19vw,268px);height:auto}
+.race__car{display:block;width:clamp(164px,20.7vw,292px);height:auto}
 .is-race .circuit{opacity:0!important}
 @media (max-width:800px){
   .race{grid-template-columns:minmax(0,1fr) 100px;gap:10px}
   .race .process__row{grid-template-columns:44px minmax(0,1fr);min-height:clamp(210px,40vh,380px)}
-  .race__car{width:120px}
+  .race__car{width:131px}
 }
 @media (prefers-reduced-motion:reduce){
   .race__lane[data-state] .race__pos{transform:none;transition:none}
@@ -1211,7 +1211,7 @@ html.rv-on [data-rise].in{opacity:1;transform:none}
         <article class="process__row"><span class="process__num">04</span><h3>Activar</h3><p>Participantes, resultados y contenido.</p></article>
       </div>
       <div class="race__lane" data-state="top" aria-hidden="true">
-        <div class="race__slide"><div class="race__pos"><div class="race__rot"><img class="race__car" src="assets/fotos/carro-43-280.webp" srcset="assets/fotos/carro-43-280.webp 280w, assets/fotos/carro-43-488.webp 488w" sizes="(max-width:800px) 120px, 268px" width="488" height="1021" loading="lazy" decoding="async" alt=""></div></div></div>
+        <div class="race__slide"><div class="race__pos"><div class="race__rot"><img class="race__car" src="assets/fotos/carro-43-300.webp" srcset="assets/fotos/carro-43-300.webp 300w, assets/fotos/carro-43-532.webp 532w" sizes="(max-width:800px) 131px, 292px" width="532" height="1059" loading="lazy" decoding="async" alt=""></div></div></div>
       </div>
     </div>
   </section>
