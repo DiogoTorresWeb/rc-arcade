@@ -3,6 +3,7 @@
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
 > Atualizado: 28/10/2026 (tarde, passagem) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
+> Última passagem: `runbooks/passagem-2026-10-28-tarde.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
 
 **Cliente:** RC ARCADE (Espanha, material em espanhol) — pilotagem de carro RC real com câmera
