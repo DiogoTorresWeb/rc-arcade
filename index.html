@@ -446,6 +446,42 @@ footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap
 .process__row h3{font-size:clamp(1.25rem,2vw,1.625rem)}
 .process__row p{color:var(--silver);font-size:.9375rem}
 
+/* ─── O carro que desce (Cómo trabajamos): coche nº 43 visto desde arriba, frente hacia abajo.
+   Mecanismo medido no nickho-motorsports.nl (REFERENCIAS.md, MEDICAO.md): carro preso à seção (sticky),
+   entra de cima em 0,8 s (expo.out) quando o começo da lista cruza o centro, sai por baixo em 0,8 s (expo.in)
+   perto do fim e só então gira 180° fora da tela; desliza ±12 % enquanto a seção passa; cada passo acende
+   em vermelho ao cruzar o centro. Quatro camadas: lane (sticky) > slide (±12 %) > pos (entra/sai) > rot (180°). ─── */
+.race{display:grid;grid-template-columns:minmax(0,1fr) clamp(200px,24vw,300px);gap:clamp(16px,3vw,48px);margin-top:48px}
+.race .process{margin-top:0;padding-bottom:42vh}
+.race .process__row{grid-template-columns:64px minmax(0,1fr);min-height:clamp(260px,54vh,520px);align-content:center;row-gap:10px}
+.race .process__row h3{
+  font-family:'Anton',var(--sans);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:1;
+  font-size:clamp(2.1rem,5vw,4rem);color:#4a4c50;transition:color .6s var(--ease);
+}
+.race .process__row p{grid-column:2;max-width:34ch}
+.race .process__num{transition:color .6s var(--ease)}
+.race .process__row.is-lit h3,.race .process__row.is-lit .process__num{color:var(--red);transition-duration:.2s}
+.race__lane{position:sticky;top:0;height:100vh;align-self:start;display:flex;align-items:center;justify-content:center;pointer-events:none;clip-path:inset(0 -240px)}
+.race__slide{transform:translateY(var(--sl,0%));will-change:transform}
+.race__pos{transform:translateY(-110vh)}
+.race__lane[data-state="mid"] .race__pos{transform:none;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.race__lane[data-state="top"] .race__pos{transform:translateY(-110vh);transition:transform .8s cubic-bezier(.7,0,.84,0)}
+.race__lane[data-state="bottom"] .race__pos{transform:translateY(110vh);transition:transform .8s cubic-bezier(.7,0,.84,0)}
+.race__lane.is-jump .race__pos{transition:none}
+.race__rot{transform:rotate(var(--rot,0deg))}
+.race__car{display:block;width:clamp(150px,19vw,268px);height:auto;filter:drop-shadow(0 22px 30px rgba(0,0,0,.65))}
+.is-race .circuit{opacity:0!important}
+@media (max-width:800px){
+  .race{grid-template-columns:minmax(0,1fr) 100px;gap:10px}
+  .race .process__row{grid-template-columns:44px minmax(0,1fr);min-height:clamp(240px,48vh,420px)}
+  .race__car{width:120px}
+}
+@media (prefers-reduced-motion:reduce){
+  .race__lane[data-state] .race__pos{transform:none;transition:none}
+  .race__slide{transform:none}
+  .race .process__row h3,.race .process__num{transition:none}
+}
+
 /* ─── Registro de pista: datas e lugares reais ─── */
 .log{margin-top:48px;border-top:1px solid var(--rule)}
 .log__row{display:grid;grid-template-columns:170px minmax(0,1.3fr) minmax(0,1fr) auto;gap:clamp(12px,3vw,40px);align-items:baseline;padding:24px 0;border-bottom:1px solid var(--rule)}
@@ -1161,11 +1197,16 @@ html.rv-on [data-rise].in{opacity:1;transform:none}
     <div class="shell">
       <span class="tag">Cómo trabajamos</span>
       <h2 style="margin-top:18px;max-width:24ch">Cada proyecto se diseña alrededor del espacio y del objetivo.</h2>
+    </div>
+    <div class="shell race" id="race">
       <div class="process">
         <article class="process__row"><span class="process__num">01</span><h3>Definir</h3><p>Ubicación, público, fechas y duración.</p></article>
         <article class="process__row"><span class="process__num">02</span><h3>Configurar</h3><p>Trazado, puestos, formato de carrera y tu marca.</p></article>
         <article class="process__row"><span class="process__num">03</span><h3>Instalar</h3><p>Transporte, montaje, pruebas y briefing.</p></article>
         <article class="process__row"><span class="process__num">04</span><h3>Activar</h3><p>Participantes, resultados y contenido.</p></article>
+      </div>
+      <div class="race__lane" data-state="top" aria-hidden="true">
+        <div class="race__slide"><div class="race__pos"><div class="race__rot"><img class="race__car" src="assets/fotos/carro-43-280.webp" srcset="assets/fotos/carro-43-280.webp 280w, assets/fotos/carro-43-488.webp 488w" sizes="(max-width:800px) 120px, 268px" width="488" height="1021" loading="lazy" decoding="async" alt=""></div></div></div>
       </div>
     </div>
   </section>
@@ -1672,6 +1713,42 @@ html.rv-on [data-rise].in{opacity:1;transform:none}
     }, { rootMargin: '-42% 0px -42% 0px' });
     document.querySelectorAll('[data-lit]').forEach(function (el) { lit.observe(el); });
   }
+
+  /* ── O carro que desce (Cómo trabalhamos): ver o CSS .race. Entra quando o começo da lista cruza o
+       centro, sai por baixo perto do fim (e só então gira 180°), volta ao contrário ao subir; cada passo
+       acende em vermelho quando o seu topo passa do centro. Com "reduzir movimento" o carro fica parado. ── */
+  (function () {
+    var race = document.getElementById('race');
+    if (!race) return;
+    var lane = race.querySelector('.race__lane'), slide = race.querySelector('.race__slide'), rot = race.querySelector('.race__rot');
+    var rows = [].slice.call(race.querySelectorAll('.process__row'));
+    var state = 'top', timer = 0, ticking = false;
+    var go = function (next) {
+      if (next === state) return;
+      var jump = (state === 'top' && next === 'bottom') || (state === 'bottom' && next === 'top');
+      var arrive = function (s) { rot.style.setProperty('--rot', s === 'bottom' ? '180deg' : '0deg'); };
+      clearTimeout(timer);
+      if (jump) { lane.classList.add('is-jump'); }
+      state = next;
+      lane.setAttribute('data-state', next);
+      if (jump) { arrive(next); void lane.offsetWidth; lane.classList.remove('is-jump'); }
+      else if (next !== 'mid') { timer = setTimeout(function () { if (state === next) arrive(next); }, 820); }
+    };
+    var frame = function () {
+      ticking = false;
+      var r = race.getBoundingClientRect(), vh = innerHeight, c = vh / 2;
+      document.body.classList.toggle('is-race', r.top < vh && r.bottom > 0);
+      rows.forEach(function (row) { row.classList.toggle('is-lit', row.getBoundingClientRect().top < c); });
+      if (reduced.matches) { lane.setAttribute('data-state', 'mid'); return; }
+      go(r.top > c ? 'top' : (r.bottom < vh * 1.15 ? 'bottom' : 'mid'));
+      var p = Math.max(0, Math.min(1, (c - r.top) / Math.max(1, r.height - c)));
+      slide.style.setProperty('--sl', (-12 + 24 * p).toFixed(2) + '%');
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    frame();
+  })();
 
   /* ── Carrinho da rolagem: o carro corre no traçado ilustrativo e a régua do topo
        acompanha. Sem biblioteca; falha aberto; com "reduzir movimento" não há suavização. ── */

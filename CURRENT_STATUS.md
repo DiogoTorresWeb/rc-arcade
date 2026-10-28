@@ -25,7 +25,7 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 | Lo que gana quien la contrata | Faixa de foto (escudo aceso) + 4 argumentos |
 | Dos formas de contratarla | **Evento** e **Instalación fija** com o mesmo peso; competição como reforço |
 | ¿Cabe en tu espacio? | Uma foto por escala; convite a mandar as medidas (sem m² inventado) |
-| Cómo trabajamos | 4 passos do próprio cliente |
+| Cómo trabajamos | 4 passos do próprio cliente, em lista grande (Anton) que fica vermelha ao descer, com o carro nº 43 de cima passando ao lado (local, não publicado) |
 | Prensa y registro | Título fantasma + cartões que deslizam (El Hormiguero, Volrace, Madrid) + cartão vazio "tu nota" + 3 comentários públicos (provisórios) |
 | Contacto | Foto escurecida ao fundo; formulário (evento primeiro, cidade, WhatsApp sem telefone/correo na mensagem, referência de campanha) |
 | Rodapé | Institucional: contato, legal (aviso, privacidade, cookies, preferências), **espaço reservado** para logotipos oficiais de apoio (não são selos reais) |
@@ -37,8 +37,9 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 Detalhe, decisões e manifesto de fontes: `runbooks/passagem-2026-10-28-noite-site-2.md` (**ler a seção 1 inteira**). Proposta visual aprovada: `estudo/visual/board-visual.html`.
 
 **Site (esta conversa):**
-1. **Carro de rally nº 43 com câmera FPV (decidido)** visto de cima, coreografia do Nick Ho; se não ficar bem feito, o carro sai e fica só a lista vermelha. **Situação (28/10, 23h30):** nenhuma foto é de cima; IA bloqueada (plano grátis, 1,42 crédito, nada gasto); vetor v1 (`estudo/carro-43/`) ficou com cara de ícone, **não recomendado**. **Aguarda o Diogo:** assinar plano da ferramenta de imagem para refazer de cima, ou tirar o carro. **Aberto:** se o carro sair, o mini-traçado ilustrativo do site sai junto?
-2. Lista que fica vermelha ao descer (aprovada). 3. Anton nos `h2` das seções.
+1. **Carro de rally nº 43 com câmera FPV: FEITO LOCAL (28/10, 23h55), não publicado, aguarda o Diogo olhar.** Imagem feita por IA (Higgsfield, conta do Diogo, 12 créditos) a partir das fotos reais 9882 e 9884; vista de cima, frente para baixo; o "Eh" do teto e o "OINOS" são o "43" e o "SONIC" **de cabeça para baixo**, como é a pintura real vista com a frente para baixo. Mora em **Cómo trabajamos** (os 4 passos do cliente viraram a lista grande que fica vermelha; carro preso à seção, entra/sai/gira como no Nick Ho). Receitas: `estudo/carro-43/` e `scripts/preparar-carro.py`; teste `node estudo/carro-43/testar-carro.mjs`. Medido (local, celular): 92 a 96 / 100 / 100 / 100, 718 KB; robô sem erro. **Decisão aberta do Diogo:** a pintura "de cabeça para baixo" (virar o carro, ou virar só os textos?); se o mini-traçado `#circuit` sai (hoje fica, só some enquanto o carro passa).
+2. **Lista que fica vermelha: FEITA junto** (cada passo fica vermelho quando o topo passa do centro da tela e continua vermelho; volta ao subir).
+3. Anton nos `h2` das seções (a lista de Cómo trabajamos já usa Anton).
 4. **Votos do Diogo:** tópicos da galeria, efeito de cor no celular, foto da faixa grande, vídeos (B), "pode" das 6 ideias do texto.
 5. Fotos reais por evento (hoje só Madrid tem foto; TV e Zaragoza sem). 6. Publicar o crédito "Por Agencia Bienquisto" do rodapé (só com "publica").
 7. Do quadro visual ainda falta: foto no título de "La prueba" e "Cómo trabajamos" (esta pede foto de montagem ao cliente); vídeos de Cheste; selos de apoio (só com arquivo oficial do cliente).
