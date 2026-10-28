@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 28/10/2026 (passagem da madrugada) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 28/10/2026 (etapas 2.1 e 2.2 feitas) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
 
@@ -20,21 +20,22 @@ Site no ar: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/
 | Qué es | Redesenhada (timeline) | no ar |
 | La prueba | Formato antigo. "8 ms" e "Vuelta 4/6 — P1" sem fonte no inventário | no ar; plano V2 item 7 |
 | Para el operador | Redesenhada (manifesto) | no ar |
-| ¿Cabe en tu espacio? | Formato antigo; faltam as medidas em m² do cliente | no ar; plano V2 item 6 |
+| ¿Cabe en tu espacio? | Formato antigo; sem medidas em m² (o cliente não deu). O "pendente" virou convite a mandar as medidas | `hero-teste` (28/10), não no ar |
 | Tres vías | Formato antigo; foto com banner da Red Bull, que nunca se altera | no ar; plano V2 item 5 |
-| Contacto | Redesenhada (fechamento silencioso); sem aprovação explícita do Diogo | no ar; faltam dados do cliente |
+| Contacto | **Feito em 28/10:** formulário (monta mensagem e abre WhatsApp/correio do cliente), botão de WhatsApp flutuante, canais diretos. Números e e-mail são os públicos do cliente, **a confirmar** que são os comerciais | `hero-teste`, não no ar |
+| Cómo trabajamos, Registro de pista | **Novas em 28/10:** 4 passos do próprio cliente; Volrace Zaragoza, El Hormiguero, jornada de Madrid; 3 comentários públicos como prova **provisória** | `hero-teste`, não no ar |
 | **Ideias novas** (pedido de 27/10, só plano) | scroll com o carro descendo; modelo de "Contacto"; "Media y Artículos" — todos do nickho-motorsports.nl | `TASKS.md` |
 
-## Próximo passo (pivô de 27/10: estratégia e acervo antes do scroll)
+## Próximo passo (28/10: plano em árvore, `PLANO-DE-MELHORIA.md`)
 
-1. **Acervo:** conferir se o download de "Open Rcarcade" terminou (`cliente/acervo-dropbox/`), extrair os 3 zips,
-   completar `cliente/ACERVO.md`. Ver os vídeos novos (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`)
-   com o pipeline completo e procurar a **vista de cima do carro** em `360`, `action5` e nas 23 fotos.
-2. **Estratégia:** quatro estudos prontos em `estudo/estrategia-2026-10/` (01 mercado, 02 SEO/GEO, 03 voz do comprador, 04 referências). Ler, corrigir `CONCORRENTES.md`, fazer a síntese, passar o
-   revisor cego. A síntese em Fable depende de o Diogo liberar créditos (senão, Opus).
-3. **Diogo decide depois da síntese:** cabeçalho A ou B; se `hero-teste` entra na `main` (versão antiga fica na
-   tag `antes-v2-2026-10-27`); onde entra o scroll; "ré" ou não. Só então o V0, numa branch.
-4. Depois, `PLANO-IMPLEMENTACAO-V2.md` no item 4.
+Feitas na branch `hero-teste` (hero intocado): etapas 2.1 (contato, SEO, limpeza das notas internas) e 2.2 (provas).
+1. **Etapa 2.4, o carro que anda com a rolagem:** decidir a versão. Só com foto real de cima; sem ela, traçado da pista
+   com marcador. Antes, olhar o acervo (`cliente/ACERVO.md`) atrás da vista de cima.
+2. **Etapa 2.3, resto da página:** refazer "La prueba", "Para el operador", "Tres vías" no nível do topo (foto com banner
+   da Red Bull nunca se altera). Falta o aviso legal e a privacidade (precisa de razão social e NIF do cliente).
+3. **Google Meu Negócio e Instagram** do cliente: preparar as mudanças por escrito; ele (ou o Diogo com acesso) aplica.
+4. **Acervo:** terminar "Open Rcarcade" em segundo plano.
+5. **Diogo decide:** cabeçalho A ou B; se `hero-teste` entra na `main` (versão antiga na tag `antes-v2-2026-10-27`); créditos do Fable.
 
 **Achados que já mudam o rumo (ainda sem decisão):** o botão principal talvez deva ser "Solicitar demostración";
 o operador compra número (m², jogadores por hora, retorno), e o dossiê não traz nenhum — pedir ao cliente; há
