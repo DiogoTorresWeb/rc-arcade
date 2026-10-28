@@ -41,3 +41,13 @@ Cópia completa das 4 variações (`.es`/`.com`, com/sem `www`), do texto visív
 domínio, em `cliente/acervo-dropbox/site-antigo-rcarcade-es/` (fora do git: a página traz e-mail e telefones do cliente).
 Páginas: `.es` md5 `9825b7e5aa7b981e1239b7e663b1fb02` (17/09/2026), `.com` md5 `699ffcfdac5d5007ff2b725ca7374ec0` (01/10/2026).
 Análise e nota em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`. Se o cliente mudar o site, copiar de novo e guardar ao lado.
+
+## Extraído e olhado em 28/10/2026 (arquivos em `cliente/acervo-dropbox/extraido/`, fora do git)
+- **RCA publicacion insta:** as 23 fotos (DSC09860 a DSC09905) abertas e vistas: **4000 × 5000 px** (câmera profissional), quase todas
+  pista, carros e cockpits, poucas com rosto; várias mostram banner da Red Bull, arco Dunlop e outros logos de terceiros.
+  A 9884 mostra a câmera FPV montada no carro; 9876 e 9877 mostram o escudo RC ARCADE aceso; 9882 e 9861 são ângulo alto.
+- **Rcarcade Cont:** `RC ARCADE CHESTE HD.mp4` (1080 × 1920, 88 MB) visto por quadros: evento num autódromo, tomadas aéreas da pista
+  inteira, carros com câmera, cockpits. **Áudio ainda não transcrito.** Logos extraídos (`marca video.png` incluída).
+  Os diretórios `Editados`, `estreno lona` e `Jornada de puertas abiertas/ON BOARD 3` **existem no zip, mas só `estreno lona`
+  traz arquivos** (7 vídeos "Avatar", 8 GB, ainda sem ver); `Editados` e `Jornada` vieram vazios (o Dropbox omitiu o conteúdo).
+- Quadro de proposta visual: `cliente/acervo-dropbox/extraido/board-visual.html` (abrir com o servidor local do site).

@@ -76,6 +76,8 @@ O perfil existe com o nome **RCARCADE**, e está longe de pronto:
 - Conteúdo: sorteio de uma corrida grátis de 6 minutos, aviso do **Volrace Motorshow Zaragoza (24–26/10, Feria de Zaragoza)**, "Duelo de coches teledirigidos", "Presentación oficial: ¿Te imaginas competir desde dentro del coche?" e a **Jornada de puertas abiertas** (qui 2 e sex 3 de julho, Madrid), vídeos de cabine e pista. Uma publicação traz o selo "AI content" do Instagram.
 - Visual: mistura cartazes bem acabados (preto, vermelho, neon) com vídeos crus sem capa. Falta uma grade coerente, e a bio fala ao consumidor ("experiencias") e não ao operador.
 - **El Hormiguero (CONFIRMADO):** o vídeo de 07/10/2026 está publicado como colaboração entre `@elhormiguero` e `@rcarcade`, com 6,2 mil curtidas, e o perfil do programa escreve: "¡Gracias a @rcarcade por traernos esta experiencia!". Isso fecha a dúvida do estudo 02 e é **a melhor prova social que existe hoje**.
+- **Link quebrado na bio:** os dois links são `rcarcade.com` e `rcardace.com` (letras trocadas; esse domínio não existe). Consertar.
+- **Marca:** `RC ARCADE` (figurativa, classe 41, inclui "organização de competições de condução simulada e radiocontrole") está **em tramitação na OEPM desde 05/10/2026, no nome de uma pessoa física** (M4407321; consulta pública de 28/10). Quem opera, portanto, pode ser autônomo, e o NIF para o aviso legal só o próprio cliente dá. Não se procurou mais nada pessoal.
 - O número de WhatsApp aparece no cartaz da apresentação oficial: já existe um contato público por WhatsApp (não copiado aqui; confirmar que é o comercial).
 
 ## Provas sociais: o que dá para usar já

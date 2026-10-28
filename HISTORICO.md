@@ -199,3 +199,11 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
   (endereço provisório do GitHub Pages; trocar quando for para o domínio do cliente).
 - Conferido no navegador (computador e celular 390 px): sem rolagem lateral, formulário valida e monta a mensagem certa.
   Erro achado e corrigido no caminho: uma quebra de linha dentro do texto do script derrubava o script inteiro.
+
+## 28/10/2026 — Fotos do cliente abertas, razão social e proposta visual
+- As 23 fotos do Dropbox são de câmera profissional (4000 × 5000) e o vídeo do evento tem tomadas aéreas da pista: a "vista de cima do
+  carro" existe. Isso muda o diagnóstico do site: o problema não é falta de material, é que o site usa 2 fotos. Proposta com as
+  fotos reais nos lugares: `cliente/acervo-dropbox/extraido/board-visual.html` (fora do git; aguarda aprovação do Diogo).
+- Razão social e NIF: agente de pesquisa (Sonnet) não achou empresa. Na OEPM a marca RC ARCADE (M4407321) está em tramitação desde
+  05/10/2026 no nome de uma pessoa física. Não se buscou NIF/endereço de pessoa; vem do cliente. Links da bio do Instagram: um é
+  `rcarcade.com`, o outro `rcardace.com` (erro de digitação, domínio inexistente).
