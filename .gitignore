@@ -11,3 +11,7 @@ runbooks/revisao-visual/*.png
 
 # Proposta ao cliente: tem prints do site antigo e dados dele, fica so no disco
 cliente/propuesta/
+
+# capturas temporárias dos testes do carro
+estudo/carro-43/_*/
+estudo/carro-43/_*.png
