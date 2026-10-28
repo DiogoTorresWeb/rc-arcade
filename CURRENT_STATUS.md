@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 28/10/2026 (noite, site V3) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 28/10/2026 (noite, site V3 publicado) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Última passagem: `runbooks/passagem-2026-10-28-tarde.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
@@ -11,9 +11,9 @@ FPV em primeira pessoa, num circuito físico; até 6 simuladores simultâneos, t
 posição medidos. Site B2B para operador de centro de lazer. Identidade já existe: vermelho
 `#E31B23`, preto `#0A0B0D`, prata `#B1B0AB`.
 
-## Onde estamos (28/10 noite): site V3 montado na branch `hero-teste`
+## Onde estamos (28/10 noite): site V3 **publicado** (main = hero-teste, commit 1fae62f)
 
-Site no ar hoje: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/ (ainda a versão antiga). **A V3 está só na `hero-teste`, não commitada.**
+**No ar desde 28/10/2026 (ordem do Diogo, "do jeito que está"):** `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/ (a versão antiga está na tag `antes-v2-2026-10-27`). Medido no endereço público (celular, Lighthouse): **96 · 100 · 100 · 100**, LCP 1,6 s, 722 KB; o site antigo `rcarcade.es` no mesmo teste: 74 · 89 · 96 · 91, LCP 13,5 s, 4,3 MB.
 Medido no servidor local (celular): **desempenho 97 · acessibilidade 100 · boas práticas 100 · SEO 100**, LCP 1,5 s, 789 KB; PC 99/100/100/100 (antes: 97/100/100/100, 603 KB).
 O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebrado nem rolagem lateral, em PC e celular.
 
@@ -36,7 +36,13 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 ## Próximo passo (28/10 noite)
 
 1. **Revisor cego já passou (nota 5/10) e as correções reais foram aplicadas:** faixa de cookies com botões iguais e só quando há ferramenta, revogação que apaga cookies, etiqueta de protótipo no cabeçalho (não cobre mais conteúdo), botão de pausa no vídeo, WhatsApp com contraste AA, promessas sem prova suavizadas, botão "Pedir propuesta" visível no cabeçalho do PC. **O que ele aponta e só o cliente resolve:** modelo comercial da instalação fixa, preço "desde", pessoas por hora, m², montagem, seguro, razão social (as respostas que o comprador procura).
-2. **Diogo decide:** se `hero-teste` entra na `main` e vai ao ar (o site antigo fica na tag `antes-v2-2026-10-27`); créditos do Fable.
+2. **Proposta ao cliente (28/10 noite):** `cliente/propuesta/propuesta-mejora-rcarcade.html` (espanhol, um arquivo só; fora do git): números antes/depois, trocas feitas, pontos fracos do site atual, Google Meu Negócio, Instagram, "aviso de amigo" legal (pesquisa em `estudo/estrategia-2026-10/08-alertas-legais-es.md`) e 3 modelos de post (evento, instalação fixa, perfil) em `cliente/propuesta/`. Gerar de novo: `python -I cliente/propuesta/build.py`. **Diogo revisa e envia.**
+   Revisor cego da proposta: 5/10, correções aplicadas (tirei o LCP da comparação, texto legal enxuto com itens extras em "Para el siguiente paso", fecho com convite "adelante", sem promessa de contrato).
+   **Achado sobre o NOSSO site:** no teste do Google o LCP *observado* do site novo foi 2,5 s contra 0,7 s do antigo (o simulado dá 1,6 s contra 13,5 s) e o Speed Index simulado é 4,7 s contra 2,0 s. A cortina da intro atrasa a primeira imagem visível. Investigar (reduzir a intro) antes de vender "rápido" ao cliente.
+   **Sessão da proposta:** não abriu (o app estava em Remote Control, que não inicia sessão). Abrir pelo app e dizer "continuar a proposta do RC Arcade": passagem `runbooks/passagem-2026-10-28-noite-proposta.md` (modelo de votos me pega/talvez/sai; primeiro bloco: **refazer os 3 posts**, hoje fracos; pesquisa `estudo/redes-sociais/01-repos-e-estilos.md`).
+   **Texto do site antigo × V3 (feito):** cego V3 7/10 × antigo 4/10; V3 fica como base, trazer só 6 ideias curtas do antigo (tabela contra simulador, público, marca, team building, lista dos 5 dados, rotação), trocar "simuladores" por puestos, tirar telemetria "de ejemplo"; **aguarda o "pode" do Diogo** (`estudo/estrategia-2026-10/09-texto/`). Correção dele: organizar o site não é enxugá-lo nem trazer o texto antigo todo.
+   **Refino do site (60% → 100%):** votos do Diogo no laboratório `estudo/refino-v4/lab.html` (A: títulos dentro da foto nos passos, a cores, e galeria P&B por tópico abaixo; C: revelação no site todo; fonte Anton; D: lista vermelha aprovada, carro só se for o real e como o do Nick Ho, senão sai; B pendente). Medição do Nick Ho: `estudo/refino-v4/nickho/MEDICAO.md`. **Passagem para continuar: `runbooks/passagem-2026-10-28-noite-site.md`** (dizer "continuar o site do RC Arcade"). Primeiro passo: encurtar a cortina de entrada (LCP observado 2,5 s).
+   Refino do site (Diogo vê ~60% do resultado): referência nickdemotorsports.nl (fotos P&B que colorem no hover, vídeo em tela cheia, elementos no scroll, confirmar o carro no traçado) e skills de design/B2B. Mostrar visualmente antes de aplicar. Ainda não começou.
 3. **Mandar ao cliente** as perguntas da seção 5 de `estudo/estrategia-2026-10/06-sintese.md` e pedir os identificadores de rastreio
    (GTM, GA4, Pixel da Meta), titular/NIF/domicílio, logotipos oficiais de apoio, confirmação de que telefone e e-mail são os comerciais.
 4. Em segundo plano: terminar "Open Rcarcade"; transcrever o áudio do vídeo `RC ARCADE CHESTE HD`; ver os 7 vídeos "Avatar"; trocar os

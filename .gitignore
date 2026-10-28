@@ -8,3 +8,6 @@ cliente/acervo-dropbox/
 
 # Fotos da auto-revisão visual (pesadas, regeneráveis com scripts/revisar-visual.mjs)
 runbooks/revisao-visual/*.png
+
+# Proposta ao cliente: tem prints do site antigo e dados dele, fica so no disco
+cliente/propuesta/

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Laboratorio de refino · RC ARCADE</title>
+<style>
+@font-face{font-family:'Archivo';src:url('../../assets/fonts/archivo-latin.woff2') format('woff2');font-weight:400 600}
+@font-face{font-family:'JetBrains Mono';src:url('../../assets/fonts/jetbrainsmono-latin.woff2') format('woff2');font-weight:400 500}
+@font-face{font-family:'Anton';src:url('../../assets/fonts/anton-latin.woff2') format('woff2')}
+:root{--bk:#0A0B0D;--sf:#191A1E;--si:#B1B0AB;--dim:#8B8D8C;--rd:#E31B23;--ln:rgba(255,255,255,.08);--lh:rgba(255,255,255,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bk);color:var(--si);font:400 17px/1.6 'Archivo',system-ui,sans-serif}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font:500 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+h1,h2{color:#fff;font-weight:500;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(30px,4.5vw,54px)}
+.top{position:sticky;top:0;z-index:20;background:rgba(10,11,13,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln);padding:12px 0}
+.top .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.top a{color:var(--si);text-decoration:none}.top a:hover{color:#fff}
+.tag{color:var(--rd);display:block;margin-bottom:14px}
+section{padding:96px 0;border-top:1px solid var(--ln)}
+.note{margin-top:18px;max-width:70ch;font-size:15px;color:var(--dim);border-left:2px solid var(--rd);padding-left:14px}
+.note b{color:#fff;font-weight:500}
+
+/* A — P&B → cor no hover (só ponteiro fino; no toque já nasce colorida) */
+.media{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+@media(max-width:900px){.media{grid-template-columns:repeat(2,1fr)}}
+.m{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--ln);background:var(--sf)}
+.m img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .4s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover) and (pointer:fine){
+  .m img{filter:grayscale(1) contrast(1.08) brightness(.92)}
+  .m:hover img{filter:none;transform:scale(1.04)}
+}
+.m span{position:absolute;left:14px;bottom:12px;color:#fff;text-shadow:0 1px 6px #000}
+.m:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--rd);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.m:hover:after{transform:scaleX(1)}
+
+/* B — vídeo que cresce até a tela cheia com a rolagem */
+.vsec{padding:0;height:240vh;position:relative}
+.vstick{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.vbox{position:relative;width:70vw;height:46vw;max-height:80vh;border-radius:20px;overflow:hidden;background:#000;border:1px solid var(--ln);will-change:width,height}
+.vbox video{width:100%;height:100%;object-fit:cover;display:block}
+.vcap{position:absolute;left:24px;bottom:22px;color:#fff;z-index:2;text-shadow:0 1px 8px #000}
+.vbtn{position:absolute;right:20px;bottom:18px;z-index:3;border:1px solid var(--lh);background:rgba(10,11,13,.7);color:#fff;border-radius:12px;padding:10px 14px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.1em;cursor:pointer}
+.vlab{position:absolute;top:22px;left:50%;transform:translateX(-50%);z-index:5;text-align:center}
+
+/* C — linhas que se revelam por máscara + foto com paralaxe */
+.rv{display:block;overflow:hidden}
+.rv>span{display:block;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in>span{transform:none}
+.rv:nth-child(2)>span{transition-delay:.12s}.rv:nth-child(3)>span{transition-delay:.24s}
+.big{font:400 clamp(54px,11vw,170px)/.95 'Anton',sans-serif;color:#fff;text-transform:uppercase}
+.big em{font-style:normal;color:var(--rd)}
+.par{margin-top:50px;height:62vh;border-radius:20px;overflow:hidden;border:1px solid var(--ln);position:relative}
+.par img{position:absolute;left:0;top:-14%;width:100%;height:128%;object-fit:cover;will-change:transform}
+
+/* D — carro grande no centro; a lista acende ao cruzar o centro */
+.race{position:relative;padding:0}
+.rwrap{display:grid;grid-template-columns:1fr 280px 1fr;gap:0 40px;max-width:1180px;margin:0 auto;padding:0 24px}
+.rcar{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.rcar svg{width:150px;height:auto;filter:drop-shadow(0 20px 30px rgba(0,0,0,.6));transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.rlist{padding:50vh 0}
+.rlist.l{text-align:right}
+.it{padding:34px 0;border-bottom:1px solid var(--ln);color:#5a5c5e;transition:color .25s}
+.it b{display:block;font:400 34px 'Anton',sans-serif;text-transform:uppercase}
+.it.lit{color:#fff}.it.lit b{color:var(--rd)}
+@media(max-width:800px){.rwrap{grid-template-columns:1fr;}.rcar{position:fixed;right:-34px;top:30vh;width:120px;height:auto;z-index:1;opacity:.9}.rlist.l{text-align:left}.rlist{padding:12vh 0}}
+@media (prefers-reduced-motion:reduce){.rv>span{transform:none;transition:none}.m img,.rcar svg{transition:none}}
+footer{padding:80px 0 120px;border-top:1px solid var(--ln);color:var(--dim);font-size:15px}
+</style></head>
+<body>
+<div class="top"><div class="w mono"><span>Laboratorio · no es el sitio</span><span><a href="#a">A · Foto P&amp;B → color</a> &nbsp; <a href="#b">B · Vídeo que crece</a> &nbsp; <a href="#c">C · Líneas y paralaje</a> &nbsp; <a href="#d">D · Coche grande</a></span></div></div>
+
+<section id="a"><div class="w">
+  <span class="mono tag">A · Fotos en blanco y negro que se colorean</span>
+  <h2>Pasa el ratón por encima.</h2>
+  <div class="media">
+    <div class="m"><img src="../../assets/fotos/paso-elige-560.webp" alt="" loading="lazy"><span class="mono">Elige</span></div>
+    <div class="m"><img src="../../assets/fotos/paso-sientate-560.webp" alt="" loading="lazy"><span class="mono">Siéntate</span></div>
+    <div class="m"><img src="../../assets/fotos/paso-conduce-560.webp" alt="" loading="lazy"><span class="mono">Conduce</span></div>
+    <div class="m"><img src="../../assets/fotos/paso-compite-560.webp" alt="" loading="lazy"><span class="mono">Compite</span></div>
+    <div class="m"><img src="../../assets/fotos/operador-retrato-640.webp" alt="" loading="lazy"><span class="mono">Escudo</span></div>
+  </div>
+  <p class="note"><b>Cómo funciona:</b> solo CSS (filtro de saturación 0 → 1 en 0,4 s, zoom 1,04 y un filete rojo debajo). <b>Sin peso extra</b> y sin JavaScript. En el móvil (sin ratón) las fotos ya salen <b>a color</b>, para que nadie se pierda la mejor parte. Si tu pantalla es táctil y esto se ve a color, es correcto.</p>
+</div></section>
+
+<section class="vsec" id="b">
+  <div class="vstick">
+    <div class="vlab mono" style="color:var(--rd)">B · Sigue bajando: el vídeo crece hasta pantalla completa</div>
+    <div class="vbox" id="vbox">
+      <video id="vid" muted loop playsinline preload="none" poster="../../assets/video/pista-poster.webp"><source src="../../assets/video/pista.webm" type="video/webm"><source src="../../assets/video/pista.mp4" type="video/mp4"></video>
+      <div class="vcap mono">Pista real · sin render</div>
+      <button class="vbtn" id="vbtn" type="button" aria-label="Pausar vídeo">Pausa</button>
+    </div>
+  </div>
+</section>
+<div class="w" style="padding-top:20px;padding-bottom:70px"><p class="note"><b>Cómo funciona:</b> la caja pasa de 70 % a pantalla completa según la rolagem. El vídeo <b>no se descarga hasta que llegas aquí</b> (nuestro clip pesa ~1 MB; el del sitio de referencia carga desde el principio y pesa ~10–22 MB). Con botón de pausa, sin sonido y sin movimiento si el visitante pidió «reducir animaciones».</p></div>
+
+<section id="c"><div class="w">
+  <span class="mono tag">C · Elementos que aparecen al bajar</span>
+  <div class="big" id="bigC"><span class="rv"><span>Una pista.</span></span><span class="rv"><span>Hasta <em>seis</em></span></span><span class="rv"><span>pilotos.</span></span></div>
+  <div class="par" id="par"><img src="../../assets/fotos/escala-completo-1000.webp" alt="" loading="lazy"></div>
+  <p class="note"><b>Cómo funciona:</b> cada línea sube desde una máscara cuando entra en pantalla; la foto se mueve un poco más despacio que la página (paralaje). Dos gestos, sin librería. Se desactiva con «reducir animaciones».</p>
+</div></section>
+
+<section class="race" id="d">
+  <div class="w" style="padding-top:90px"><span class="mono tag">D · El coche que cruza el centro</span><h2>Cada fecha acende cuando el coche pasa.</h2></div>
+  <div class="rwrap">
+    <div class="rlist l" id="rl"><div class="it"><b>Evento</b>Un fin de semana, una pista.</div><div class="it"><b>Feria</b>Pilotos que hacen cola.</div><div class="it"><b>Marca</b>Tu logo en el circuito.</div></div>
+    <div class="rcar" aria-hidden="true">
+      <svg id="rc" viewBox="0 0 150 300" fill="none"><rect x="30" y="14" width="90" height="272" rx="40" fill="#1b1c20" stroke="#B1B0AB" stroke-opacity=".55" stroke-width="2"/><rect x="40" y="70" width="70" height="110" rx="26" fill="#0A0B0D" stroke="#E31B23" stroke-width="3"/><rect x="48" y="30" width="54" height="28" rx="12" fill="#E31B23"/><rect x="44" y="236" width="62" height="14" rx="6" fill="#E31B23" opacity=".85"/><rect x="14" y="48" width="22" height="46" rx="8" fill="#0d0e10" stroke="#B1B0AB" stroke-opacity=".4"/><rect x="114" y="48" width="22" height="46" rx="8" fill="#0d0e10" stroke="#B1B0AB" stroke-opacity=".4"/><rect x="14" y="200" width="22" height="46" rx="8" fill="#0d0e10" stroke="#B1B0AB" stroke-opacity=".4"/><rect x="114" y="200" width="22" height="46" rx="8" fill="#0d0e10" stroke="#B1B0AB" stroke-opacity=".4"/><circle cx="75" cy="125" r="8" fill="#E31B23"/></svg>
+    </div>
+    <div class="rlist" id="rr"><div class="it"><b>Instalación</b>Un circuito fijo en tu local.</div><div class="it"><b>Liga</b>Clasificación en pantalla.</div><div class="it"><b>Fiesta</b>Cumpleaños y empresas.</div></div>
+  </div>
+  <div class="w"><p class="note"><b>Cómo funciona:</b> el coche queda fijo en el centro y se desliza un poco (−12 % → +12 %) mientras bajas; cada elemento de la lista se enciende al cruzar el centro de la pantalla. <b>Maqueta:</b> el coche es un dibujo; cuando tengamos una foto cenital real del coche, lo cambiamos. Los textos son de ejemplo.</p></div>
+</section>
+
+<footer><div class="w">Laboratorio privado del prototipo. Nada de esto está en el sitio todavía: se aplica solo lo que te guste.</div></footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* B — vídeo */
+  var sec = document.getElementById('b'), box = document.getElementById('vbox'), vid = document.getElementById('vid'), btn = document.getElementById('vbtn');
+  var userPaused = false;
+  function prog(el){ var r = el.getBoundingClientRect(), h = el.offsetHeight - innerHeight; return Math.max(0, Math.min(1, -r.top / h)); }
+  btn.addEventListener('click', function(){ userPaused = !userPaused; if(userPaused){ vid.pause(); btn.textContent = 'Reproducir'; btn.setAttribute('aria-label','Reproducir vídeo'); } else { vid.play().catch(function(){}); btn.textContent = 'Pausa'; btn.setAttribute('aria-label','Pausar vídeo'); } });
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ if(!userPaused && !reduce) vid.play().catch(function(){}); } else vid.pause(); }); }, {rootMargin:'200px'}).observe(sec);
+  /* C — reveal + parallax */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } }); }, {threshold:.4});
+  document.querySelectorAll('.rv').forEach(function(n){ io.observe(n); });
+  var par = document.getElementById('par'), pimg = par.firstElementChild;
+  /* D — lista que acende */
+  var items = [].slice.call(document.querySelectorAll('.it')), car = document.getElementById('rc'), race = document.getElementById('d');
+  function frame(){
+    var p = prog(sec);
+    var w = 70 + 30 * p, vw = innerWidth, vh = innerHeight;
+    box.style.width = (reduce ? 70 : w) + 'vw';
+    var h0 = Math.min(.46*vw, .8*vh);
+    box.style.height = (reduce ? h0 : h0 + (vh - h0) * p) + 'px';
+    box.style.borderRadius = (20 * (1 - p)) + 'px';
+    if(!reduce){
+      var r = par.getBoundingClientRect(), c = (r.top + r.height/2 - vh/2) / vh;
+      pimg.style.transform = 'translateY(' + (c * -9) + '%)';
+      var rr = race.getBoundingClientRect(), pr = Math.max(0, Math.min(1, -rr.top / (race.offsetHeight - vh)));
+      car.style.transform = 'translateY(' + ((pr - .5) * 24) + '%)';
+    }
+    var mid = vh/2;
+    items.forEach(function(it){ var b = it.getBoundingClientRect(); it.classList.toggle('lit', b.top < mid && b.bottom > mid); });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body></html>

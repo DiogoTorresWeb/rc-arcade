@@ -234,3 +234,20 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Revisor cego (Opus): 5/10. Aceito e corrigido: faixa de cookies com Aceitar destacado (agora três botões iguais, primeiro item do teclado, aparece só com ferramenta ativa, vence em 24 meses, revogar apaga cookies e recarrega); textos legais que contradiziam o código; etiqueta fixa que cobria botões (foi para o cabeçalho); vídeo sem pausa (WCAG 2.2.2); contraste do WhatsApp; link para `#contacto` travado pela intro; GA4 contando a visita em dobro; frases sem prova ("el mismo equipo detrás", "Nadie la confunde", "Mejor vuelta").
 - Decisão minha, avisar o Diogo: botão "Pedir propuesta" agora aparece também ao lado do menu no cabeçalho B do PC (o revisor mostrou que sem ele não havia botão fixo de proposta).
 - Não resolvido por depender do cliente: respostas comerciais (modelo, preço, pessoas por hora, m², montagem, seguro, razão social).
+
+## 28/10/2026 (noite, 3) — Publicação e proposta ao cliente
+- **Site V3 publicado** por ordem do Diogo: commit `1fae62f`, `hero-teste` → `main` (avanço simples; `origin/main` estava dentro da `hero-teste`). Conferido no ar: título e `track.js` (200). Medida pública (Lighthouse, celular): 96/100/100/100, LCP 1,6 s; site antigo `rcarcade.es`: 74/89/96/91, LCP 13,5 s, 4,3 MB, **zero cookies e zero JavaScript** (por isso, hoje, sem infração de cookies; falta a identificação do titular).
+- **Proposta ao cliente** em espanhol (`cliente/propuesta/`, fora do git) e **três modelos de post** feitos com fotos reais e o sistema visual (`posts.html`, `render.mjs`, `build.py`). Pesquisa legal (Opus, fontes oficiais) em `estudo/estrategia-2026-10/08-alertas-legais-es.md`, tom "aviso de amigo", sem patrocínio nem direito de imagem.
+
+## 28/10/2026 (noite, 4) — Refino a partir do Nick Ho
+- Sessão da proposta aberta à parte (passagem `runbooks/passagem-2026-10-28-noite-proposta.md`), com o modelo de votos me pega/talvez/sai. Pesquisa de repositórios para posts: `estudo/redes-sociais/01-repos-e-estilos.md`.
+- Teste do carrinho do site no ar: anda e gira com a rolagem, mas é um mini-traçado de ~70 px na margem direita. Agente (sonnet) mediu o Nick Ho: `estudo/refino-v4/nickho/MEDICAO.md`. Montado o laboratório `estudo/refino-v4/lab.html` (foto P&B→cor, vídeo que cresce, linhas e paralaxe, carro grande no centro) para o Diogo votar antes de aplicar.
+
+## 28/10/2026 (noite, 5) — Votos no laboratório e passagem do site
+- O Diogo votou: A (títulos dentro da foto, a cores; P&B só numa galeria por tópicos), C (revelação ao descer, quer no site todo), fonte Anton adotada; B (vídeo em tela cheia perde qualidade no PC) e D (carro grande) em aberto. Causa medida da perda no PC: clipe vertical 540×960. Frentes separadas: proposta na outra sessão, site nesta. Passagem: `runbooks/passagem-2026-10-28-noite-site.md`.
+- Voto em D (mesma noite): lista vermelha aprovada e fontes do laboratório aprovadas; carro do laboratório reprovado (cruzava a página no celular). Pedido: carro real do cliente visto de cima, com a coreografia do Nick Ho (desce e some; volta ao contrário; ré se parar e voltar); se não der bem feito, o carro sai.
+
+## 28/10/2026 (noite, 6) — Texto antigo × V3 e passagem do site
+- Comparação às cegas dos textos (V3 = texto-1, site do cliente = texto-2, ordem sorteada, chave fora do projeto): revisor cego deu V3 7/10 e antigo 4/10; minha análise (escrita antes) coincidiu. Resultado: V3 é a base; 6 ideias curtas do antigo candidatas; defeitos novos achados ("simuladores" × "No es un videojuego", telemetria "de ejemplo", repetições). Nada aplicado ao site.
+- Correção do Diogo: "organização sem site gigante" não é enxugar nem compactar, e muito menos trazer tudo do site antigo; é usar bem o que temos. Galeria por tópicos (P&B no hover) fica mais abaixo; passos 1–4 com título dentro da foto, a cores.
+- Passagem do site: `runbooks/passagem-2026-10-28-noite-site.md`. Lições gerais: `Recursos/aprendizados/` 58 e 59.
