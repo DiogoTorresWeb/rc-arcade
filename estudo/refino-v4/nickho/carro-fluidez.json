@@ -1,0 +1,263 @@
+{
+ "lenisOpts": [
+  {
+   "lerp": 0.1,
+   "wheelMultiplier": 0.7,
+   "gestureOrientation": "vertical",
+   "syncTouch": false
+  }
+ ],
+ "lenisInstance": null,
+ "gsap": {
+  "version": "3.15.0",
+  "lagSmoothing": "fn",
+  "normalize": false
+ },
+ "sticky": {
+  "position": "sticky",
+  "top": "0px",
+  "transform": "matrix(1, 0, 0, 1, 0, -97.2)",
+  "willChange": "auto",
+  "transition": "all",
+  "filter": "none",
+  "backfaceVisibility": "visible",
+  "contain": "none",
+  "zIndex": "auto",
+  "overflow": "visible",
+  "objectFit": "fill",
+  "imageRendering": "auto",
+  "pointerEvents": "none",
+  "cls": "agenda_sticky",
+  "tag": "DIV",
+  "rect": [
+   0,
+   -97,
+   1440,
+   810
+  ]
+ },
+ "stickyChain": [
+  {
+   "position": "sticky",
+   "transform": "matrix(1, 0, 0, 1, 0, -97.2)",
+   "willChange": "auto",
+   "overflow": "visible",
+   "height": "810px",
+   "cls": "agenda_sticky",
+   "tag": "DIV",
+   "rect": [
+    0,
+    -97,
+    1440,
+    810
+   ]
+  },
+  {
+   "position": "fixed",
+   "transform": "none",
+   "willChange": "auto",
+   "overflow": "visible",
+   "height": "810px",
+   "cls": "agenda_sticky_wrapper",
+   "tag": "DIV",
+   "rect": [
+    0,
+    0,
+    1440,
+    810
+   ]
+  },
+  {
+   "position": "relative",
+   "transform": "none",
+   "willChange": "auto",
+   "overflow": "visible",
+   "height": "1228.09px",
+   "cls": "section_agenda",
+   "tag": "SECTION",
+   "rect": [
+    0,
+    6256,
+    1440,
+    1228
+   ]
+  },
+  {
+   "position": "relative",
+   "transform": "none",
+   "willChange": "auto",
+   "overflow": "visible",
+   "height": "11152.7px",
+   "cls": "main-wrapper",
+   "tag": "DIV",
+   "rect": [
+    0,
+    0,
+    1440,
+    11153
+   ]
+  },
+  {
+   "position": "relative",
+   "transform": "none",
+   "willChange": "auto",
+   "overflow": "visible",
+   "height": "11152.7px",
+   "cls": "page-content",
+   "tag": "DIV",
+   "rect": [
+    0,
+    0,
+    1440,
+    11153
+   ]
+  }
+ ],
+ "kids": [
+  {
+   "position": "absolute",
+   "top": "118.438px",
+   "transform": "matrix(1, 0, 0, 1, 0, -810)",
+   "willChange": "transform",
+   "transition": "all",
+   "filter": "none",
+   "backfaceVisibility": "visible",
+   "contain": "none",
+   "zIndex": "auto",
+   "overflow": "clip",
+   "objectFit": "fill",
+   "imageRendering": "auto",
+   "pointerEvents": "none",
+   "cls": "agenda_car_image",
+   "tag": "IMG",
+   "rect": [
+    560,
+    -789,
+    320,
+    573
+   ]
+  }
+ ],
+ "car": {
+  "position": "absolute",
+  "top": "118.438px",
+  "transform": "matrix(1, 0, 0, 1, 0, -810)",
+  "willChange": "transform",
+  "transition": "all",
+  "filter": "none",
+  "backfaceVisibility": "visible",
+  "contain": "none",
+  "zIndex": "auto",
+  "overflow": "clip",
+  "objectFit": "fill",
+  "imageRendering": "auto",
+  "pointerEvents": "none",
+  "cls": "agenda_car_image",
+  "tag": "IMG",
+  "rect": [
+   560,
+   -789,
+   320,
+   573
+  ]
+ },
+ "triggers": [
+  {
+   "trig": "section_agenda#calendar",
+   "start": "clamp(top bottom)",
+   "end": "clamp(bottom top)",
+   "scrub": true,
+   "markers": false,
+   "onEnter": null,
+   "onLeave": null,
+   "onEnterBack": null,
+   "onLeaveBack": null,
+   "onToggle": null,
+   "anim": {
+    "type": "Tween",
+    "dur": 0.5,
+    "vars": "{\"yPercent\":12,\"ease\":\"none\",\"scrollTrigger\":{\"trigger\":{},\"start\":\"clamp(top bottom)\",\"end\":\"clamp(bottom top)\",\"scrub\":true,\"toggleActions\":\"play\",\"anticipatePin\":0},\"immediateRender\":true,\"startAt\":{\"yPercent\":-12},\"duration\":0.5,\"overwrite\":false,\"delay\":0,\"lazy\":false}",
+    "kids": []
+   }
+  },
+  {
+   "trig": "heading-large text-align-center#w-node-_6d7bc178-597b-20b5-957f-03071c582471-1c582469",
+   "start": "clamp(top 85%)",
+   "end": "bottom top",
+   "markers": false,
+   "onEnter": "()=>{e.played||o(e,1)}",
+   "onLeave": null,
+   "onEnterBack": "()=>{e.played||o(e,-1)}",
+   "onLeaveBack": null,
+   "onToggle": null,
+   "anim": null
+  },
+  {
+   "trig": "heading-large text-align-center#w-node-_6d7bc178-597b-20b5-957f-03071c582471-1c582469",
+   "start": "top bottom",
+   "end": "bottom top",
+   "markers": false,
+   "onEnter": null,
+   "onLeave": null,
+   "onEnterBack": null,
+   "onLeaveBack": "()=>{u.once||i(e)}",
+   "onToggle": null,
+   "anim": null
+  },
+  {
+   "trig": "section_agenda#calendar",
+   "start": "top center",
+   "end": "undefined",
+   "markers": false,
+   "onEnter": "()=>(g=\"in\",e(0,t.carInDuration,t.carInEase))",
+   "onLeave": null,
+   "onEnterBack": null,
+   "onLeaveBack": "()=>(g=\"above\",e(-l(100),t.carOutDuration,t.carOutEase,(()=>gsap.set(o,{rotation:0}))))",
+   "onToggle": null,
+   "anim": null
+  },
+  {
+   "trig": "agenda_collection w-dyn-list#w-node-_0e4b5548-4188-0f50-da60-15d4346debaf-1c582469",
+   "start": "bottom center",
+   "end": "undefined",
+   "markers": false,
+   "onEnter": "()=>(g=\"below\",e(l(100),t.carOutDuration,t.carOutEase,(()=>gsap.set(o,{rotation:180}))))",
+   "onLeave": null,
+   "onEnterBack": null,
+   "onLeaveBack": "()=>(g=\"in\",e(0,t.carInDuration,t.carInEase))",
+   "onToggle": null,
+   "anim": null
+  }
+ ],
+ "tweens": [
+  {
+   "dur": 0.5,
+   "vars": "{\"yPercent\":12,\"ease\":\"none\",\"scrollTrigger\":{\"trigger\":\"el\",\"start\":\"clamp(top bottom)\",\"end\":\"clamp(bottom top)\",\"scrub\":true,\"toggleActions\":\"play\",\"anticipatePin\":0},\"immediateRender\":true,\"startAt\":{\"yPercent\":-12},\"duration\":0.5,\"overwrite\":false,\"delay\":0,\"lazy\":false}"
+  },
+  {
+   "dur": 0.5,
+   "vars": "{\"yPercent\":12,\"ease\":\"none\",\"scrollTrigger\":{\"trigger\":\"el\",\"start\":\"clamp(top bottom)\",\"end\":\"clamp(bottom top)\",\"scrub\":true,\"toggleActions\":\"play\",\"anticipatePin\":0},\"immediateRender\":true,\"startAt\":{\"yPercent\":-12},\"duration\":0.5,\"overwrite\":false,\"delay\":0,\"lazy\":false}"
+  }
+ ],
+ "scripts": [
+  "inline:181",
+  "inline:1296",
+  "inline:153",
+  "https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js",
+  "https://challenges.cloudflare.com/turnstile/v0/api.js",
+  "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6a422333c15d8477da5a8443",
+  "https://cdn.prod.website-files.com/6a422333c15d8477da5a8443/js/webflow.a0aa6ca1.b7683852b8a60d8e.js",
+  "https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js",
+  "https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js",
+  "https://cdn.prod.website-files.com/gsap/3.15.0/SplitText.min.js",
+  "https://cdn.prod.website-files.com/gsap/3.15.0/CustomEase.min.js",
+  "inline:56",
+  "inline:529",
+  "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+  "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js",
+  "https://cdn.jsdelivr.net/npm/hls.js@1.6.11",
+  "https://unpkg.com/lenis@1.1.18/dist/lenis.min.js",
+  "inline:435",
+  "https://assets.slater.app/slater/20545.js?v=1.0"
+ ]
+}

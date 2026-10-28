@@ -111,3 +111,9 @@ O primeiro pixel é rápido, mas o conteúdo útil fica atrás de uma abertura d
 - P&B para cor no hover é CSS puro (~0 KB). Exigir `(hover: hover)` sem deixar tablet de toque preso em P&B.
 - O vídeo deles é ~83% do peso e carrega antes de ser visto: usar `preload="none"`, capa leve, 720p, e som por botão visível.
 - "Caixa que cresce até a tela cheia" entrega o efeito sem lightbox nem fullscreen.
+
+## 7. O que faz o carro dele ser fluido (28/10 noite, `24-carro-fluidez.mjs`, dados em `carro-fluidez.json`)
+- **Rolagem suave em TODO o site: Lenis 1.1.18 com `lerp: 0.1` e `wheelMultiplier: 0.7`** (`syncTouch: false`, ou seja, no toque do celular é a rolagem nativa). Tudo que é preso à rolagem (`scrub: true`, o deslize ±12 %) herda a suavidade; as linhas de fundo usam ainda `scrub` de 3,7 a 3,9 s de atraso.
+- O carro (`img.agenda_car_image`, 320×573) fica **`position:absolute` dentro de `.agenda_sticky`** (sticky, `top:0`, 100vh), com `will-change: transform` e `pointer-events:none`. O deslize é `yPercent −12 → +12` com `ease:none`, `scrub:true`, `start: clamp(top bottom)`, `end: clamp(bottom top)` na seção.
+- Entra/sai por **dois gatilhos sem animação própria**: seção `top center` (onEnter: `y → 0` com `carInDuration/carInEase`; onLeaveBack: `y → −100vh` com `carOutDuration/carOutEase` e depois `rotation:0`) e o fim da lista `bottom center` (onEnter: `y → +100vh` e depois `rotation:180`; onLeaveBack: volta a 0). As durações e curvas vêm de opções do script customizado (medido: 0,8 s, expo.out entra, expo.in sai).
+- **Não medi:** os valores exatos de `carInEase/carOutEase` (variáveis de um script fechado); só os tempos observados.
