@@ -251,3 +251,8 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Comparação às cegas dos textos (V3 = texto-1, site do cliente = texto-2, ordem sorteada, chave fora do projeto): revisor cego deu V3 7/10 e antigo 4/10; minha análise (escrita antes) coincidiu. Resultado: V3 é a base; 6 ideias curtas do antigo candidatas; defeitos novos achados ("simuladores" × "No es un videojuego", telemetria "de ejemplo", repetições). Nada aplicado ao site.
 - Correção do Diogo: "organização sem site gigante" não é enxugar nem compactar, e muito menos trazer tudo do site antigo; é usar bem o que temos. Galeria por tópicos (P&B no hover) fica mais abaixo; passos 1–4 com título dentro da foto, a cores.
 - Passagem do site: `runbooks/passagem-2026-10-28-noite-site.md`. Lições gerais: `Recursos/aprendizados/` 58 e 59.
+
+## 28/10/2026 (noite, 7) — Cortina de entrada mais curta
+- Medido: a cortina levava ~2,7 s (logo, régua, abertura e desvanecer) até a foto do topo ficar visível. Encurtada para ~1,8 s (logo 0,55 s, abertura aos 0,7 s, saída aos 1,3 s, foto assenta em 1,1 s; failsafe 3 s). Mesmo desenho, só mais rápido; `prefers-reduced-motion` intacto.
+- Lighthouse local, celular, mediana de 3: nota 97 → 97, LCP 1,5 s → 1,5 s, Speed Index 4,55 s → 4,3 s. A cortina era parte do atraso, não todo: falta olhar o peso das imagens do topo e de baixo.
+- Publicado na `main` por ordem do Diogo ("manda o site").
