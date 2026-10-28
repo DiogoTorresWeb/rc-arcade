@@ -108,3 +108,28 @@ O perfil existe com o nome **RCARCADE**, e está longe de pronto:
 6. m², altura, energia, internet, pessoas na operação, duração da sessão, preço/modelo de negócio.
 7. Autorização de imagem das pessoas nas fotos e vídeos; autorização para usar o vídeo do El Hormiguero.
 8. Onde estão as pastas `Editados` e `Jornada de puertas abiertas` do Dropbox (a segunda parece ser a jornada de Madrid).
+
+## Diretrizes aprovadas pelo Diogo em 28/10 (tarde): valem para toda a execução
+O Diogo aprovou o quadro visual (`estudo/visual/board-visual.html`) e a recomendação do carro com a pista de cima. Pediu:
+**executar a estratégia de forma totalmente pensada, mirando as metas de PageSpeed e o que prende a atenção do contratante**,
+sem estourar limite de uso, sem cruzar dado além do que traz resultado, e **sem perder nada**.
+
+**1. Metas de desempenho (metas, ainda não medidas; a linha de base vem primeiro).** Google (web.dev): maior elemento visível
+carregado em até 2,5 s, resposta ao toque até 200 ms, deslocamento de layout até 0,1, em 75% das visitas. Meta interna:
+nota 90+ no celular no PageSpeed Insights, 100 em acessibilidade, boas práticas e SEO. Meios: fotos em AVIF/WebP com vários
+tamanhos e `srcset`, foto da primeira dobra com `preload`, resto com carregamento preguiçoso, sem biblioteca de JavaScript
+(hoje não há), vídeo com imagem de capa e só carrega ao entrar na tela, fontes já locais.
+
+**2. Linguagem visual das bordas (ideia do Diogo).** Traço fino e sutil, como os cartões de produto da Apple, só que mais leve:
+linha de 1 px em prata a ~10% de opacidade; cantos arredondados (cartões 18 px, botões 12 px); um brilho fino na borda de cima;
+no toque/hover a linha sobe para ~20% e aparece um filete vermelho embaixo; nunca sombra pesada. Vira **tokens de CSS** (`--edge`,
+`--edge-hi`, `--r-card`) usados por todo cartão, foto e campo de formulário, para o site ter uma assinatura só do topo ao fim.
+
+**3. Rodapé institucional (a parte "séria" do fim da página).** Nome da empresa e NIF, endereço ou região atendida, e-mail e
+WhatsApp, aviso legal, privacidade, cookies, marca registrada (RC ARCADE em tramitação na OEPM), © e ano. **Selos oficiais
+(União Europeia, Comunitat Valenciana, Kit Digital) só entram se o cliente tiver o apoio e mandar o arquivo e o texto exatos
+do programa; não se inventa selo.** Enquanto o cliente não manda razão social e NIF, esses campos ficam em branco no texto legal.
+
+**4. Síntese da estratégia (item 1 da ordem).** Um agente só, modelo forte, sem pesquisa na web: lê estudos 01 a 05, este
+plano e o quadro visual, e entrega `06-sintese.md`: o que fazemos, em que ordem, o que cortamos, e as dez decisões que mais
+mexem no resultado. Depois, o revisor cego recebe só a síntese e a pergunta "o que está errado ou exagerado aqui?".

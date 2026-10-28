@@ -207,3 +207,8 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Razão social e NIF: agente de pesquisa (Sonnet) não achou empresa. Na OEPM a marca RC ARCADE (M4407321) está em tramitação desde
   05/10/2026 no nome de uma pessoa física. Não se buscou NIF/endereço de pessoa; vem do cliente. Links da bio do Instagram: um é
   `rcarcade.com`, o outro `rcardace.com` (erro de digitação, domínio inexistente).
+
+## 28/10/2026 (tarde) — Aprovação e passagem
+- O Diogo aprovou o quadro visual e a execução. Pediu: síntese da estratégia com modelo forte sem estourar limite, execução focada em PageSpeed e atenção do contratante, bordas finas sutis (estilo Apple, mais leves), rodapé institucional sério, e nada perdido.
+- O quadro visual passou a ficar versionado em `estudo/visual/board-visual.html` (as fotos continuam fora do git, no acervo local).
+- Sessão encerrada com passagem: o estado está em `PLANO-DE-MELHORIA.md`, `TASKS.md` e `CURRENT_STATUS.md`.

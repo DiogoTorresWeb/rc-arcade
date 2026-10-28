@@ -182,3 +182,9 @@ discutem alternativas; (3) versão antiga e nova ficam separadas para medir o ca
 (4) **regra global do projeto: nunca perder material do cliente** (`CLAUDE.md`).
 **Escolha minha, a confirmar:** pesquisa em Opus porque o Fable exige créditos pagos; o cabeçalho A/B segue
 em aberto.
+
+## [2026-10-28 tarde] Execução do site V3: síntese primeiro, bordas sutis, rodapé institucional
+**Decisão (Diogo):** aprovou o quadro visual (fotos reais do cliente em cada seção, carro da rolagem com a pista de cima) e pediu para executar tudo de forma pensada, mirando as metas de PageSpeed e o que prende a atenção do contratante. Antes, consolidar a estratégia com um modelo forte, sem estourar limite. Ideia visual dele: bordas finas e sutis como os cartões de produto da Apple, só que mais leves, e um rodapé institucional sério (aviso legal, dados da empresa, selos oficiais).
+**Por quê:** o site tinha texto bom e quase nenhuma imagem; o cliente tinha 23 fotos profissionais e um vídeo aéreo que não eram usados.
+**Como aplicar:** ordem e metas em `PLANO-DE-MELHORIA.md` ("Diretrizes aprovadas"). A pergunta dos selos (UE, Comunitat Valenciana) virou regra: só entram se o cliente os tiver de verdade.
+**Escolhas minhas, a confirmar:** meta interna de nota 90+ no celular; síntese em 1 só agente (Opus) em vez de vários; carro da rolagem na opção 2 (traçado da pista de cima com marcador), por ser fiel ao produto e leve.

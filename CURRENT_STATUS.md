@@ -1,7 +1,7 @@
 # RC Arcade — status atual
 
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
-> Atualizado: 28/10/2026 (etapas 2.1 e 2.2 feitas) · Revisar até: 27/11/2026 · Dono: Diogo
+> Atualizado: 28/10/2026 (tarde, passagem) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
 > Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
 
@@ -26,16 +26,15 @@ Site no ar: `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/
 | Cómo trabajamos, Registro de pista | **Novas em 28/10:** 4 passos do próprio cliente; Volrace Zaragoza, El Hormiguero, jornada de Madrid; 3 comentários públicos como prova **provisória** | `hero-teste`, não no ar |
 | **Ideias novas** (pedido de 27/10, só plano) | scroll com o carro descendo; modelo de "Contacto"; "Media y Artículos" — todos do nickho-motorsports.nl | `TASKS.md` |
 
-## Próximo passo (28/10: plano em árvore, `PLANO-DE-MELHORIA.md`)
+## Próximo passo (28/10 tarde: o Diogo aprovou; ordem em `TASKS.md`, item PRIMEIRO)
 
-Feitas na branch `hero-teste` (hero intocado): etapas 2.1 (contato, SEO, limpeza das notas internas) e 2.2 (provas).
-1. **Etapa 2.4, o carro que anda com a rolagem:** decidir a versão. Só com foto real de cima; sem ela, traçado da pista
-   com marcador. Antes, olhar o acervo (`cliente/ACERVO.md`) atrás da vista de cima.
-2. **Etapa 2.3, resto da página:** refazer "La prueba", "Para el operador", "Tres vías" no nível do topo (foto com banner
-   da Red Bull nunca se altera). Falta o aviso legal e a privacidade (precisa de razão social e NIF do cliente).
-3. **Google Meu Negócio e Instagram** do cliente: preparar as mudanças por escrito; ele (ou o Diogo com acesso) aplica.
-4. **Acervo:** terminar "Open Rcarcade" em segundo plano.
-5. **Diogo decide:** cabeçalho A ou B; se `hero-teste` entra na `main` (versão antiga na tag `antes-v2-2026-10-27`); créditos do Fable.
+Feitas na branch `hero-teste` (hero intocado): contato, SEO e provas (etapas 2.1 e 2.2). Aprovado o quadro visual
+(`estudo/visual/board-visual.html`). Próximo, nesta ordem:
+1. **Síntese da estratégia** (1 agente forte, só arquivos locais, saída `estudo/estrategia-2026-10/06-sintese.md`) + revisor cego.
+2. **Linha de base do PageSpeed** do site de hoje; depois fotos, bordas e carro da rolagem; no fim, medir de novo.
+3. **Sistema de bordas sutis** (tokens) e **rodapé institucional**; razão social e NIF só o cliente dá (a marca está em nome de pessoa física).
+4. **Diogo decide:** cabeçalho A ou B; se `hero-teste` entra na `main` (antigo na tag `antes-v2-2026-10-27`); créditos do Fable.
+Em segundo plano: terminar "Open Rcarcade"; transcrever o áudio do vídeo `RC ARCADE CHESTE HD`; ver os 7 vídeos "Avatar".
 
 **Achados que já mudam o rumo (ainda sem decisão):** o botão principal talvez deva ser "Solicitar demostración";
 o operador compra número (m², jogadores por hora, retorno), e o dossiê não traz nenhum — pedir ao cliente; há

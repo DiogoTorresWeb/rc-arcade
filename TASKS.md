@@ -91,7 +91,16 @@ Material do cliente recebido e lido em 13/09/2026 — ver
 - [x] **Topo (27/10/2026, branch `hero-teste`, commit 17ef1d9):** palavra CARRERA atrás do carro
       recortado. Versão atual **finalizada** pelo Diogo ("funcionou bem"); refinos depois.
       **Falta registrar:** cabeçalho A ou B? e merge na `main`?
-- [ ] **PRIMEIRO (pivô de 27/10): estratégia e acervo.** (a) Conferir o download de "Open Rcarcade" e extrair
+- [ ] **PRIMEIRO (aprovado pelo Diogo em 28/10 à tarde): síntese + execução do site V3.** Ordem fixa, uma etapa por vez,
+      cada uma fecha com commit e doc em dia. Detalhe e metas em `PLANO-DE-MELHORIA.md`, seção "Diretrizes aprovadas".
+      (1) **Síntese da estratégia** em 1 só agente de modelo forte (Opus; Fable se o Diogo liberar créditos), lendo só
+      arquivos locais (estudos 01 a 05, plano, quadro visual), saída `estudo/estrategia-2026-10/06-sintese.md` (até 3
+      páginas), depois revisor cego; (2) **medir a linha de base do PageSpeed** do site de hoje; (3) **sistema visual**
+      (bordas finas sutis, estilo cartão de produto da Apple, mais leve) como tokens no CSS; (4) seções com foto na ordem
+      do quadro (Qué es, Para el operador, ¿Cabe?, Prensa y registro); (5) carro da rolagem com a pista de cima; (6) **rodapé
+      institucional** (aviso legal, privacidade, cookies, dados da empresa, selos oficiais só se o cliente os tiver);
+      (7) medir o PageSpeed de novo e corrigir até bater as metas.
+- [x] (substituído pelo item acima) pivô de 27/10: estratégia e acervo. **PRIMEIRO antigo:** estratégia e acervo. (a) Conferir o download de "Open Rcarcade" e extrair
       os 3 zips de `cliente/acervo-dropbox/`, registrar tudo em `cliente/ACERVO.md`; (b) ver os vídeos novos
       (`RC ARCADE CHESTE HD`, 7 "Avatar" de `estreno lona`) com o pipeline completo (quadros + áudio) e
       garimpar a vista de cima do carro em `360`, `action5` e nas 23 fotos; (c) ler os 4 estudos de
