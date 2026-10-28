@@ -3,18 +3,18 @@
 > Tipo: **estado** — reescrito quando muda. Não acumula histórico.
 > Atualizado: 28/10/2026 (noite, refino do site publicado) · Revisar até: 27/11/2026 · Dono: Diogo
 > Regra: `../../SISTEMA.md`. Lições que valem aqui: `../../Recursos/aprendizados/INDEX.md`.
-> Última passagem: `runbooks/passagem-2026-10-28-tarde.md`.
-> Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: `TASKS.md`.
+> Última passagem: `runbooks/passagem-2026-10-28-noite-site-2.md` (manifesto completo de fontes; **substitui** a primeira da noite).
+> Como chegamos aqui: `HISTORICO.md`. Por que é assim: `DECISIONS.md`. Próximos passos: seção "Próximo passo" abaixo (`TASKS.md` está desatualizado).
 
 **Cliente:** RC ARCADE (Espanha, material em espanhol) — pilotagem de carro RC real com câmera
 FPV em primeira pessoa, num circuito físico; até 6 simuladores simultâneos, tempo de volta e
 posição medidos. Site B2B para operador de centro de lazer. Identidade já existe: vermelho
 `#E31B23`, preto `#0A0B0D`, prata `#B1B0AB`.
 
-## Onde estamos (28/10 noite): site V3 **publicado** (main = hero-teste, commit 1fae62f)
+## Onde estamos (28/10 noite): site V3 **publicado** (`main` = `hero-teste`, commit 544bca2)
 
 **No ar desde 28/10/2026 (ordem do Diogo, "do jeito que está"):** `main` → GitHub Pages, https://diogotorresweb.github.io/rc-arcade/ (a versão antiga está na tag `antes-v2-2026-10-27`). Medido no endereço público (celular, Lighthouse): **96 · 100 · 100 · 100**, LCP 1,6 s, 722 KB; o site antigo `rcarcade.es` no mesmo teste: 74 · 89 · 96 · 91, LCP 13,5 s, 4,3 MB.
-Medido no servidor local (celular): **desempenho 97 · acessibilidade 100 · boas práticas 100 · SEO 100**, LCP 1,5 s, 789 KB; PC 99/100/100/100 (antes: 97/100/100/100, 603 KB).
+Medido no servidor local (celular): **desempenho 97 · acessibilidade 100 · boas práticas 100 · SEO 100**, LCP ~1,7 s, ~714 KB (28/10 noite, depois do refino); PC 99/100/100/100 (antes: 97/100/100/100, 603 KB).
 O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebrado nem rolagem lateral, em PC e celular.
 
 | Seção | Estado |
@@ -33,20 +33,23 @@ O robô `scripts/revisar-visual.mjs` não acha erro, imagem quebrada, link quebr
 | Rastreio | `assets/track.js`: dataLayer, Consent Mode v2, faixa de cookies, eventos, UTM, API de Conversões. **Todos os IDs vazios.** Guia: `runbooks/rastreo.md` |
 | Páginas legais | `aviso-legal.html`, `privacidad.html`, `cookies.html` com campos `[Pendiente: …]` (titular, NIF, domicílio) |
 
-## Próximo passo (28/10 noite)
+## Próximo passo (28/10, fim da noite) — lista viva do que falta
+Detalhe, decisões e manifesto de fontes: `runbooks/passagem-2026-10-28-noite-site-2.md` (**ler a seção 1 inteira**). Proposta visual aprovada: `estudo/visual/board-visual.html`.
 
-1. **Revisor cego já passou (nota 5/10) e as correções reais foram aplicadas:** faixa de cookies com botões iguais e só quando há ferramenta, revogação que apaga cookies, etiqueta de protótipo no cabeçalho (não cobre mais conteúdo), botão de pausa no vídeo, WhatsApp com contraste AA, promessas sem prova suavizadas, botão "Pedir propuesta" visível no cabeçalho do PC. **O que ele aponta e só o cliente resolve:** modelo comercial da instalação fixa, preço "desde", pessoas por hora, m², montagem, seguro, razão social (as respostas que o comprador procura).
-2. **Proposta ao cliente (28/10 noite):** `cliente/propuesta/propuesta-mejora-rcarcade.html` (espanhol, um arquivo só; fora do git): números antes/depois, trocas feitas, pontos fracos do site atual, Google Meu Negócio, Instagram, "aviso de amigo" legal (pesquisa em `estudo/estrategia-2026-10/08-alertas-legais-es.md`) e 3 modelos de post (evento, instalação fixa, perfil) em `cliente/propuesta/`. Gerar de novo: `python -I cliente/propuesta/build.py`. **Diogo revisa e envia.**
-   Revisor cego da proposta: 5/10, correções aplicadas (tirei o LCP da comparação, texto legal enxuto com itens extras em "Para el siguiente paso", fecho com convite "adelante", sem promessa de contrato).
-   **Achado sobre o NOSSO site:** no teste do Google o LCP *observado* do site novo foi 2,5 s contra 0,7 s do antigo (o simulado dá 1,6 s contra 13,5 s) e o Speed Index simulado é 4,7 s contra 2,0 s. A cortina da intro atrasa a primeira imagem visível. Investigar (reduzir a intro) antes de vender "rápido" ao cliente.
-   **Sessão da proposta:** não abriu (o app estava em Remote Control, que não inicia sessão). Abrir pelo app e dizer "continuar a proposta do RC Arcade": passagem `runbooks/passagem-2026-10-28-noite-proposta.md` (modelo de votos me pega/talvez/sai; primeiro bloco: **refazer os 3 posts**, hoje fracos; pesquisa `estudo/redes-sociais/01-repos-e-estilos.md`).
-   **Texto do site antigo × V3 (feito):** cego V3 7/10 × antigo 4/10; V3 fica como base, trazer só 6 ideias curtas do antigo (tabela contra simulador, público, marca, team building, lista dos 5 dados, rotação), trocar "simuladores" por puestos, tirar telemetria "de ejemplo"; **aguarda o "pode" do Diogo** (`estudo/estrategia-2026-10/09-texto/`). Correção dele: organizar o site não é enxugá-lo nem trazer o texto antigo todo.
-   **Refino do site (60% → 100%):** votos do Diogo no laboratório `estudo/refino-v4/lab.html` (A: títulos dentro da foto nos passos, a cores, e galeria P&B por tópico abaixo; C: revelação no site todo; fonte Anton; D: lista vermelha aprovada, carro só se for o real e como o do Nick Ho, senão sai; B pendente). Medição do Nick Ho: `estudo/refino-v4/nickho/MEDICAO.md`. **Passagem para continuar: `runbooks/passagem-2026-10-28-noite-site.md`** (dizer "continuar o site do RC Arcade"). Cortina de entrada **já encurtada** (2,7 s → 1,8 s; Speed Index local 4,55 → 4,3 s, nota 97 igual). **Publicados em 28/10 (noite, ordem do Diogo)**: fotos do topo em WebP, 4 passos com título dentro da foto (aprovado), sistema de revelação e faixa "Una pista. Hasta seis pilotos." com a pista inteira (aguarda voto). Galeria por tópicos (aba "Con público" = 8 quadros do MESMO evento, de Cheste; aguarda voto nos tópicos e no efeito de cor no celular). Cartões de imprensa: só Madrid tem foto (3-7-26, celular, pasta Open Rcarcade); TV e Zaragoza sem foto até haver imagem confirmada. 12 das 15 fotos de julho recuperadas (`cliente/ACERVO.md`). Próximo: trocar a foto da faixa grande (teste), Anton nos demais títulos, lista que fica vermelha, carro real, vídeos (voto), 6 ideias do texto ("pode").
-   Refino do site (Diogo vê ~60% do resultado): referência nickdemotorsports.nl (fotos P&B que colorem no hover, vídeo em tela cheia, elementos no scroll, confirmar o carro no traçado) e skills de design/B2B. Mostrar visualmente antes de aplicar. Ainda não começou.
-3. **Mandar ao cliente** as perguntas da seção 5 de `estudo/estrategia-2026-10/06-sintese.md` e pedir os identificadores de rastreio
-   (GTM, GA4, Pixel da Meta), titular/NIF/domicílio, logotipos oficiais de apoio, confirmação de que telefone e e-mail são os comerciais.
-4. Em segundo plano: terminar "Open Rcarcade"; transcrever o áudio do vídeo `RC ARCADE CHESTE HD`; ver os 7 vídeos "Avatar"; trocar os
-   3 comentários provisórios por depoimentos reais.
+**Site (esta conversa):**
+1. **Carro de rally nº 43 com câmera FPV (decidido)** visto de cima, coreografia do Nick Ho (desce e some, volta ao contrário, dá ré); se não ficar bem feito, o carro sai e fica só a lista vermelha. **Aberto:** se o carro sair, o mini-traçado ilustrativo do site sai junto?
+2. Lista que fica vermelha ao descer (aprovada). 3. Anton nos `h2` das seções.
+4. **Votos do Diogo:** tópicos da galeria, efeito de cor no celular, foto da faixa grande, vídeos (B), "pode" das 6 ideias do texto.
+5. Fotos reais por evento (hoje só Madrid tem foto; TV e Zaragoza sem). 6. Publicar o crédito "Por Agencia Bienquisto" do rodapé (só com "publica").
+7. Do quadro visual ainda falta: foto no título de "La prueba" e "Cómo trabajamos" (esta pede foto de montagem ao cliente); vídeos de Cheste; selos de apoio (só com arquivo oficial do cliente).
+
+**Material do cliente ainda não visto:** mais de 50 vídeos de julho ("Open Rcarcade"), 3 das 15 fotos de julho, 7 vídeos "Avatar", áudio do vídeo de Cheste (`cliente/ACERVO.md`).
+
+**Proposta ao cliente (outra conversa):** `cliente/propuesta/propuesta-mejora-rcarcade.html` (fora do git; `python -I cliente/propuesta/build.py` gera de novo); passagem `runbooks/passagem-2026-10-28-noite-proposta.md`. **Não trazer para o site.**
+
+**Mandar ao cliente** as perguntas da seção 5 de `estudo/estrategia-2026-10/06-sintese.md` e pedir os identificadores de rastreio, titular/NIF/domicílio, logotipos de apoio (se houver), telefone e e-mail comerciais, fotos de montagem e fotos por evento.
+
+**Já feito e conferido (não refazer):** revisor cego do site (5/10, correções aplicadas: cookies, vídeo com pausa, contraste, promessas suavizadas); texto antigo × V3 às cegas (V3 7/10 × antigo 4/10, V3 é a base); passagem 2 testada às cegas (7/10, lacunas corrigidas).
 
 ## Decisões vigentes do Diogo (28/10)
 - **Protótipo:** até o cliente aprovar e pagar, nada de imagem é bloqueio (rosto, Red Bull, logos). Banner de terceiro nunca se altera.
@@ -70,8 +73,7 @@ o comprador faz conta (m², pessoas por hora) e o dossiê não traz número: ped
 
 Qual das 3 vias o site prioriza (premissa: instalação fixa, **não confirmada por escrito**);
 medidas reais em m²; contato comercial e se prefere formulário ou WhatsApp; onde fica e se há
-unidade aberta ao público; clipe de vídeo dedicado para o topo; as 16 fotos "RCA publicacion
-insta" (não estão no disco). **Não há artigos nem imprensa no material do cliente** (ver o El Hormiguero no estudo 02, a confirmar) — "Media y Artículos" não
+unidade aberta ao público; clipe de vídeo dedicado para o topo; fotos de montagem (para "Cómo trabajamos"). **Não há artigos nem imprensa no material do cliente** (ver o El Hormiguero no estudo 02, a confirmar) — "Media y Artículos" não
 entra com texto inventado.
 
 ## Onde cada coisa mora
@@ -86,5 +88,6 @@ entra com texto inventado.
 | Estrutura de blocos da página | `ESTRUTURA-DO-SITE.md` |
 | Referências visuais guardadas | `REFERENCIAS.md` |
 | Material do cliente (leitura) e registro de tudo que chegou | `cliente/MATERIAL-RECEBIDO.md` e `cliente/ACERVO.md` |
+| **Proposta visual aprovada (28/10), com o que falta** | `estudo/visual/board-visual.html` e `PLANO-DE-MELHORIA.md` |
 | Estudos de estratégia (27/10) | `estudo/estrategia-2026-10/` |
 | Capturar telas em vários tamanhos | `runbooks/capturar-telas.md` |

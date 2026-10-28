@@ -17,7 +17,7 @@
 
 | Pasta | Dono do link | Arquivo no disco | Conteúdo conferido |
 |---|---|---|---|
-| **Rcarcade Cont** | David Navarro Rodriguez | `cliente/acervo-dropbox/Rcarcade-Cont.zip` (8,5 GB, md5 `4fcd45b3c6e2bb921497620696f052fc`) | 16 arquivos: `RC ARCADE CHESTE HD.mp4` (88 MB, **vídeo novo, ainda não visto**); `logos rcarcade/` com 8 PNG, **incluindo `marca video.png`, que faltava desde 23/09**; `estreno lona/coche1` (3 vídeos "AvatarG00xx", ~3,3 GB) e `coche2` (4 vídeos, ~5,2 GB). **Não vieram** as subpastas `Editados` e `Jornada de puertas abiertas` citadas em 13/09: conferir se mudaram de lugar ou se o zip as omitiu. |
+| **Rcarcade Cont** | David Navarro Rodriguez | `cliente/acervo-dropbox/Rcarcade-Cont.zip` (8,5 GB, md5 `4fcd45b3c6e2bb921497620696f052fc`) | 16 arquivos: `RC ARCADE CHESTE HD.mp4` (88 MB, **visto em 28/10**; áudio ainda não transcrito); `logos rcarcade/` com 8 PNG, **incluindo `marca video.png`, que faltava desde 23/09**; `estreno lona/coche1` (3 vídeos "AvatarG00xx", ~3,3 GB) e `coche2` (4 vídeos, ~5,2 GB). `Editados` e `Jornada de puertas abiertas` **existem no zip mas vieram vazias** (o Dropbox omitiu o conteúdo; ver "O que ainda não foi extraído"). |
 | **RCA publicacion insta** | ximodj navarro | `cliente/acervo-dropbox/RCA-publicacion-insta.zip` (46 MB, md5 `0a1fa3eafbe2e77202c593e578ae37f9`) | **23 fotos** DSC (DSC09860 a DSC09905, incl. `DSC09865-2`). Fecha a contagem: o inventário dizia 16, `DESIGN-DIRECTION.md` dizia 23; são 23. |
 | **Open Rcarcade** | ximodj navarro | `cliente/acervo-dropbox/Open-Rcarcade-PARCIAL-30GB.zip` (**parcial**, ~30,6 GB) e a lista de nomes em `Open-Rcarcade-PARCIAL-lista.txt` | A pasta é enorme (muito mais de 30 GB): `360/` (câmera 360, arquivos `.OSV`/`.LRF`), `action5/` e na raiz fotos e **ao menos 50 vídeos** (a lista parou no 1º erro e é incompleta) de 1 a 6 de julho/26 (`.mov`/`.mp4`), `test2.mov`, `test latencia.mov` (**teste de latência**, útil para a prova do "8 ms"), `RC Arcade Mad Ring Night.mp4`. O download foi cortado pelo limite de tempo do comando; o zip parcial não abre por inteiro. |
 
@@ -28,9 +28,9 @@ dele. Os vídeos de julho valem ser vistos com o pipeline completo: são a prova
 
 ## O que ainda não foi extraído, visto ou usado
 - Os 7 vídeos "Avatar" de `estreno lona` (inauguração da lona): nenhum visto.
-- `RC ARCADE CHESTE HD.mp4`: não visto.
-- As 23 fotos do Instagram: não vistas uma a uma (candidatas a vista de cima do carro e a fotos de prova).
-- Tudo de "Open Rcarcade" (só uma lista parcial de nomes foi lida).
+- `RC ARCADE CHESTE HD.mp4`: **visto em 28/10** (quadros e uso na galeria, ver abaixo); o **áudio não foi transcrito**.
+- As 23 fotos do Instagram: **vistas em 28/10** (a origem do evento delas não está confirmada).
+- "Open Rcarcade": só 12 de 15 fotos recuperadas (28/10); **vídeos e as pastas `360/` e `action5/` nunca vistos**.
 
 ## Pendente de conferir com o cliente
 - Autorização de imagem das pessoas que aparecem nas fotos e vídeos (Etapa 2 do `TASKS.md`).
@@ -50,7 +50,7 @@ Análise e nota em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`. Se
   inteira, carros com câmera, cockpits. **Áudio ainda não transcrito.** Logos extraídos (`marca video.png` incluída).
   Os diretórios `Editados`, `estreno lona` e `Jornada de puertas abiertas/ON BOARD 3` **existem no zip, mas só `estreno lona`
   traz arquivos** (7 vídeos "Avatar", 8 GB, ainda sem ver); `Editados` e `Jornada` vieram vazios (o Dropbox omitiu o conteúdo).
-- Quadro de proposta visual: `cliente/acervo-dropbox/extraido/board-visual.html` (abrir com o servidor local do site).
+- Quadro de proposta visual: **a versão que vale é `estudo/visual/board-visual.html`** (aprovada e versionada em 28/10); a cópia em `cliente/acervo-dropbox/extraido/` é anterior e está desatualizada.
 
 
 ## 28/10/2026 (noite) — Fotos do evento de julho recuperadas de dentro do zip parcial do "Open Rcarcade"

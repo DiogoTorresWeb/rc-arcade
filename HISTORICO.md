@@ -275,3 +275,13 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 ## 28/10/2026 (noite, 11) — Correção de honestidade nas fotos
 - Cartões de imprensa: tirei as fotos de TV e Zaragoza (origem não confirmada) e o de Madrid passou a usar a foto de celular de 3-7-26 11:17, da pasta Open Rcarcade (dentro das datas da jornada). 12 das 15 fotos de julho foram recuperadas do zip parcial e registradas em `cliente/ACERVO.md`.
 - Galería: o tópico "Eventos" (8 quadros, todos do mesmo vídeo de Cheste) fazia parecer 8 eventos diferentes; renomeado para "Con público" (legendas "Con público · 01…"). Ordem do Diogo: foto repetida do mesmo evento pode ficar; o texto não pode sugerir eventos diferentes. Enquanto não houver fotos confirmadas de cada evento, os cartões ficam como estão.
+
+## 28/10/2026 (noite, 12) — Crédito da agência e carro de rally
+- Pedido do Diogo: dar a entender ao cliente que o site é de empresa nossa. Adicionado "· Por Agencia Bienquisto" no rodapé (PC e celular). A versão no topo foi tirada a pedido do Diogo: o crédito fica só no final. Grafia dos documentos da base: Bienquisto (nome de trabalho, DEC-014). **Local, ainda não publicado.**
+- **Decisão do Diogo: o "carro de cima" usa o carro de rally** (o das fotos de estúdio e do topo do site), não o carro esportivo branco/azul do vídeo de Cheste.
+
+## 28/10/2026 (noite, 13) — Passagem 2 e o erro da passagem que perde fontes
+- O Diogo cobrou que a passagem anterior deixou fontes para trás (quadro visual aprovado, ACERVO, vídeo de Cheste, material de julho). Causa: passagem escrita de memória, sem inventário. Escrita a **passagem 2** (`runbooks/passagem-2026-10-28-noite-site-2.md`), um manifesto de fontes com 6 perguntas de abertura, decisões acumuladas, o que falta e "o que se sabe e o que NÃO se sabe".
+- `TASKS.md` recebeu faixa "desatualizado desde 13/09". `CURRENT_STATUS.md` passou a apontar a passagem 2 e o quadro visual. Regra global provisória em `~/.claude/CLAUDE.md`; lição nº 60 e o estudo em HTML (`Recursos/aprendizados/passagem-perde-fontes-do-projeto.html`) para o Diogo rodar um estudo à parte.
+- Passagem 2 testada às cegas duas vezes (sessão fria, agente `revisor-cego`): **7/10 e 7/10**. As lacunas da 1ª rodada (10) e da 2ª (9) foram corrigidas em `CURRENT_STATUS.md`, `cliente/ACERVO.md`, `TASKS.md` e na própria passagem. Registrado no HTML do estudo como dado para decidir se o inventário deve ser gerado por script.
+- **Decisão do Diogo (28/10, fim da noite): o "carro que desce" usa o carro de rally nº 43 com câmera FPV.** Handoff rodado em seguida.

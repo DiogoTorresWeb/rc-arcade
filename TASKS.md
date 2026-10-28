@@ -1,5 +1,8 @@
 # RC Arcade — tarefas
 
+> **DESATUALIZADO desde 13/09/2026.** Não é o estado do projeto nem a lista do que falta. O estado vive em `CURRENT_STATUS.md`
+> e a lista viva está na seção "Próximo passo" de `CURRENT_STATUS.md` (detalhe na passagem `runbooks/passagem-2026-10-28-noite-site-2.md`). Este arquivo fica só como registro da Etapa 1.
+
 ## Agora (Etapa 1 — entender antes de desenhar)
 
 Material do cliente recebido e lido em 13/09/2026 — ver
