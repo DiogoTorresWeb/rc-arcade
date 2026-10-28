@@ -43,7 +43,7 @@ O estudo 02 achou que **o cliente já tem domínio próprio (rcarcade.es), com u
 Google**, e que o El Hormiguero (Antena 3) fez uma corrida num "simulador de RC Arcade" em 07/10/2026 (ser o mesmo cliente
 não está confirmado). Isso muda onde publicar o site e o item "não há imprensa" abaixo. O estudo 03 mostra que o comprador faz conta (m², pessoas por hora, pessoal), teme quebra e peça, e desconfia de foto
 feita por IA: o vídeo real com telemetria deve abrir o site. Detalhe nos estudos 01 a 04.
-Estudo 05 (28/10): o site do `.es` tem ~6 semanas (conteúdo de 15–17/09/2026, HTTPS só desde 01/10/2026), é um deck de 23 slides virado página única, com logo e foto de abertura retocados por ChatGPT (assinatura da OpenAI nos arquivos); nota 5/10 como site de captação. Data de registro do `.es` não verificada.
+**Plano em árvore: `PLANO-DE-MELHORIA.md` (28/10).** Auditoria do Google Meu Negócio (categoria "Engenheiro", sem site, sem avaliações, ponto no mar) e do Instagram (11 posts, 422 seguidores; **El Hormiguero confirmado**: colaboração oficial com @rcarcade, 6,2 mil curtidas). Estudo 05 (28/10): o site do `.es` tem ~6 semanas (conteúdo de 15–17/09/2026, HTTPS só desde 01/10/2026), é um deck de 23 slides virado página única, com logo e foto de abertura retocados por ChatGPT (assinatura da OpenAI nos arquivos); nota 5/10 como site de captação. Data de registro do `.es` não verificada.
 
 ## Em aberto (nada disto foi corrigido ainda)
 

@@ -180,3 +180,12 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - Feito de um deck de 23 slides em página única, sem JavaScript nem CMS; logo e foto de abertura passaram pelo ChatGPT
   (assinatura C2PA da OpenAI). Nota minha: 5/10 como captação B2B (SEO 2, conversão 3, prova 3), 7/10 como apresentação.
 - Detalhe em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`.
+
+## 28/10/2026 — Plano de melhoria em árvore, Google Meu Negócio e Instagram
+- Pedido do Diogo: consolidar o que se traçou desde 27/10 num plano separado, auditar o Google Meu Negócio e o Instagram
+  do cliente, e seguir o site etapa por etapa (hero fica; faltam formulário, WhatsApp, SEO e provas sociais).
+- Google Meu Negócio visto no Maps: nome RCARCADE, categoria "Engenheiro", sem site, sem horário, zero avaliações, uma foto
+  (logo), ponto cai no mar perto do Estreito de Gibraltar. Instagram: 11 posts, 422 seguidores (o 116 do estudo 02 estava velho).
+- **El Hormiguero confirmado**: o vídeo de 07/10 é colaboração do @elhormiguero com @rcarcade, 6,2 mil curtidas, com
+  agradecimento oficial. A "Jornada de puertas abiertas" é em Madrid (qui 2 e sex 3 de julho); Volrace Motorshow Zaragoza
+  24–26/10 está no Instagram. Detalhe e árvore em `PLANO-DE-MELHORIA.md`.
