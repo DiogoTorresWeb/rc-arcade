@@ -33,10 +33,10 @@
 
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-mobile.jpg" media="(max-aspect-ratio: 3/4)">
+<link rel="preload" as="image" href="assets/hero-mobile.webp" media="(max-aspect-ratio: 3/4)">
 <link rel="preload" as="image" media="(min-aspect-ratio: 3/4)"
-      href="assets/hero-1920.jpg"
-      imagesrcset="assets/hero-1280.jpg 1280w, assets/hero-1920.jpg 1920w, assets/hero-2560.jpg 2560w"
+      href="assets/hero-1920.webp"
+      imagesrcset="assets/hero-1280.webp 1280w, assets/hero-1920.webp 1920w, assets/hero-2560.webp 2560w"
       imagesizes="100vw">
 
 <style>
@@ -532,15 +532,37 @@ footer .shell a:hover{color:#fff}
 .btn{border-radius:var(--r-ctl)}
 .sec-sub{color:var(--silver);margin-top:20px;max-width:56ch}
 
-/* ─── Qué es: 4 passos, cada um com a sua foto ─── */
+/* ─── Qué es: 4 passos — número e título dentro da foto (a cores), frase explicativa embaixo ─── */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;padding-top:24px;border-top:2px solid var(--red)}
 .step{padding:10px;display:flex;flex-direction:column;gap:12px}
-.step .ph{aspect-ratio:4/5}
-.step__body{padding:4px 10px 12px}
-.step__num{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;color:var(--silver-dim);transition:color .4s var(--ease)}
+.step .ph{aspect-ratio:4/5;isolation:isolate}
+.step .ph img{transition:transform .9s var(--ease)}
+.step .ph::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,11,13,0) 52%,rgba(10,11,13,.82) 100%);
+}
+.step .ph::after{z-index:3}
+.step__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 16px 14px}
+.step__num{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;color:rgba(255,255,255,.72);transition:color .4s var(--ease)}
 .step.is-lit .step__num{color:#fff}
-.step h3{margin:8px 0 6px}
+.step h3{
+  margin:4px 0 0;font-family:'Anton',var(--sans);font-weight:400;text-transform:uppercase;
+  font-size:clamp(1.25rem,1.7vw,1.5rem);line-height:1;letter-spacing:.02em;color:#fff;
+}
+.step__body{padding:2px 10px 12px}
 .step p{color:var(--silver);font-size:.9375rem}
+.step .ph .bar{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:4;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+@media (min-width:1001px){
+  .step__cap{padding:0 20px 18px}
+  .step__num{font-size:.8125rem}
+  .step h3{font-size:clamp(1.75rem,2.2vw,2.25rem)}
+  .step__body{padding:4px 12px 14px}
+  .step p{font-size:1.0625rem;line-height:1.5}
+}
+@media (hover:hover) and (pointer:fine){
+  .step:hover .ph img{transform:scale(1.04)}
+  .step:hover .bar{transform:scaleX(1)}
+}
 
 /* ─── La prueba: clipe real + ficha ─── */
 .proof{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:52px}
@@ -570,7 +592,11 @@ footer .shell a:hover{color:#fff}
 
 /* ─── Dos formas de contratarla ─── */
 .paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
-.path{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.path{--pad:clamp(24px,3vw,40px);padding:var(--pad);display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.path__ph{aspect-ratio:16/10;margin:calc(var(--pad)*-1) calc(var(--pad)*-1) 4px;border-radius:0}
+.path__ph::after{border-radius:0}
+.path__ph img{transition:transform .9s var(--ease)}
+@media (hover:hover) and (pointer:fine){.path:hover .path__ph img{transform:scale(1.04)}}
 .path h3{font-size:clamp(1.5rem,2.4vw,2rem)}
 .path>p{color:var(--silver);max-width:46ch}
 .path ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
@@ -607,7 +633,11 @@ footer .shell a:hover{color:#fff}
   background:radial-gradient(120% 90% at 85% 0%,rgba(227,27,35,.16),transparent 60%),linear-gradient(160deg,#17181c,#0e0f12);
   border-bottom:1px solid var(--line);
 }
-.rcard__cover b{font:400 clamp(2.4rem,4.2vw,3.2rem)/.9 'Anton',var(--sans);text-transform:uppercase;color:rgba(255,255,255,.88);letter-spacing:.01em}
+.rcard__cover b{font:400 clamp(2.4rem,4.2vw,3.2rem)/.9 'Anton',var(--sans);text-transform:uppercase;color:rgba(255,255,255,.92);letter-spacing:.01em;position:relative;z-index:2}
+.rcard__cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
+.rcard__cover:has(img)::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,11,13,.1) 30%,rgba(10,11,13,.78) 100%)}
+.rcard__cover::before{z-index:2}
+@media (hover:hover) and (pointer:fine){.rcard:hover .rcard__cover img{transform:scale(1.05)}}
 .rcard__cover::before{content:'';position:absolute;left:20px;top:18px;width:28px;height:2px;background:var(--red)}
 .rcard__body{padding:18px 20px 22px;display:grid;gap:8px;flex:1;align-content:start}
 .rcard__date{font-family:var(--mono);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
@@ -727,6 +757,84 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
 .intro__skip:hover{color:#fff}
 .intro.is-leaving{opacity:0;pointer-events:none}
 
+/* ─── Sistema de revelação (3 gestos, 1 código): linha que sobe da máscara, cartão que sobe e acende,
+   paralaxe só na foto grande. Só ativa com JS (html.rv-on); com "reduzir animações" nada se move. ─── */
+.rv{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.rv>span{display:block}
+html.rv-on .rv>span{transform:translateY(108%);transition:transform .95s var(--ease)}
+html.rv-on .rv.in>span{transform:none}
+html.rv-on .rv:nth-child(2)>span{transition-delay:.12s}
+html.rv-on .rv:nth-child(3)>span{transition-delay:.24s}
+html.rv-on [data-rise]{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s var(--ease) calc(var(--i,0)*90ms),transform .9s var(--ease) calc(var(--i,0)*90ms),border-color .45s var(--ease);
+}
+html.rv-on [data-rise].in{opacity:1;transform:none}
+.statement--big{
+  font-family:'Anton',var(--sans);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2.75rem,8.4vw,7rem);line-height:.95;letter-spacing:.005em;max-width:none;color:#fff;margin:0;
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.statement--big em{font-style:normal;color:var(--red)}
+.band__sub{margin:14px 0 0;color:rgba(255,255,255,.86);font-size:clamp(.9375rem,1.4vw,1.125rem)}
+.band[data-parallax] picture{inset:-9% 0;height:118%}
+.band[data-parallax] img{will-change:transform;transform:translate3d(0,var(--py,0px),0)}
+
+/* ─── Galería por temas: bloco de altura fixa, pestañas + carrusel (nunca uma parede de fotos) ─── */
+.gal{margin-top:40px}
+.gal__tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.gal__tabs::-webkit-scrollbar{display:none}
+.gal__tab{
+  flex:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--silver);
+  background:transparent;border:1px solid var(--line-hi);border-radius:999px;padding:12px 16px;
+  transition:color .3s var(--ease),border-color .3s var(--ease),background-color .3s var(--ease);
+}
+.gal__tab span{color:var(--silver-dim);font-variant-numeric:tabular-nums}
+.gal__tab:hover{color:#fff}
+.gal__tab[aria-selected="true"]{color:#fff;border-color:var(--red);background:rgba(227,27,35,.12)}
+.gal__tab[aria-selected="true"] span{color:#fff}
+.gal__stage{position:relative;margin-top:20px}
+.gal__panel[hidden]{display:none}
+.gal__track{
+  list-style:none;margin:0;padding:0;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  height:clamp(340px,54vh,520px);scrollbar-width:none;overscroll-behavior-x:contain;outline-offset:4px;
+}
+.gal__track::-webkit-scrollbar{display:none}
+.gal__item{
+  position:relative;flex:none;height:100%;aspect-ratio:4/5;scroll-snap-align:start;overflow:hidden;
+  border-radius:var(--r-card);border:1px solid var(--line);background:var(--surface);
+}
+.gal__item img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .5s var(--ease),transform .9s var(--ease)}
+.gal__cap{
+  position:absolute;left:16px;bottom:14px;z-index:2;font:500 .6875rem/1 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.8);
+}
+.gal__item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,13,0) 62%,rgba(10,11,13,.7) 100%);pointer-events:none}
+.gal__item .bar{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.gal__nav{
+  position:absolute;top:50%;z-index:5;width:44px;height:44px;border-radius:50%;display:none;place-items:center;cursor:pointer;
+  color:#fff;background:rgba(10,11,13,.72);border:1px solid var(--line-hi);transform:translateY(-50%);
+  transition:background-color .3s var(--ease),opacity .3s var(--ease);
+}
+.gal__nav:hover{background:rgba(10,11,13,.92)}
+.gal__nav[disabled]{opacity:0;pointer-events:none}
+.gal__nav--prev{left:-10px}.gal__nav--next{right:-10px}
+/* PC (ponteiro fino): preto e branco que ganha cor ao passar o mouse; setas */
+@media (hover:hover) and (pointer:fine){
+  .gal__item img{filter:grayscale(1) contrast(1.08) brightness(.92)}
+  .gal__item:hover img{filter:none;transform:scale(1.04)}
+  .gal__item:hover .bar{transform:scaleX(1)}
+  .gal__nav{display:grid}
+}
+/* celular (sem hover): a foto que chega ao centro ganha cor */
+@media (hover:none){
+  .gal__item img{filter:grayscale(.95) brightness(.9)}
+  .gal__item.is-on img{filter:none}
+  .gal__item.is-on .bar{transform:scaleX(1)}
+}
+@media (max-width:700px){.gal__track{height:min(440px,62vh)}.gal__nav{display:none !important}}
+
 /* ─── Responsivo ─── */
 @media (max-width:1000px){
   .contact__grid{grid-template-columns:1fr}
@@ -824,6 +932,7 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
   <a href="#prueba">La prueba</a>
   <a href="#formas">Contratar</a>
   <a href="#escalas">¿Cabe en tu espacio?</a>
+  <a href="#galeria">Galería</a>
   <a href="#registro">Registro</a>
   <a class="btn btn--primary" href="#contacto" data-track="cta_propuesta" data-track-label="menu">Pedir propuesta</a>
 </div>
@@ -838,9 +947,9 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
       <picture>
         <!-- em tela alta e estreita o corte 16:9 fecha demais no carro:
              recorte retrato dedicado, mesmo carro centralizado -->
-        <source media="(max-aspect-ratio: 3/4)" srcset="assets/hero-mobile.jpg" width="1080" height="1440">
-        <img src="assets/hero-1920.jpg"
-             srcset="assets/hero-1280.jpg 1280w, assets/hero-1920.jpg 1920w, assets/hero-2560.jpg 2560w"
+        <source media="(max-aspect-ratio: 3/4)" srcset="assets/hero-mobile.webp" width="1080" height="1440">
+        <img src="assets/hero-1920.webp"
+             srcset="assets/hero-1280.webp 1280w, assets/hero-1920.webp 1920w, assets/hero-2560.webp 2560w"
              sizes="100vw" width="2560" height="1440"
              alt="Coche RC de competición en pista, captado en movimiento durante una sesión real"
              fetchpriority="high" decoding="async">
@@ -893,20 +1002,20 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
 
       <div class="steps">
         <article class="step card" data-lit>
-          <figure class="ph"><img src="assets/fotos/paso-elige-560.webp" srcset="assets/fotos/paso-elige-560.webp 560w, assets/fotos/paso-elige-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Dos coches RC de competición a punto de salir en el circuito"></figure>
-          <div class="step__body"><span class="step__num">01</span><h3>Elige</h3><p>Piloto, coche y puesto asignados.</p></div>
+          <figure class="ph"><img src="assets/fotos/paso-elige-560.webp" srcset="assets/fotos/paso-elige-560.webp 560w, assets/fotos/paso-elige-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Dos coches RC de competición a punto de salir en el circuito"><figcaption class="step__cap"><span class="step__num">01</span><h3>Elige</h3></figcaption><i class="bar"></i></figure>
+          <div class="step__body"><p>Piloto, coche y puesto asignados.</p></div>
         </article>
         <article class="step card" data-lit>
-          <figure class="ph"><img src="assets/fotos/paso-sientate-560.webp" srcset="assets/fotos/paso-sientate-560.webp 560w, assets/fotos/paso-sientate-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Fila de cockpits con volante, pedales y pantalla"></figure>
-          <div class="step__body"><span class="step__num">02</span><h3>Siéntate</h3><p>Ajustas tu posición y recibes las instrucciones.</p></div>
+          <figure class="ph"><img src="assets/fotos/paso-sientate-560.webp" srcset="assets/fotos/paso-sientate-560.webp 560w, assets/fotos/paso-sientate-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Fila de cockpits con volante, pedales y pantalla"><figcaption class="step__cap"><span class="step__num">02</span><h3>Siéntate</h3></figcaption><i class="bar"></i></figure>
+          <div class="step__body"><p>Ajustas tu posición y recibes las instrucciones.</p></div>
         </article>
         <article class="step card" data-lit>
-          <figure class="ph"><img src="assets/fotos/paso-conduce-560.webp" srcset="assets/fotos/paso-conduce-560.webp 560w, assets/fotos/paso-conduce-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con la cámara FPV montada a bordo"></figure>
-          <div class="step__body"><span class="step__num">03</span><h3>Conduce</h3><p>Volante y pedales mueven el coche. La pantalla te enseña su camino.</p></div>
+          <figure class="ph"><img src="assets/fotos/paso-conduce-560.webp" srcset="assets/fotos/paso-conduce-560.webp 560w, assets/fotos/paso-conduce-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con la cámara FPV montada a bordo"><figcaption class="step__cap"><span class="step__num">03</span><h3>Conduce</h3></figcaption><i class="bar"></i></figure>
+          <div class="step__body"><p>Volante y pedales mueven el coche. La pantalla te enseña su camino.</p></div>
         </article>
         <article class="step card" data-lit>
-          <figure class="ph"><img src="assets/fotos/paso-compite-560.webp" srcset="assets/fotos/paso-compite-560.webp 560w, assets/fotos/paso-compite-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC tomando una curva del circuito"></figure>
-          <div class="step__body"><span class="step__num">04</span><h3>Compite</h3><p>Vueltas, tiempos y posición convierten la tanda en carrera.</p></div>
+          <figure class="ph"><img src="assets/fotos/paso-compite-560.webp" srcset="assets/fotos/paso-compite-560.webp 560w, assets/fotos/paso-compite-880.webp 880w" sizes="(max-width:560px) 92vw, (max-width:1000px) 46vw, 290px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC tomando una curva del circuito"><figcaption class="step__cap"><span class="step__num">04</span><h3>Compite</h3></figcaption><i class="bar"></i></figure>
+          <div class="step__body"><p>Vueltas, tiempos y posición convierten la tanda en carrera.</p></div>
         </article>
       </div>
       <p class="sec-sub" style="margin-top:28px">No hace falta saber de radiocontrol.</p>
@@ -950,13 +1059,16 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
     <div class="shell">
       <h2>Lo que gana quien la contrata.</h2>
 
-      <div class="band">
+      <div class="band" data-parallax>
         <picture>
-          <source media="(max-width:700px)" srcset="assets/fotos/operador-retrato-640.webp 640w, assets/fotos/operador-retrato-960.webp 960w" sizes="100vw">
-          <img src="assets/fotos/operador-faixa-1920.webp" srcset="assets/fotos/operador-faixa-1280.webp 1280w, assets/fotos/operador-faixa-1920.webp 1920w" sizes="(max-width:1300px) 94vw, 1180px" width="1920" height="1032" loading="lazy" decoding="async" alt="Escudo de RC Arcade encendido sobre el pórtico de salida del circuito">
+          <source media="(max-width:700px)" srcset="assets/fotos/pista-completa-m-640.webp 640w, assets/fotos/pista-completa-m-960.webp 960w" sizes="100vw">
+          <img src="assets/fotos/pista-completa-1920.webp" srcset="assets/fotos/pista-completa-1280.webp 1280w, assets/fotos/pista-completa-1920.webp 1920w" sizes="(max-width:1300px) 94vw, 1180px" width="1920" height="1200" loading="lazy" decoding="async" alt="El circuito completo de RC Arcade visto desde un extremo, con curvas, bordillos y pilotos en sus puestos">
         </picture>
         <div class="band__txt">
-          <p class="statement">Hasta <span class="n">seis</span> simuladores con coches reales, en <span class="n">un</span> solo circuito compartido.</p>
+          <p class="statement statement--big">
+            <span class="sr-only">Una pista. Hasta seis pilotos.</span><span class="rv" aria-hidden="true"><span>Una pista.</span></span><span class="rv" aria-hidden="true"><span>Hasta <em>seis</em></span></span><span class="rv" aria-hidden="true"><span>pilotos.</span></span>
+          </p>
+          <p class="band__sub">Coches reales, en un solo circuito compartido.</p>
         </div>
       </div>
 
@@ -979,6 +1091,7 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
 
       <div class="paths">
         <article class="path card" data-lit>
+          <figure class="ph path__ph"><img src="assets/fotos/forma-evento-640.webp" srcset="assets/fotos/forma-evento-640.webp 640w, assets/fotos/forma-evento-1000.webp 1000w" sizes="(max-width:700px) 92vw, 560px" width="640" height="400" loading="lazy" decoding="async" alt="Arco Dunlop sobre el circuito, con el equipo y los visitantes mirando la carrera"></figure>
           <span class="tag">Evento</span>
           <h3>Llevamos la carrera a tu evento.</h3>
           <p>Ferias, festivales, activaciones de marca y acciones de empresa. Nuestro equipo monta el circuito, recibe a los participantes y lanza las carreras. Tú contratas una actividad lista para funcionar.</p>
@@ -992,6 +1105,7 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
         </article>
 
         <article class="path card" data-lit>
+          <figure class="ph path__ph"><img src="assets/fotos/forma-instalacion-640.webp" srcset="assets/fotos/forma-instalacion-640.webp 640w, assets/fotos/forma-instalacion-1000.webp 1000w" sizes="(max-width:700px) 92vw, 560px" width="640" height="400" loading="lazy" decoding="async" alt="Pórtico con el escudo de RC Arcade encendido sobre el circuito"></figure>
           <span class="tag">Instalación fija</span>
           <h3>Una atracción propia en tu centro.</h3>
           <p>Para centros de ocio, locales especializados y espacios comerciales. El circuito es modular y se ajusta a tu superficie, tu aforo y tu público.</p>
@@ -1056,6 +1170,76 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
     </div>
   </section>
 
+  <!-- ── Galería por temas: todas las fotos ordenadas, en un bloque de altura fija (pestañas + carrusel).
+       Solo carga la pestaña abierta. En PC pasan de blanco y negro a color al pasar el ratón; en móvil, al centrarse. ── -->
+  <section id="galeria" class="rule-top" data-sector="Galería">
+    <div class="shell">
+      <span class="tag">Galería</span>
+      <h2 style="margin-top:18px;max-width:22ch">El circuito, de cerca.</h2>
+      <div class="gal" data-gal>
+        <div class="gal__tabs" role="tablist" aria-label="Temas de la galería">
+          <button class="gal__tab" role="tab" id="gt-eventos" aria-controls="gp-eventos" aria-selected="true" tabindex="0" type="button">Con público<span>8</span></button>
+          <button class="gal__tab" role="tab" id="gt-pista" aria-controls="gp-pista" aria-selected="false" tabindex="-1" type="button">Pista<span>5</span></button>
+          <button class="gal__tab" role="tab" id="gt-cabinas" aria-controls="gp-cabinas" aria-selected="false" tabindex="-1" type="button">Cabinas<span>4</span></button>
+          <button class="gal__tab" role="tab" id="gt-coches" aria-controls="gp-coches" aria-selected="false" tabindex="-1" type="button">Coches<span>5</span></button>
+          <button class="gal__tab" role="tab" id="gt-marcas" aria-controls="gp-marcas" aria-selected="false" tabindex="-1" type="button">Marcas en pista<span>6</span></button>
+        </div>
+        <div class="gal__stage">
+        <div class="gal__panel" role="tabpanel" id="gp-eventos" aria-labelledby="gt-eventos">
+          <ul class="gal__track" tabindex="0" aria-label="Con público: desliza para ver más">
+            <li class="gal__item"><img src="assets/fotos/gal-ev-07-560.webp" srcset="assets/fotos/gal-ev-07-560.webp 560w, assets/fotos/gal-ev-07-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Arco de neumático Dunlop con un coche RC pasando por debajo y público al fondo"><span class="gal__cap">Con público · 01</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-09-560.webp" srcset="assets/fotos/gal-ev-09-560.webp 560w, assets/fotos/gal-ev-09-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con decoración de RC Arcade visto de frente junto a un cartel del evento"><span class="gal__cap">Con público · 02</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-10-560.webp" srcset="assets/fotos/gal-ev-10-560.webp 560w, assets/fotos/gal-ev-10-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Participante con gafas de sol, concentrado al volante de un cockpit"><span class="gal__cap">Con público · 03</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-11-560.webp" srcset="assets/fotos/gal-ev-11-560.webp 560w, assets/fotos/gal-ev-11-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Familia mirando la carrera desde el borde del circuito"><span class="gal__cap">Con público · 04</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-13-560.webp" srcset="assets/fotos/gal-ev-13-560.webp 560w, assets/fotos/gal-ev-13-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Participante al volante de un cockpit, con el mostrador de RC Arcade detrás"><span class="gal__cap">Con público · 05</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-15-560.webp" srcset="assets/fotos/gal-ev-15-560.webp 560w, assets/fotos/gal-ev-15-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Pórtico de RC Arcade con visitantes mirando a un coche azul salir de la curva"><span class="gal__cap">Con público · 06</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-26-560.webp" srcset="assets/fotos/gal-ev-26-560.webp 560w, assets/fotos/gal-ev-26-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Arco Dunlop sobre el circuito, con el equipo atendiendo a los visitantes"><span class="gal__cap">Con público · 07</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-ev-28-560.webp" srcset="assets/fotos/gal-ev-28-560.webp 560w, assets/fotos/gal-ev-28-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC azul y blanco pasando bajo el pórtico de RC Arcade"><span class="gal__cap">Con público · 08</span><i class="bar"></i></li>
+          </ul>
+        </div>
+        <div class="gal__panel" role="tabpanel" id="gp-pista" aria-labelledby="gt-pista" hidden>
+          <ul class="gal__track" tabindex="0" aria-label="Pista: desliza para ver más">
+            <li class="gal__item"><img src="assets/fotos/gal-9867-560.webp" srcset="assets/fotos/gal-9867-560.webp 560w, assets/fotos/gal-9867-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Tramo del circuito con marcas pintadas sobre el asfalto"><span class="gal__cap">Pista · 01</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9874-560.webp" srcset="assets/fotos/gal-9874-560.webp 560w, assets/fotos/gal-9874-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Pórtico con el escudo de RC Arcade sobre una rampa del circuito"><span class="gal__cap">Pista · 02</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9877-560.webp" srcset="assets/fotos/gal-9877-560.webp 560w, assets/fotos/gal-9877-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Pórtico con el escudo encendido sobre la recta del circuito"><span class="gal__cap">Pista · 03</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9893-560.webp" srcset="assets/fotos/gal-9893-560.webp 560w, assets/fotos/gal-9893-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Arco negro sobre el circuito con un coche pasando por debajo"><span class="gal__cap">Pista · 04</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9897-560.webp" srcset="assets/fotos/gal-9897-560.webp 560w, assets/fotos/gal-9897-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC tomando una curva con bordillos rojos y blancos"><span class="gal__cap">Pista · 05</span><i class="bar"></i></li>
+          </ul>
+        </div>
+        <div class="gal__panel" role="tabpanel" id="gp-cabinas" aria-labelledby="gt-cabinas" hidden>
+          <ul class="gal__track" tabindex="0" aria-label="Cabinas: desliza para ver más">
+            <li class="gal__item"><img src="assets/fotos/gal-9860-560.webp" srcset="assets/fotos/gal-9860-560.webp 560w, assets/fotos/gal-9860-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Dos pantallas con la vista del coche, volante y pedales de un cockpit"><span class="gal__cap">Cabinas · 01</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/paso-sientate-560.webp" srcset="assets/fotos/paso-sientate-560.webp 560w, assets/fotos/paso-sientate-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Fila de cockpits con volante, pedales y pantalla"><span class="gal__cap">Cabinas · 02</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9873-560.webp" srcset="assets/fotos/gal-9873-560.webp 560w, assets/fotos/gal-9873-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="El circuito sobre su mesa, con el cartel de RC Arcade y los volantes en primer plano"><span class="gal__cap">Cabinas · 03</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9905-560.webp" srcset="assets/fotos/gal-9905-560.webp 560w, assets/fotos/gal-9905-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Asiento de cockpit con volante y pedales frente al logo de RC Arcade"><span class="gal__cap">Cabinas · 04</span><i class="bar"></i></li>
+          </ul>
+        </div>
+        <div class="gal__panel" role="tabpanel" id="gp-coches" aria-labelledby="gt-coches" hidden>
+          <ul class="gal__track" tabindex="0" aria-label="Coches: desliza para ver más">
+            <li class="gal__item"><img src="assets/fotos/gal-9864-560.webp" srcset="assets/fotos/gal-9864-560.webp 560w, assets/fotos/gal-9864-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC azul de rally sobre el circuito, con otro vehículo al fondo"><span class="gal__cap">Coches · 01</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/paso-elige-560.webp" srcset="assets/fotos/paso-elige-560.webp 560w, assets/fotos/paso-elige-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Dos coches RC de competición a punto de salir en el circuito"><span class="gal__cap">Coches · 02</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/paso-conduce-560.webp" srcset="assets/fotos/paso-conduce-560.webp 560w, assets/fotos/paso-conduce-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con la cámara FPV montada a bordo"><span class="gal__cap">Coches · 03</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9901-560.webp" srcset="assets/fotos/gal-9901-560.webp 560w, assets/fotos/gal-9901-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC de rally visto de perfil, con la cámara FPV en el techo"><span class="gal__cap">Coches · 04</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9902-560.webp" srcset="assets/fotos/gal-9902-560.webp 560w, assets/fotos/gal-9902-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC con cámara FPV junto a una barrera, con una torre de pórtico detrás"><span class="gal__cap">Coches · 05</span><i class="bar"></i></li>
+          </ul>
+        </div>
+        <div class="gal__panel" role="tabpanel" id="gp-marcas" aria-labelledby="gt-marcas" hidden>
+          <ul class="gal__track" tabindex="0" aria-label="Marcas en pista: desliza para ver más">
+            <li class="gal__item"><img src="assets/fotos/gal-9861-560.webp" srcset="assets/fotos/gal-9861-560.webp 560w, assets/fotos/gal-9861-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Dos coches RC en una curva junto a un pórtico con banner de Red Bull"><span class="gal__cap">Marcas en pista · 01</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9862-560.webp" srcset="assets/fotos/gal-9862-560.webp 560w, assets/fotos/gal-9862-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Coche RC en una curva con banner de Red Bull Racing en la barrera"><span class="gal__cap">Marcas en pista · 02</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9865-560.webp" srcset="assets/fotos/gal-9865-560.webp 560w, assets/fotos/gal-9865-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Pórtico con el logo de Hyundai sobre la pista"><span class="gal__cap">Marcas en pista · 03</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9868-560.webp" srcset="assets/fotos/gal-9868-560.webp 560w, assets/fotos/gal-9868-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Arco de neumático Dunlop sobre la pista"><span class="gal__cap">Marcas en pista · 04</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9876-560.webp" srcset="assets/fotos/gal-9876-560.webp 560w, assets/fotos/gal-9876-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Escudo de RC Arcade encendido en rojo sobre un pórtico"><span class="gal__cap">Marcas en pista · 05</span><i class="bar"></i></li>
+            <li class="gal__item"><img src="assets/fotos/gal-9889-560.webp" srcset="assets/fotos/gal-9889-560.webp 560w, assets/fotos/gal-9889-880.webp 880w" sizes="(max-width:700px) 80vw, 340px" width="560" height="700" loading="lazy" decoding="async" alt="Pórtico con el logo de Ford sobre una curva"><span class="gal__cap">Marcas en pista · 06</span><i class="bar"></i></li>
+          </ul>
+        </div>
+          <button class="gal__nav gal__nav--prev" type="button" aria-label="Fotos anteriores"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="gal__nav gal__nav--next" type="button" aria-label="Fotos siguientes"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Prensa y registro — só o que aconteceu, com data e fonte. Título fantasma e
        cartões que deslizam (estrutura do nickho-motorsports.nl; conteúdo é nosso).
        O cartão vazio é de propósito: "cuando haya otra nota, entra aquí". ── -->
@@ -1088,7 +1272,7 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
           </div>
         </article>
         <article class="rcard card">
-          <div class="rcard__cover"><b>Madrid</b></div>
+          <div class="rcard__cover"><img src="assets/fotos/prensa-madrid-330.webp" srcset="assets/fotos/prensa-madrid-330.webp 330w, assets/fotos/prensa-madrid-660.webp 660w" sizes="330px" width="330" height="206" loading="lazy" decoding="async" alt="Visitante al volante de un cockpit en la jornada de puertas abiertas, con las pantallas mostrando la vista del coche"><b>Madrid</b></div>
           <div class="rcard__body">
             <span class="rcard__date">2–3 jul. 2026 · Madrid</span>
             <h3>Jornada de puertas abiertas</h3>
@@ -1360,6 +1544,102 @@ footer{padding:64px 0 76px;border-top:1px solid var(--line);color:var(--silver);
       a.addEventListener('click', function () { form.elements.interes.value = a.getAttribute('data-interes'); });
     });
   }
+
+  /* ── Galería: pestañas (con teclado), setas, e foto que ganha cor ao centrar no celular ── */
+  (function () {
+    var gal = $('[data-gal]'); if (!gal) return;
+    var tabs = [].slice.call(gal.querySelectorAll('.gal__tab'));
+    var prev = gal.querySelector('.gal__nav--prev'), next = gal.querySelector('.gal__nav--next');
+    var cur = function () { return gal.querySelector('.gal__panel:not([hidden]) .gal__track'); };
+    var behavior = function () { return reduced.matches ? 'auto' : 'smooth'; };
+
+    var edges = function () {
+      var t = cur(); if (!t) return;
+      prev.disabled = t.scrollLeft < 8;
+      next.disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 8;
+    };
+    /* cada pista tem o seu observador, com ela mesma como raiz */
+    gal.querySelectorAll('.gal__track').forEach(function (t) {
+      t.addEventListener('scroll', edges, { passive: true });
+      if (!('IntersectionObserver' in window)) return;
+      var o = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { en.target.classList.toggle('is-on', en.isIntersecting); });
+      }, { root: t, threshold: .7 });
+      t.querySelectorAll('.gal__item').forEach(function (li) { o.observe(li); });
+    });
+
+    var select = function (tab, focus) {
+      tabs.forEach(function (b) {
+        var on = b === tab;
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
+      });
+      var t = cur(); if (t) t.scrollLeft = 0;
+      edges();
+      if (focus) tab.focus();
+    };
+    tabs.forEach(function (b, i) {
+      b.addEventListener('click', function () { select(b); });
+      b.addEventListener('keydown', function (e) {
+        var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : -1;
+        if (j < 0) return;
+        e.preventDefault();
+        select(tabs[(j + tabs.length) % tabs.length], true);
+      });
+    });
+    var step = function (dir) { var t = cur(); t.scrollBy({ left: dir * t.clientWidth * .8, behavior: behavior() }); };
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    edges();
+  })();
+
+  /* ── Revelação ao descer: linhas que sobem de máscara, cartões que sobem, paralaxe na foto grande ── */
+  (function () {
+    if (reduced.matches || !('IntersectionObserver' in window)) return;
+    var root = document.documentElement;
+    root.classList.add('rv-on');
+
+    /* títulos de seção: o conteúdo inteiro sobe de uma máscara (o hero fica fora) */
+    document.querySelectorAll('main section:not(#hero) h2').forEach(function (h) {
+      h.innerHTML = '<span class="rv"><span>' + h.innerHTML + '</span></span>';
+    });
+
+    /* cartões e linhas: sobem e acendem, em escada dentro do mesmo grupo */
+    ['.steps > *', '.args > *', '.paths > *', '.sizes > *', '.process > *'].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el, i) {
+        el.setAttribute('data-rise', '');
+        el.style.setProperty('--i', i);
+      });
+    });
+
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv, [data-rise]').forEach(function (el) { io.observe(el); });
+
+    /* paralaxe: a foto anda mais devagar que a página, só enquanto a faixa está na tela */
+    document.querySelectorAll('[data-parallax]').forEach(function (box) {
+      var img = box.querySelector('img'), on = false, raf = 0;
+      var tick = function () {
+        raf = 0;
+        var r = box.getBoundingClientRect(), vh = window.innerHeight;
+        var p = ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2);   /* -1 (subindo) … 1 (entrando) */
+        p = Math.max(-1, Math.min(1, p));
+        img.style.setProperty('--py', (p * r.height * .07).toFixed(1) + 'px');
+      };
+      var onScroll = function () { if (!raf) raf = requestAnimationFrame(tick); };
+      new IntersectionObserver(function (es) {
+        on = es[0].isIntersecting;
+        if (on) { window.addEventListener('scroll', onScroll, { passive: true }); tick(); }
+        else window.removeEventListener('scroll', onScroll);
+      }).observe(box);
+    });
+  })();
 
   /* ── Clipe da pista: toca só quando aparece, para quando sai (e só carrega aí) ── */
   var pv = $('#proofVideo'), pt = $('#proofToggle'), userPaused = false;

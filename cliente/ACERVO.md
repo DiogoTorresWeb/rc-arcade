@@ -51,3 +51,28 @@ Análise e nota em `estudo/estrategia-2026-10/05-site-antigo-rcarcade-es.md`. Se
   Os diretórios `Editados`, `estreno lona` e `Jornada de puertas abiertas/ON BOARD 3` **existem no zip, mas só `estreno lona`
   traz arquivos** (7 vídeos "Avatar", 8 GB, ainda sem ver); `Editados` e `Jornada` vieram vazios (o Dropbox omitiu o conteúdo).
 - Quadro de proposta visual: `cliente/acervo-dropbox/extraido/board-visual.html` (abrir com o servidor local do site).
+
+
+## 28/10/2026 (noite) — Fotos do evento de julho recuperadas de dentro do zip parcial do "Open Rcarcade"
+Origem: `cliente/acervo-dropbox/Open-Rcarcade-PARCIAL-30GB.zip` (pasta "Open Rcarcade", de ximodj navarro). O zip está cortado e sem
+índice, então as fotos foram achadas pelo nome dentro do arquivo (o cabeçalho de cada uma ficou intacto) e gravadas em
+`cliente/acervo-dropbox/extraido/open-fotos/` (fora do git). **12 de 15 recuperadas;** faltam `Foto 2-7-26, 0 13 56`, `Foto 3-7-26, 17 43 23` e
+`Foto 3-7-26, 11 25 07` (não abriram inteiras). Fotos de celular (3840 × 2160, duas de 4032 × 3024), de 1 a 3 de julho de 2026.
+**O que se vê:** o mesmo galpão (paredes brancas, escada, planta, pedestal laranja) das 23 fotos profissionais do Instagram, com a pista, o
+pórtico e os cockpits montados; a de `3-7-26, 11 17 09` mostra uma visitante pilotando. **Hipótese, a confirmar com o cliente:** as 23 fotos
+profissionais foram tiradas nesse mesmo lugar, talvez na jornada de Madrid (2-3 jul). Não está escrito em nenhum documento.
+
+| Arquivo | Tamanho | md5 |
+|---|---|---|
+| `Foto 1-7-26, 22 46 14.jpg` | 1.6 MB | `4a83b9c3ecdd96e0b6f6fd6382cfc2ef` |
+| `Foto 1-7-26, 22 49 18.jpg` | 1.6 MB | `fbd5705615b4ea4a092b32dca462f5e9` |
+| `Foto 1-7-26, 23 07 17.jpg` | 1.7 MB | `2bd5d07bd7828a05e7bbf23b1121b466` |
+| `Foto 1-7-26, 23 07 25.jpg` | 1.6 MB | `c97246a2a6019c5b2c36f60b63fb6b66` |
+| `Foto 2-7-26, 0 02 12.jpg` | 1.4 MB | `c32825b5e044c11987301b24217348c4` |
+| `Foto 2-7-26, 0 04 03.jpg` | 1.7 MB | `8ade6268c0b1f739849337fc296a9ef3` |
+| `Foto 2-7-26, 0 13 52.jpg` | 10.5 MB | `58907549ef408056d01ac5ad8bd5ab25` |
+| `Foto 2-7-26, 0 47 47.jpg` | 1.7 MB | `300471092e70d4e1cc0dd7d9f1d63021` |
+| `Foto 2-7-26, 18 03 12.jpg` | 1.4 MB | `aebd5f6a023beb93d799fba14bdd0a4e` |
+| `Foto 3-7-26, 0 15 34.jpg` | 1.6 MB | `8595448b1346009def27cc99ace8e0ec` |
+| `Foto 3-7-26, 11 17 09.jpg` | 8.1 MB | `7caa2fe671de5aac4c6034713d8b1c9a` |
+| `Foto 3-7-26, 9 22 33.jpg` | 1.4 MB | `c68583fbfcdab554d4ba93ddf5426d2b` |

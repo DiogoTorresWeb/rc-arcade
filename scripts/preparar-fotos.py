@@ -73,6 +73,49 @@ im = abrir("9876")
 salvar(acerto(recorte(im, (0, 0.03, 1, 0.46))), "operador-faixa", [1280, 1920], q=72)
 salvar(acerto(recorte(im, (0, 0.0, 1, 0.78))), "operador-retrato", [640, 960], q=72)
 
+# pista inteira (faixa grande com paralaxe; PC largo, celular mais alto)
+im = abrir("9875")
+salvar(acerto(recorte(im, (0, 0.20, 1, 0.70))), "pista-completa", [1280, 1920], q=72)
+salvar(acerto(recorte(im, (0, 0.14, 1, 0.78))), "pista-completa-m", [640, 960], q=72)
+
+# galeria por tópicos (4:5, só 560 e 880; carregam ao abrir a aba)
+for n in ["9867", "9874", "9877", "9893", "9897",            # pista
+          "9860", "9873", "9905",                              # cabinas
+          "9864", "9901", "9902",                              # coches
+          "9861", "9862", "9865", "9868", "9876", "9889"]:     # marcas en pista
+    salvar(acerto(abrir(n)), f"gal-{n}", [560, 880])
+
+# galeria, tópico Eventos: quadros do vídeo `RC ARCADE CHESTE HD.mp4` (1080x1920), extraídos a cada 2 s com
+#   ffmpeg -i "RC ARCADE CHESTE HD.mp4" -vf fps=1/2 -q:v 2 f%02d.jpg ; recorte 4:5 com deslocamento vertical por quadro
+QUADROS = os.environ.get("QUADROS_CHESTE")
+if QUADROS:
+    for n, desloc in [("07", 0.0), ("09", 0.3), ("10", 0.0), ("11", 0.1), ("13", 0.4), ("15", 0.2), ("26", 0.1), ("28", 0.4)]:
+        q = Image.open(os.path.join(QUADROS, f"f{n}.jpg")).convert("RGB")
+        y0 = int(desloc * (q.height - 1350))
+        salvar(acerto(q.crop((0, y0, 1080, y0 + 1350))), f"gal-ev-{n}", [560, 880])
+
+# capa do cartão de Madrid de "Prensa y registro" (16:10; 330 e 660 de largura)
+# Só entra foto cuja origem se confirma: a de 3-7-26 11:17 (celular, pasta Open Rcarcade) cai nas datas da jornada de Madrid (2-3 jul).
+# TV (El Hormiguero) e Zaragoza (Volrace) ficam SEM foto até o cliente mandar imagem desses eventos.
+OPEN = os.path.join(RAIZ, "cliente", "acervo-dropbox", "extraido", "open-fotos")
+f = os.path.join(OPEN, "Foto 3-7-26, 11 17 09.jpg")
+if os.path.exists(f):
+    from PIL import ImageOps
+    im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
+    h = int(im.width * 10 / 16)
+    y0 = int(0.28 * (im.height - h))
+    salvar(acerto(im.crop((0, y0, im.width, y0 + h))), "prensa-madrid", [330, 660], q=72)
+
+# "Dos formas de contratarla": foto no alto de cada cartão (16:10; 640 e 1000)
+# Evento: quadro f26 do vídeo de Cheste (arco Dunlop com a equipe e o público) · Instalación fija: foto 9874
+if os.environ.get("QUADROS_CHESTE"):
+    q = Image.open(os.path.join(os.environ["QUADROS_CHESTE"], "f26.jpg")).convert("RGB")
+    y0 = int(0.15 * (q.height - 675))
+    salvar(acerto(q.crop((0, y0, 1080, y0 + 675))), "forma-evento", [640, 1000], q=72)
+im = abrir("9874")
+y0 = int(0.30 * (im.height - 2500))
+salvar(acerto(im.crop((0, y0, im.width, y0 + 2500))), "forma-instalacion", [640, 1000], q=72)
+
 # contacto: pórtico aceso, escurecido para ficar de fundo
 im = acerto(recorte(abrir("9877"), (0, 0.0, 1, 0.85)))
 im = ImageEnhance.Brightness(im).enhance(0.55)
