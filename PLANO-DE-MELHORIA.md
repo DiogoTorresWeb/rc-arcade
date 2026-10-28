@@ -25,12 +25,12 @@ RC ARCADE: de "apresentação bonita" a "máquina de pedir demonstração"
 │   └── 1.3 Instagram @rcarcade — vivo, 422 seguidores, mas sem rumo visual (ver seção "Auditoria")
 │
 ├── 2. SITE NOVO (nosso)  — etapa por etapa, uma por vez, em branch
-│   ├── 2.1 Fundação: SEO, contato, arquivos        ← COMEÇA AQUI
+│   ├── 2.1 Fundação: SEO, contato, arquivos        ← FEITO em 28/10 (branch hero-teste, falta só o aviso legal)
 │   │   ├── título/descrição/imagem de compartilhamento/ícone/endereço canônico
-│   │   ├── botão de WhatsApp fixo + formulário "Solicitar demostración" (campos de ¿Cabe en tu espacio?)
+│   │   ├── botão de WhatsApp fixo + formulário que monta a mensagem e abre o WhatsApp/correo do cliente (nada vai para servidor)
 │   │   ├── LSSI/RGPD (aviso legal, privacidade, caixa de aceite): texto-base, **advogado confere**
 │   │   └── tirar do ar as notas internas ("Lo que todavía falta…", "Borrador")
-│   ├── 2.2 Provas sociais (provisórias, trocadas depois pelas do cliente final)
+│   ├── 2.2 Provas sociais (provisórias, trocadas depois pelas do cliente final) ← FEITO em 28/10
 │   │   ├── El Hormiguero (CONFIRMADO, ver abaixo) como prova principal
 │   │   ├── "Registro de pista": Volrace Motorshow Zaragoza (24–26/10/2026), jornada de puertas abiertas (2–3/07, Madrid), sorteo
 │   │   └── comentários públicos do Instagram, só como placeholder marcado (regras na seção "Provas sociais")
@@ -93,7 +93,7 @@ O perfil existe com o nome **RCARCADE**, e está longe de pronto:
 6. **Publicação** só depois da revisão cega e da confirmação do cliente sobre domínio.
 
 ## Decisões abertas [Diogo]
-- **Formulário:** o site é estático. Opções: serviço de formulário externo (tem conta própria e guarda dados de terceiros: RGPD pesa) ou e-mail direto (`mailto:`, simples mas pior). Minha recomendação: serviço externo com servidor na Europa, só depois de o cliente confirmar o e-mail de destino.
+- **Formulário (resolvido em 28/10):** feito sem servidor: o visitante preenche, o site monta a mensagem e abre o WhatsApp (ou o correio) do cliente. Se um dia quiserem receber num painel, liga-se um serviço de recebimento. Falta o cliente confirmar que o telefone e o e-mail são os comerciais.
 - Cabeçalho A ou B; se `hero-teste` entra na `main` (a versão de hoje está guardada na marca `antes-v2-2026-10-27`).
 - Créditos do Fable para a síntese final.
 

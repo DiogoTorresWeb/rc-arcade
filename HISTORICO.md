@@ -189,3 +189,13 @@ Ho Motorsports guardada em `REFERENCIAS.md`, parada até a V2 voltar.
 - **El Hormiguero confirmado**: o vídeo de 07/10 é colaboração do @elhormiguero com @rcarcade, 6,2 mil curtidas, com
   agradecimento oficial. A "Jornada de puertas abiertas" é em Madrid (qui 2 e sex 3 de julho); Volrace Motorshow Zaragoza
   24–26/10 está no Instagram. Detalhe e árvore em `PLANO-DE-MELHORIA.md`.
+
+## 28/10/2026 — Etapa 2.1 e 2.2 do site: contato, SEO e provas
+- Na branch `hero-teste`, hero intocado: formulário de contato (monta a mensagem e abre WhatsApp ou correio do cliente, sem servidor),
+  botão de WhatsApp flutuante, seção "Cómo trabajamos" (4 passos do próprio cliente), "Registro de pista" (Volrace Zaragoza
+  24–26/10, El Hormiguero 07/10, jornada de puertas abiertas Madrid 2–3/07) e 3 comentários públicos do Instagram como prova
+  **provisória** (sem nome de usuário). Saíram do ar as notas internas ("Pendiente", "TASKS.md", "Borrador").
+- SEO: canonical, Open Graph, imagem de compartilhamento 1200×630, ícones, dados estruturados, `robots.txt` e `sitemap.xml`
+  (endereço provisório do GitHub Pages; trocar quando for para o domínio do cliente).
+- Conferido no navegador (computador e celular 390 px): sem rolagem lateral, formulário valida e monta a mensagem certa.
+  Erro achado e corrigido no caminho: uma quebra de linha dentro do texto do script derrubava o script inteiro.

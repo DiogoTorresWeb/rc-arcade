@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diogotorresweb.github.io/rc-arcade/sitemap.xml
